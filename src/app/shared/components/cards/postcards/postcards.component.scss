@@ -1,0 +1,137 @@
+
+@media screen and (max-width: 500px) {
+  .full-cards {
+      width: 100%; /* Make each card take full width on smaller screens */
+      padding: 1rem;
+    }
+  }
+ @media screen and (min-width: 501px) and (max-width: 800px) {
+   .full-cards {
+     width: 50%; /* Make each card take 50% width on screens between 501px and 800px */
+  }
+}
+@media screen and (min-width: 801px) {
+  .full-cards {
+    width: 33.33%; /* Display 3 cards in one line on screens larger than 800px */
+  }
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust as needed */
+  margin: 0;
+  padding: 0;
+}
+.card {
+  margin-top: 10px;
+  position: relative;
+  width: 25rem;
+  height: 15rem;
+  background-color: #f2f2f2;
+  border-radius: .625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 62.5rem;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card img {
+  object-fit: cover; /* Ensure the image covers the entire container */
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .card__content {
+  transform: rotateX(0deg);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 700;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal; /* Allow text to wrap within the box */
+
+}
+.card__subtitle{
+  font-size:.7rem;
+  color:#9E9E9E;
+  font-weight: 500;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal; /* Allow text to wrap within the box */
+
+}
+.card:hover{
+    cursor: pointer;
+}
+.card:hover img {
+  scale: 0;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal; /* Allow text to wrap within the box */
+
+}
+.post_date{
+  font-size: x-small;
+
+}
+.auteur{
+  position : absolute;
+  left :5%;
+  bottom :18%;
+  font-size: small;
+  color:#9E9E9E;
+}
+    .link {
+        position : absolute;
+        right:10%;
+        bottom: 10%;
+    }

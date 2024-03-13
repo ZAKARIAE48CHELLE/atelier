@@ -1,0 +1,153 @@
+/* card-collection.component.css */
+@font-face {
+  font-family: 'fairplex';
+  src: url('../../../../../assets/fonts/FairplexNarrowBold Bold.ttf') format('ttf'),
+     url('../../../../../assets/fonts/FairplexNarrowBold Bold.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cardCollection {
+    
+    padding-top: 10px;
+    max-width: 52.5rem;
+    height: 23.75rem;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: left;
+    box-shadow: 0.3215rem 0.3215rem 0.375rem #dadada,
+        -0.3215rem -0.3215rem .375rem #f6f6f6;
+    transition: 0.5s ease-in-out;
+}
+
+.cardCollection:hover {
+    cursor: pointer;
+}
+
+.cardCollectionh1 a {
+    text-decoration: none;
+    font-family: fairplex;
+    font-size:1.2rem;
+    padding: 5px;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    max-height: 5em;
+    white-space: normal;
+}
+
+.resume {
+
+    color: rgb(85, 85, 85);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    max-height: 6em;
+    white-space: normal;
+}
+
+.cardCollectionh1 a:hover {
+    color: rgb(105, 104, 104);
+}
+
+
+
+.cardCollectionimg img {
+    display: flex;
+    align-self: center;
+    object-fit: cover;
+    margin-right: 10px;
+    width: 30.5rem;
+    height: 21.875rem;
+}
+
+.cardCollection:hover>.cardCollectionimg {
+    border-radius: 10px;
+
+}
+
+.cardCollectiontextBox {
+    width: calc(100% - 90px);
+    margin-left: 10px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+}
+
+.cardCollectiontextContent {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.cardCollectionDate {
+    font-size: 12px;
+    color: #777;
+
+}
+
+@media screen and (max-width: 768px) {
+  .cardCollection {
+    max-height: auto;
+    border : 2px red solid;
+    flex-direction: column; /* Change to a column layout on small screens */
+  }
+.cardCollectiontextBox {
+    order: 1; /* Display text box above image on small screens */
+    width: 100%; /* Take up the full width of the container */
+   /* Adjust top and bottom margins for better spacing */
+  }
+  .cardCollectionh1 a {
+    text-decoration: none;
+ padding: 0;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    max-height: 4em;
+    white-space: normal;
+}
+  .resume {
+
+    color: rgb(85, 85, 85);
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    max-height: 4em;
+    white-space: normal;
+}
+
+.cardCollectionimg {
+    order: 2; /* Display image below text box on small screens */
+    width: 100%; /* Make the image take up the full width of its container */
+    margin-right: 0; /* Remove right margin for better spacing */
+}
+.cardCollectionimg img {
+    display: flex;
+    align-self: center;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 70%;
+}
+
+.cardCollectionDate {
+    font-size: 10px;
+    color: #777;
+
+}
+}

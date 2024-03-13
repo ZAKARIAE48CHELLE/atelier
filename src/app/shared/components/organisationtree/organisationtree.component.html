@@ -1,0 +1,23 @@
+   <div class="container">
+     <p-organizationChart [value]="node" (onNodeSelect)="onStructureNodeClick($event)" selectionMode="single">
+              <ng-template let-node pTemplate="person">
+                  <div class="main text-center " [ngClass]="{'personnel': type === 'personnel' || type == 'structurePerso', 'structure': type === 'structure'}">
+                    <div *ngIf="type != 'structure'"> <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" /> </div>  
+                      <div class="font-bold">{{ node.data.name }}</div>
+                      <div>{{ node.data.title }}</div>
+                  </div>
+              </ng-template>
+      </p-organizationChart>
+   </div>
+
+      <!-- <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" *ngIf="popupnode.length">
+        <p-organizationChart [value]="popupnode">
+          <ng-template let-node pTemplate="person">
+              <div class="main text-center " [ngClass]="{'personnel': type === 'personnel', 'structure': type === 'structure'}">
+               <img [src]="node.data.image" class="mb-3 w-3rem h-3rem" />
+                  <div class="font-bold">{{ node.data.name }}</div>
+                  <div>{{ node.data.title }}</div>
+              </div>
+          </ng-template>
+      </p-organizationChart>
+ </p-dialog> -->

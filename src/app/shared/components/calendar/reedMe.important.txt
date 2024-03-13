@@ -1,0 +1,38 @@
+to use this model add to your app.Module.ts this lines and imports :
+  
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { FormsModule } from '@angular/forms';
+
+and ngModule you need to add this modules 
+
+  BrowserAnimationsModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+and you need to install ng-bootstrap version compatible with your angular version and install angular calendar
+you need to put this line on your global css : @import 'flatpickr/dist/flatpickr.css';
+and i got the style of the calendar dates... by adding this lines : 
+
+
+body > app-root > app-details-page > app-calendar > div > div:nth-child(n) > mwl-calendar-month-view > div > div > div:nth-child(n) > div > mwl-calendar-month-cell:nth-child(n) > div.cal-cell-top.ng-star-inserted > span > span.cal-day-badge.ng-star-inserted{
+  background-color:#0a58ca;
+}
+body > app-root > app-details-page > app-calendar > div > div:nth-child(n) > mwl-calendar-month-view > div > div > div:nth-child(n) > mwl-calendar-open-day-events > div{
+  background-color:#fff;
+  color:black;
+  box-shadow:2px 2px 2px 2px rgba(10, 88, 202,.4);
+}
+.cal-day-number{
+  color:#0a58ca;
+}
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number{
+  color:#24255c;
+}
+
+
+so you can use it as the test 

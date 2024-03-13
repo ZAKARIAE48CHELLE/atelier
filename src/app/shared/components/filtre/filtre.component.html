@@ -1,0 +1,49 @@
+
+<i class="bi bi-sliders" (click)="sidebarVisible1 = true"></i>
+<p-sidebar [(visible)]="sidebarVisible1" position="right" styleClass="w-30rem">
+    <!-- filter.component.html -->
+  <ng-template pTemplate="header">Header Content</ng-template>
+  <ng-template pTemplate="content"><form [formGroup]="filterForm">
+    <div class="form-group ">
+      <label for="category">Category:</label>
+      <p-dropdown formControlName="category"
+       [options]="categoryOptions" 
+       [showClear]="true"
+       placeholder="Select Category"
+       [style]="{width:'100%'}"></p-dropdown>
+    </div>
+  
+    <div class="form-group">
+      <label for="subCategory">Subcategory:</label>
+      <p-dropdown formControlName="subCategory" 
+      [options]="subCategoryOptions" 
+      placeholder="Select Subcategory"
+      [scrollHeight]="'200px'"
+      [dropdownIcon]="'pi pi-chevron-down'"
+      [autoZIndex]="true"
+      [maxlength]="100000"
+      [style]="{width:'100%'}"></p-dropdown>
+    </div>
+    <div class="price-filter">
+        <div class="form-group">
+            <label for="minPrice">Min Price:</label>
+            <input type="number" class="form-control" formControlName="minPrice">
+          </div>
+        
+          <div class="form-group">
+            <label for="maxPrice">Max Price:</label>
+            <input type="number" 
+            class="form-control" 
+            formControlName="maxPrice"
+            >
+          </div>
+    </div>
+
+    <div class="form-check ">
+      <label class="form-check-label" for="displayPrice">nature de prix</label>
+      <input class="form-check-input" type="checkbox" formControlName="displayPrice">
+    </div>
+
+  </form>
+</ng-template>
+</p-sidebar>  

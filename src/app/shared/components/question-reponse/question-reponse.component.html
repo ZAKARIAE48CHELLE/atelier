@@ -1,0 +1,12 @@
+<div class="flex justify-content-center">
+    <p-accordion [activeIndex]="">
+      <p-accordionTab
+        *ngFor="let Rq of faqList"
+        header="{{ Rq.question }}"
+      >
+        <p>
+          {{ Rq.reponse }}
+        </p>
+      </p-accordionTab>
+    </p-accordion>
+  </div>

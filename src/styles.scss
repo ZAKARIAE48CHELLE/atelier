@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~primeicons/primeicons.css";
+@import "~primeflex/primeflex.css";
+@import "~primeng/resources/themes/fluent-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+/* You can add global styles to this file, and also import other style files */
+
+@import 'flatpickr/dist/flatpickr.css';
+
+/* PrimeNG */
+
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import 'primeflex/primeflex.scss';
+
+@import "../node_modules/primeicons/primeicons.css";
+@import "primeicons/primeicons.css";
+@import "~dropzone/dist/dropzone.css";
+@import '~leaflet/dist/leaflet.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import 'leaflet/dist/leaflet.css';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
+
+
+@font-face {
+  font-family: 'fairplex';
+  src: url('./assets/fonts/FairplexNarrowBold Bold.ttf') format('ttf'),
+     url('./assets/fonts/FairplexNarrowBold Bold.ttf') format('ttf');
+  font-weight: 100,200,300,400,500,600,700,800,900;
+  font-style: normal ,bold;
+}
+
+
+body > app-root > app-details-page > app-calendar > div > div:nth-child(n) > mwl-calendar-month-view > div > div > div:nth-child(n) > div > mwl-calendar-month-cell:nth-child(n) > div.cal-cell-top.ng-star-inserted > span > span.cal-day-badge.ng-star-inserted{
+  background-color:#0a58ca;
+}
+body > app-root > app-details-page > app-calendar > div > div:nth-child(n) > mwl-calendar-month-view > div > div > div:nth-child(n) > mwl-calendar-open-day-events > div{
+  background-color:#fff;
+  color:black;
+  box-shadow:2px 2px 2px 2px rgba(10, 88, 202,.4);
+}
+.cal-day-number{
+  color:#0a58ca;
+}
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number{
+  color:#24255c;
+}
+
+#pn_id_2 > div > p-galleriathumbnails > div > div{
+  background:transparent;
+}
+
+#pn_id_2 > div > p-galleriathumbnails > div > div > button.p-ripple.p-element.p-galleria-thumbnail-prev.p-link.ng-star-inserted > chevronlefticon > svg{
+  color:black;
+}
+
+#pn_id_2 > div > p-galleriathumbnails > div > div > button.p-ripple.p-element.p-galleria-thumbnail-next.p-link.ng-star-inserted > chevronrighticon > svg{
+  color: black;
+}
+
+
+
+
+body > app-root > div > app-detailpetition > div > div > div > div.col-md-7 > div.tabView > p-tabview > div > div.p-tabview-panels , body > app-root > div > app-detailpetition > div > div > div > div.col-md-7 > div.tabView > p-tabview > div > div.p-tabview-nav-container > button{
+  background-color: #F5F5F5;
+}
+
+@for $i from 1 through 100 {
+  #pn_id_#{$i}_header_action {
+    color: black;
+    text-decoration: none;
+  }
+}

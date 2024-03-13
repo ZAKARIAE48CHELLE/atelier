@@ -1,0 +1,27 @@
+<div class="row tags">
+  <div class="tags1 cotags1">
+    <div class="tag  p-1" *ngFor="let tag of tags.slice(0,6)">
+      <p-tag [style]="{
+          background: 'white',
+          border: '1px #455A64 solid',
+          color: '#455A64',
+          'font-size': '.85rem'
+        }" value="{{ tag.translations.expression }}" [rounded]="true"></p-tag>
+    </div>
+    <div class="coll">
+      <a class="no-underline" (click)="collapsed()" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        {{ isCollapsed ? ('code_121' | translate | titlecase) : ('code_442' | translate | titlecase) }}
+        <i class="pi" [ngClass]="isCollapsed ? 'pi-angle-down' : 'pi-angle-up'"></i>
+      </a>
+    </div> 
+  </div>
+</div>
+<div class="collapsee">
+  <div class="collapse" id="collapseExample" (shown)="isCollapsed = !isCollapsed" (hidden)="isCollapsed = !isCollapsed">
+    <div class="cotags1 ">
+      <div class="tag p-2" *ngFor="let tag of tags.slice(6)">
+        <p-tag [style]="{background: 'white',border: '1px #455A64 solid',color: '#455A64','font-size': '.85rem'}" value="{{ tag.translations.expression }}" [rounded]="true"></p-tag>
+      </div>
+    </div>
+  </div>
+</div>

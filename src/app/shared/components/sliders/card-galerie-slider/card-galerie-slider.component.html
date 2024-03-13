@@ -1,0 +1,19 @@
+
+  <div class="card">
+    <p-galleria [value]="posts" [circular]="true"  [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5">
+      <ng-template pTemplate="item" let-item>
+       <div class="card">
+       <img src="{{item.image}}" alt="Sample Image">
+       <div class="card-content">
+         <h2>{{item.titre}}</h2>
+       </div>
+     </div>
+
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+          <img [src]="item.image" style="height: 6.25rem; object-fit:cover;" />
+        </div>
+      </ng-template>
+    </p-galleria>
+  </div>

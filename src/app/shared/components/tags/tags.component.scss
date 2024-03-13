@@ -1,0 +1,28 @@
+.row.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Align items to the start of the flex container */
+}
+
+.tags1 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cotags1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    flex: 0 0 auto; /* Let items grow and shrink as needed */
+    margin-right: 5px; /* Adjust as needed */
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+/* Adjust styles for p-tag as needed */
+.coll {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  

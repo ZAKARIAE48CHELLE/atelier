@@ -1,0 +1,18 @@
+<div class="">
+    <form [formGroup]="form">
+
+        <p-steps [model]="items" (activeIndexChange)="change($event)" [readonly]="!form.valid" [activeIndex]="activadetIndex"></p-steps>
+        
+        <ng-container [ngSwitch]="activadetIndex">
+            <div class="condition"  *ngSwitchCase="0">
+                <app-personal (nextStep)="incrementIndex($event)" [acticatedIndex]="activadetIndex" [data]="form.get('personnel')?.value"></app-personal>
+            </div>
+            <div class="condition" *ngSwitchCase="1">
+                <app-suget-message (nextStep)="incrementIndex($event)" [acticatedIndex]="activadetIndex" [data]="form.get('sujetMesage')?.value"></app-suget-message>
+                </div>
+                <div class="condition"  *ngSwitchCase="2">
+                    <app-resume [reclamation]="form"></app-resume>
+                </div>
+        </ng-container>
+</form>
+</div>

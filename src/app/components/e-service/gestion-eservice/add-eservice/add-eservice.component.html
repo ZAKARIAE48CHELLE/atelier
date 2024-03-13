@@ -1,0 +1,19 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card test" *ngFor="let e of data">
+                <div class="card test1 card3" [style.background-image]="'url(' + e.imageRepresentative + ')'"></div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="card"  *ngFor="let e of data">
+    <div class="card-image waves-effect" >
+      <img [src]="e.imageRepresentative" alt="Avatar" style="float:left;width:45%">
+      <div class="container" style="float:right;width:45%">
+        <h4><b>John Doe</b></h4>
+        <p>Architect & Engineer</p>
+      </div>
+    </div>
+  </div>
+  

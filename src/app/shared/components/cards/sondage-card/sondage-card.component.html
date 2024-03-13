@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card d-flex flex-column flex-md-row justify-content-start" *ngFor="let sondage of Sondages;">
+    <h2 class="p-3">{{ sondage.themeSondage }}</h2>
+
+    <div class="row">
+      <!-- Image Section -->
+      <div class="col-md-6 ">
+        <div class="sondageImage">
+          <div class="image">
+            <img [src]="sondage.imageRepresentatife" alt="">
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Questions Section -->
+      <div *ngIf="isDateBefore(sondage.dateCloture)" class="col-md-6 order-1 order-md-1 px-4">
+        <div *ngIf="currentQuestionIndex < sondage.questionsSondage.length">
+          <div class="quests">
+            {{'question' |translate | titlecase}} : {{currentQuestionIndex + 1 }} / {{sondage.questionsSondage.length}}
+            <p>{{ sondage.questionsSondage[currentQuestionIndex].translations.labelQuestion }}</p>
+            <h1>{{ "code_168" | translate | titlecase }}</h1>
+            <div class="choix p-2" *ngFor="let choice of sondage.questionsSondage[currentQuestionIndex].choix">
+              <input type="radio" [name]="sondage.questionsSondage[currentQuestionIndex]._id" [value]="choice._id"
+                     [(ngModel)]="selectedChoicesList[sondage.questionsSondage[currentQuestionIndex]._id]"
+                     (ngModelChange)="setSelectedChoiceId(currentQuestionIndex, sondage.questionsSondage[currentQuestionIndex]._id, choice._id)">
+              <label class="px-2">{{ choice.translations.valeurChoix }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Results Section -->
+      <div class="col-md-6 px-4" *ngIf="!isDateBefore(sondage.dateCloture)">
+        <div class="quests" *ngFor="let quest of sondage.questionsSondage">
+          <p>{{ quest.translations.labelQuestion }}</p>
+          <h1>{{ "code_167" | translate | titlecase }}</h1>
+          <div class="choix p-2" *ngFor="let choice of quest.choix">
+            <p-progressBar [style]="{ height: '25px' }" [value]="choice.nombreReponce"></p-progressBar>
+            <label class="px-2" for="">{{ choice.translations.valeurChoix }} :   {{choice.nombreReponce}}%</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Section -->
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-end">
+        <div class="button p-3 right-0" *ngIf="isDateBefore(sondage.dateCloture)">
+          <p-button (click)="submit(sondage._id)" styleClass="border-round-md px-5 py-2 bg-gray-900 border-0 " id="btn">
+            {{ currentQuestionIndex === sondage.questionsSondage.length - 1 ? 'Submit' : 'Next' }}
+       </p-button>
+          <!-- <p-button (click)="submit(sondage._id)" styleClass="border-round-md px-5 py-2 bg-gray-900 border-0 " label="Submit"></p-button> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

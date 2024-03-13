@@ -1,0 +1,155 @@
+<div class="container mt-3">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-12 " >
+        <div class="container mt-3">
+          <form [formGroup]="form">
+            <div class="row" [style.display]="groupFlex ? 'flex' : 'block'" >
+              <div  [class.col-md-6]="groupFlex"  [class.col-md-12]="!groupFlex"   *ngFor="let groupe of groupesCaracteristiques">
+                <div class="row">
+                  <span>
+                    <i class="{{ groupe.icon }}"></i>
+                    {{ groupe.translations.designation }}
+                  </span>
+                  <ul  class="col-md-12" [style.display]="useFlex ? 'flex' : 'block'">
+                    <li [class.col-md-3]="useFlex"   class=" p-0 m-0  "  [class.col-md-12]="!useFlex"  *ngFor="let characteristic of groupe.selectedCharacteristics">
+                        <label>{{ characteristic.translations.label }} : </label>
+                        <ng-container [ngSwitch]="characteristic.natureInfo">
+                          <div *ngSwitchCase="'code_540'">
+                            <ng-container [ngSwitch]="characteristic.typeInfo">
+                              <div class="conditions  " *ngSwitchCase="'code_1305'">
+                                <!-- string -->
+                                <span class="p-float-label mt-3 ">
+                                  <input
+                                    pInputText
+                                    [(ngModel)]="characteristic.translations.defautleuchar"
+                                    [disabled]="readonly"
+                                    [ngModelOptions]=" {standalone: true}"
+                                    [id]="characteristic._id"
+                                    (blur)="handleStringInputChange($event,characteristic,groupe)"/>
+                                  <label [for]="characteristic._id">{{characteristic.translations.label}}</label>
+                                </span>
+                              </div>
+                              <div class="conditions  " *ngSwitchCase="'code_1306'">
+                                <!-- number -->
+                                <span class="p-float-label mt-3 ">
+                                  <p-inputNumber
+                                    mode="decimal"
+                                    [min]="characteristic.minVal"
+                                    [(ngModel)]="characteristic.defaultValeurNotChar"
+                                    [disabled]="readonly"
+                                    [ngModelOptions]=" {standalone: true}"
+                                    [minFractionDigits]="2"
+                                    [style]="{'width': '100%'}"
+                                    [maxFractionDigits]="5"
+                                    [id]="characteristic._id"
+                                    (onBlur)="handleNumberInputChange($event,characteristic,groupe)">
+                                  </p-inputNumber>
+                                  <label [for]="characteristic._id">{{characteristic.translations.label}}</label>
+                                </span>
+                              </div>
+                              <div class="conditions   " *ngSwitchCase="'code_1307'">
+                                <span class="p-float-label mt-3">
+                                  <p-calendar
+                                  [minDate]="characteristic.minVal"
+                                  [maxDate]="characteristic.maxVal"
+                                  [defaultDate]="characteristic.defaultValeurNotChar"
+                                  [(ngModel)]="characteristic.defaultValeurNotChar"
+                                  [disabled]="readonly"
+                                  [ngModelOptions]="{ standalone: true }"
+                                  [id]="characteristic._id"
+                                  [showClear]="true"
+                                  (onSelect)="handelCalendarInput($event, characteristic, groupe)">
+                                  </p-calendar>
+                                  <label [for]="characteristic._id">{{characteristic.translations.label}}</label>
+                                </span>
+                              </div>
+                              <div class="conditions" *ngSwitchCase="'code_1308'">
+                                <p-inputSwitch
+                                [(ngModel)]="characteristic.defaultValeurNotChar"
+                                [disabled]="readonly"
+                                [ngModelOptions]=" {standalone: true}"
+                                (onChange)="handelSwitchInput($event,characteristic,groupe , characteristic.defaultValeurNotChar)"
+                                ></p-inputSwitch>
+                              </div>
+                              <div class="conditions   " *ngSwitchCase="'code_1320'">
+                                <!-- date time -->
+                                <span class="p-float-label mt-3 ">
+                                  <p-calendar
+                                    [id]="characteristic._id"
+                                    (blur)="handelCalendarInput($event,characteristic,groupe)"
+                                    [showTime]="true"
+                                    [showSeconds]="false"
+                                    [showButtonBar]="true"
+                                  ></p-calendar>
+                                  <label [for]="characteristic._id">{{characteristic.translations.label}}</label>
+                                </span>
+                              </div>
+                            </ng-container>
+                          </div>
+                          <div *ngSwitchCase="'code_541'">
+                            <div *ngFor="let value of characteristic.valeurs" class="d-flex align-items-center">
+                              <input
+                                [checked]="value.default || value['checked']"
+                                type="radio"
+                                [value]="value"
+                                [name]="characteristic._id"
+                                [disabled]="readonly"
+                                (change)="handleRadioChange($event,groupe,characteristic,value)"
+                              />
+                              <label class="px-3">{{
+                                value.translations.valeur
+                              }}</label>
+                            </div>
+                          </div>
+                          <div *ngSwitchCase="'code_542'">
+                            <!-- <div *ngFor="let value of characteristic.valeurs">
+                              <div class="d-flex">
+                                <div class="">
+                                  <p-checkbox
+                                  
+                                    [value]="value"
+                                    [ngModel]="value.default ? value : null"
+                                    [ngModelOptions]="{ standalone: true }"
+                                    (onChange)="handleCheckboxChange($event,groupe,characteristic,value) "
+                                    inputId="{{ value._id }}"
+                                  ></p-checkbox>
+                                </div>
+                                <div class="px-3">
+                                  <label>{{ value.translations.valeur }}</label>
+                                </div>
+                              </div>
+                            </div> -->
+                            
+                            <div  *ngFor="let value of characteristic.valeurs; let i = index">
+                              <div class="d-flex">
+                                <div class="">
+                                  <p-checkbox
+                                    [trueValue]="value.default"
+                                    [value]="value"
+                                    [(ngModel)]="checkedInput"
+                                    [disabled]="readonly"
+                                    [ngModelOptions]=" {standalone: true}"
+                                    (onChange)="handleCheckboxChange($event, groupe, characteristic, value)"
+                                    inputId="{{ value._id }}"
+                                  ></p-checkbox>
+                                </div>
+                                <div class="px-3">
+                                  <label>{{ value.translations.valeur }}</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                       
+                      </ng-container>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

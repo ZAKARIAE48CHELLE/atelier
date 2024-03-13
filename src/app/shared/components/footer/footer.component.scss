@@ -1,0 +1,127 @@
+footer {
+  margin-top: auto;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    // text-align: center;
+  }
+  .cat {
+    text-align: left;
+  }
+  .footitems{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+  }
+  .logo-media{
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .media{
+    padding-top: 1rem;
+  }
+
+  .media a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    padding-top: 0.8rem;
+
+  }
+
+.row h5{
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: start;
+}
+ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  text-align: end;
+}
+
+#section{
+  border-bottom: black 1px solid;
+  border-top: double black  ;
+}
+.logo img{
+  width: 400px;
+}
+
+@media screen and (max-width: 991px){
+  footer {
+    position: static;
+    width: 100%;
+    background-color: #ffffff;
+  }
+  .input-group{
+    display: none;
+  }
+
+  .footitems{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.copyright{
+  font-size: 14px;
+}
+
+.ff{
+  list-style: none;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  min-height: 50px;
+  max-width: 200px;
+  padding: 0 1rem;
+  color: black;
+  font-size: 15px;
+  border: 1px solid #1557c0;
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
+}
+
+.button--submit {
+  min-height: 50px;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #1557c0;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #1557c0;
+}
+
+.input:focus, .input:focus-visible {
+  border-color: #3898EC;
+  outline: none;
+}
+
+// .b{
+//   writing-mode: vertical-lr;
+//   display: inline-block;
+//   height: 400px;
+//   width: 300px;
+//   // margin: 5px;
+// }
+// .b {
+//   text-orientation: upright;
+// }

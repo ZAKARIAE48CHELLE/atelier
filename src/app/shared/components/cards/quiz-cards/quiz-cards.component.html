@@ -1,0 +1,14 @@
+<div class="container" >
+  <div class="row d-flex justify-content-center align-items-center" >
+    <div class="list col-6 m-2" *ngFor="let quiz of quiz">
+      <div class="card-container" >
+       <div (click)="goToDetails(quiz.id)">
+        <div class="image" >
+          <img [src]="quiz.image" alt="Announcement Image">
+          <h1 class="text-title">{{ quiz.title }}</h1>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

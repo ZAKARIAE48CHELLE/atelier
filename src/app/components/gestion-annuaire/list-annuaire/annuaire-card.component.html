@@ -1,0 +1,88 @@
+
+
+
+<div class="container">
+  <app-searchbar></app-searchbar>
+  <div class="condition" *ngIf="filteredData.length > 0">
+    <div class="card" *ngFor="let acteur of filteredData">
+      <div class="row">
+        <div class="col-md-12 d-flex">
+          <div class="rightSide d-flex  col-md-9">
+            <div class="image-wrapper col-md-4  p-2">
+              <img src="{{acteur.Logo}}" alt="Image of Acacia" />
+            </div>
+            <div class="content  ">
+              <div class="text-content  ">
+                <h3>{{acteur.NomStructure}}</h3>
+                <p>Activité: {{acteur.SecteurActivitePrincipal}}</p>
+               
+               <p>{{acteur.translations.Slogan}}</p>
+  
+              </div>
+            </div>
+          </div>
+          <div class="rating leftSide col-md-3">
+              <p-rating [(ngModel)]="acteur.Notation" [cancel]="false" [disabled]="true"></p-rating><b style="color : gray"> <sub>({{acteur.Notation}})</sub> </b>
+              <p  class="py-2" *ngFor="let adress of acteur.CordonneeGeographique"><i class="bi bi-geo-alt"></i>: {{adress.adress}}</p>
+                <span *ngFor="let cordonne of acteur.CordonneeGeographique">
+                  <p *ngFor="let h of cordonne.Horaire"  style="color:black"> <i class="bi bi-clock"></i> :  {{ h.heurDebut }} - {{h.heurFin}} </p>
+                  </span>
+          </div>
+        </div>
+      </div>
+      <div class="dialog d-flex justify-content-end align-items-center">
+        <span class="dropdown p-2">
+          <span class="btn btn-secondary dropdown-toggle py-2" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+            {{ "code_171" | translate | titlecase }}
+          </span>
+          <ul class="dropdown-menu">
+            <li>
+              <span><a class="dropdown-item" href="#"><i class="bi bi-telephone-forward"></i> : {{acteur.telephone}}</a></span>
+            </li>
+            <hr />
+            <li>
+              <span><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> : {{acteur.fax}}</a></span>
+            </li>
+            <hr />
+            <li>
+              <span><a class="dropdown-item" href="#"><i class="bi  bi-envelope-open"></i> : {{acteur.email}}</a></span>
+            </li>
+          </ul>
+        </span> 
+        <button
+          style="color: black"
+          pButton
+          label="{{ 'code_4' | translate | titlecase }}"
+          class="bg-white border-black-alpha-90 py-2 px-2 border-round-lg"
+          (click)="DiaOpen(acteur)"
+        ></button>
+        <a
+          href="{{acteur.SiteWeb}}"
+          class="link border-1"
+          style="color: black; margin: 5px"
+        >
+          <span class="icon">
+            <p class="pi pi-globe"></p>
+            {{ "code_172" | translate | titlecase }}
+          </span>
+        </a>
+        <a
+        (click)="goToDetails(acteur._id)"
+        class="infos border-1"
+          style="color: black; margin: 5px"
+        >
+          <span class="icon">
+            {{ "code_173" | translate | titlecase }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="seccondition" *ngIf="filteredData.length == 0">
+    <div class="no-results">
+      <h2>No Results Found</h2>
+      <p>Sorry, we couldn't find any results for your search.</p>
+    </div>
+    
+  </div>
+</div>

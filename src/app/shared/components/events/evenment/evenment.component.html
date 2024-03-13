@@ -1,0 +1,96 @@
+
+<div class="row">
+    <p class="evenement" > {{'code_458' | translate | titlecase}} </p>
+    <p-carousel [value]="currentEvents" [numVisible]="1" [numScroll]="1" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-event pTemplate="item">
+        <div class="cardCollection">
+            <div class="cardCollectionimg order-0">
+                <img src="{{event.images[1]}}" alt="">
+                
+              </div>
+            <div class="cardCollectiontextBox order-1">
+            <div class="cardCollectiontextContent">
+              <p class="cardCollectionh1"><a>{{event.translations.designation}}</a></p>
+              <p class="resume"> {{event.translations.description}} </p>
+              <ul>
+                <li>
+                    <i class="bi bi-calendar-range  "></i>  <span> {{event.dateDebut | date:'dd/MM/yyyy' }} - {{event.dateFin | date:'dd/MM/yyyy'}} </span>
+                </li>
+                <li *ngIf="event.multiSessions">
+                     <i class="fa-solid fa-people-group  "></i>  <span> {{'code_459' | translate | titlecase}} </span> 
+                </li>
+                <li *ngIf="event.multisites">
+                    <i class="bi bi-geo-alt "> </i> <span> {{'code_460' | translate | titlecase }} </span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-receipt "> </i>  <span> {{event.accessibilite}} </span>
+                </li>
+                <li *ngIf="event.avecDistribution == true">
+                    <i class="fa-solid fa-check-to-slot  "></i> <span> {{'code_461' | translate | titlecase}} </span> 
+                </li>
+                <li *ngIf="event.avecDistribution == false">
+                    <i class="fa-solid fa-check-to-slot  "></i>  <span> {{'code_462' | translate | titlecase}}  </span> 
+                </li>
+                <li *ngIf="event.RecompensesPrix">
+                    <i class="fa-solid fa-medal "></i> <span> {{'code_463' | translate | titlecase}} </span>
+                </li>
+                <li *ngIf="event.reservationObligatoire">
+                    <i class="fa-solid fa-user-check "></i> <span> {{'code_464' | translate | titlecase}} </span>
+                </li>
+            </ul>
+
+            </div>
+            <footer class="d-flex justify-content-end align-items-center    ">
+                <div class="content px-2">
+                    <button class="button-48   mt-4"  (click)="Details(event)" role="button">
+                        <span class="text"> {{'code_465' | translate | titlecase}} </span>
+                    </button>
+                </div>
+                <div class="content">
+                    <button class="text" (click)="reserver()"class="button-48  mt-4" role="button" *ngIf="event.reservationObligatoire">
+                      <span > {{'code_466' | translate | titlecase}} </span>
+                  </button>
+                </div>
+
+            </footer>
+          </div>
+          
+          
+        </div>
+        </ng-template>
+    </p-carousel>
+</div>
+
+
+<div class="row">
+    <p class="evenement" >   {{'code_467' | translate | titlecase}} </p>
+
+    <p-carousel [value]="oldevents" [numVisible]="3" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-product pTemplate="item">
+            <div class="event">
+                <div class="panel">
+                    <div class="ring test">
+                        <div class="card test1 card3" [style.background-image]="'url(' + product.images[1] + ')'"></div>
+                        <div class="border">
+                            <div class="slide">
+                                <p class="title">{{ product.translations.designation }}</p>
+                                <div class="line">
+                                  <span class="desc mt-5">
+                                    {{ product.translations.description }}
+                                  </span>
+                                </div>
+                                <div class="line">
+                                    <button class="button-48 mt-4" role="button">
+                                        <span class="text" (click)="Details(product)"> {{'code_465' | translate | titlecase}} </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

@@ -1,0 +1,66 @@
+@import "../../../../../node_modules/angular-calendar/css/angular-calendar.css";
+@mixin cal-theme($overrides) {
+  @include cal-month-view-theme($overrides);
+  @include cal-week-view-theme($overrides);
+  @include cal-tooltip-theme($overrides);
+}
+.OK{
+    font-size: 1.3rem;
+}
+
+.content {
+  max-width: 30vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; /* Set your preferred background color */
+  padding: 20px;
+
+}
+
+/* Title Styling */
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Date Container Styling */
+.date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Date Styling */
+.start-date, .end-date {
+  margin: 0;
+}
+
+/* End Date Styling */
+.end-date {
+  margin-top: 5px;
+}
+
+/* All Day Event Styling */
+.allday {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Modal Footer Styling */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* OK Button Styling */
+.OK {
+  font-size: 1.5em;
+  color: #28a745; /* Set your preferred color */
+}
+.modal-header{
+  z-index: 999;
+}

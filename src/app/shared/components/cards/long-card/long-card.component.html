@@ -1,0 +1,14 @@
+<div class="post cards" >
+  <div class="card mx-2" *ngFor="let post of posts">
+  <div class="card-image">
+    <img src="{{post.image}}" alt="">
+  </div>
+  <p class="card-title"><a href="">{{post.titre}}</a></p>
+  <p class="card-subtitle">{{post.soustitre}}</p>
+  <p class="card-body">
+   {{post.description}}
+  </p>
+  <!--translate-->
+  <p class="footer">{{'code_117' | translate | titlecase}} <span class="by-name">{{post.auteur}}</span> {{'code_119' | translate | titlecase}} <span class="date">{{post.date.toLocaleDateString() }}</span></p>
+</div>
+</div>

@@ -1,0 +1,53 @@
+.card {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.p-galleria {
+  position: relative;
+  width: 100%;
+}
+ img {
+  width: 100%;
+  height: 450px;
+  display: block;
+}
+
+
+.image-container .titre {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal;
+}
+
+/* Media query for screens with a maximum width of 640px */
+@media (max-width: 640px) {
+  .card {
+    max-width: 100%; /* Adjust the maximum width for smaller screens */
+  }
+
+  img {
+    height: auto; /* Ensure images maintain their aspect ratio on smaller screens */
+  }
+
+  .image-container .titre {
+    -webkit-line-clamp: 1; /* Adjust the number of lines for smaller screens */
+    max-height: 3em; /* Adjust max-height for smaller screens */
+  }
+}

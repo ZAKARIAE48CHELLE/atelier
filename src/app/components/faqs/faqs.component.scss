@@ -1,0 +1,59 @@
+@import "~primeicons/primeicons.css";
+@import "~primeflex/primeflex.css";
+@import "~primeng/resources/themes/fluent-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+:host ::ng-deep.customHeader {
+  .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    color: #fff !important;
+    font-size: 16px !important;
+  }
+}
+
+:host ::ng-deep.p-accordion-header-text {
+  color: black !important;
+}
+:host ::ng-deep.p-breadcrumb {
+ padding: 0 !important;
+ margin-right:50px  !important ;
+ border: none;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .hd {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .head {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .order-1,
+  .order-2 {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%; /* Adjust the width as needed */
+    order: 1;
+  }
+
+  .order-3,
+  .order-4 {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%; /* Adjust the width as needed */
+    order: 2;
+  }
+}
+
+
+
+  // :host ::ng-deep.p-breadcrumb {
+  //  width:80%;
+  // }

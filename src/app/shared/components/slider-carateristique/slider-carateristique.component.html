@@ -1,0 +1,25 @@
+
+<div class="conten py-2 ">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let caractere of carateristique" >
+        <ng-template carouselSlide >
+          <div class="content">
+            <div class="image" *ngIf="caractere.imageAssocie">
+              <img class="p-2" loading="lazy" src="{{caractere.imageAssocie}}" alt="y a pas d'image">
+            </div>
+            <div class=" p-2   context">
+              <span class="p-0 m-0">
+                <span >
+                  <span>{{caractere.translations.label}} : </span>
+                  <span *ngIf="caractere.valeurNotChar == null">{{caractere.translations.valeurChar}} {{caractere.unite}}</span>
+                  <span *ngIf="caractere.valeurNotChar != null">{{caractere.valeurNotChar}} {{caractere.unite}} </span>
+                </span>
+              </span>
+          </div>
+          </div>
+    </ng-template>
+
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  

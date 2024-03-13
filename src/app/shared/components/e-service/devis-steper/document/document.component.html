@@ -1,0 +1,153 @@
+
+
+
+<div class="container" *ngIf="devis && acteur">
+  <div class="row px-4 subvHeader">
+    <div class=" content px-4 statContent d-flex justify-content-between">
+      <div class="image   ">
+        <img src="{{ acteur.Logo }}" alt="" />
+      </div>
+      <div class="N  py-3 px-4">
+        <h4>{{'code_515' | translate | titlecase}}<sup>o</sup> : {{ devis.refTransaction }}</h4>
+        <p> {{'code_516' | translate | titlecase}} : {{ devis.createdAt | date : "dd/MM/yyyy" }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row informations">
+    <div class="col-md-12 d-flex justfy-content-center">
+      <div class="acteurPresentation col-md-6">
+        <ul>
+          <li>
+            <h4>{{ acteur.translations.nomStructure }}</h4>
+          </li>
+          <li>
+            <ul
+              class="p-0 m-0"
+              *ngFor="let adress of acteur.CordonneeGeographique"
+            >
+              <li class="adress">
+                <i class="bi bi-geo-alt"></i> : {{ adress.adress }}
+              </li>
+              <li class="adress">
+                {{ adress.villePrincipale }} - {{ adress.cp }}
+              </li>
+              <li class="adress">{{ adress.region }} - {{ adress.pays }}</li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{ acteur.SiteWeb }}"> {{ acteur.SiteWeb }} </a>
+          </li>
+          <li>
+            <a class="p-0 m-0 api" href="mailto:{{ acteur.email }}"
+              >{{ acteur.email }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 clientInformation">
+        <ul>
+          <li class="d-flex align-items-center">
+            <h4 *ngIf="personnel.type === 'particulier'">
+              {{ personnel.translations.nom.toUpperCase() }}
+              <span *ngIf="personnel.translations.prenom">{{ personnel.translations.prenom.toUpperCase() }}</span>
+            </h4>
+            <h4 *ngIf="personnel.type !== 'particulier'">
+              {{ personnel.translations.nomStructure.toUpperCase() }}
+            </h4>
+          </li>
+          <li>
+            <h6> 
+              {{ personnel.type === 'particulier' ? personnel.emailPersonel : personnel.emailStructure }}
+            </h6>
+          </li>
+          <li>
+            <h6>{{ getLabel('code_251') }}: 
+              {{ personnel.type === 'particulier' ? personnel.telephonePersonel : personnel.telephoneStructure }}
+            </h6>
+          </li>
+          <li *ngIf="personnel.type !== 'particulier'">
+            <h6>{{ getLabel('code_520') }}: {{ personnel.numero }}</h6>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row">
+
+    <table id="table" style="min-width: 50rem;">
+  <thead>
+    <tr>
+      <th WIDTH="16%">{{ "code_485" | translate | titlecase }}</th>
+      <th WIDTH="16%">{{ "code_221" | translate | titlecase }}</th>
+      <th WIDTH="16%">{{ "code_501" | translate | titlecase }}</th>
+      <th WIDTH="16%">{{ "code_502" | translate | titlecase }}</th>
+      <th WIDTH="16%">{{ "code_503" | translate | titlecase }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of devis.ligneTransaction; let rowIndex = index">
+      <td class="justify-content-center tableimage">
+        <img src="{{product.refProduit.imageProduit}}" alt="" />
+      </td>
+      <td WIDTH="16%">
+        {{ product.refProduit.translations.designationProduit }}
+      </td>
+      <td WIDTH="16%">
+        {{ product.refProduit.tarifUHTpardefaut }}
+        {{ product.refProduit.monnaiePays }}
+      </td>
+      <td WIDTH="16%">{{ product.quantite }}</td>
+      <td WIDTH="16%">
+        {{ product.total }} {{ product.refProduit.monnaiePays }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-end">
+        <h6> {{'code_517' | translate }} : </h6>
+      </td>
+      <td>  
+        <h6>{{ devis.montantHT }} {{ devis.monnaie }}</h6>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-end">
+        <h6>  {{'code_518' | translate }} : </h6>
+      </td>
+      <td>  
+        <h6>{{ devis.montantTVA }} {{ devis.monnaie }}</h6>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-end ">
+        <h6 ><b>  {{'code_519' | translate }} : </b>  </h6>
+      </td>
+      <td>  
+        <h6>{{ devis.montantHT + devis.montantTVA | number: '1.2-2' }} {{ devis.monnaie }}</h6>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="row">
+ 
+    <div class="boocle px-4" >
+      <span class="strong"> {{ 'code_511' | translate | titlecase }} : </span>   <span *ngFor="let condition of conditionPaiment" class="py-3 " > {{condition.pourcentage}}% , {{ condition.labelPeriode }} ,</span> <br>
+      <span class="strong"> {{ 'code_512' | translate | titlecase }} : </span>   <span *ngFor="let condition of conditionPaiment" class="py-3 " > {{condition.modePaiment}}% , </span> 
+
+    </div>
+  </div>
+
+
+  <div class=" foot d-flex justfy-content-end ">
+    <button class=" btn  border-round  m-2 font-bold " (click)="export()">Generate PDF</button>
+  </div>
+
+  </div>
+<div class="cond" *ngIf="!(devis && acteur)">
+  <div class="justfy-content-center">
+    <h3 class="text-center">No document to generante</h3>
+  </div>
+</div>

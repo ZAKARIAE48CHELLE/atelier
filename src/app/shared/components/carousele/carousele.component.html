@@ -1,0 +1,23 @@
+
+<div class="conten py-2 ">
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let image of images">
+       <ng-template carouselSlide *ngIf="image.typeContenu == 'image' || type == 'image'" >
+         <div class="img" *ngIf="image.file">
+           <img [src]="image.file" >
+         </div>
+         <div class="img" *ngIf="component == 'event'">
+          {{image.categorieEvent}}
+          <img [src]="image" >
+        </div>
+       </ng-template>
+      <ng-template carouselSlide *ngIf="image.typeContenu == 'video'">
+        <div class="img">
+          <video  controls>
+            <source src="{{image.file}}" type="video/mp4">
+          </video>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>

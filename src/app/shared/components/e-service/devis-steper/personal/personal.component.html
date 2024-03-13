@@ -1,0 +1,412 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <div class="d-flex justify-content-between col-md-12">
+      <div class="left col-md-6">
+        <p class="infos text-start">{{ "code_507" | translate | titlecase }}</p>
+      </div>
+      <div class="right orga col-md-6">
+        <p class="text-start infos">{{ "code_513" | translate | titlecase }}</p>
+      </div>
+    </div>
+
+    <ng-template pTemplate="content">
+      <div class="p-fluid">
+        <form [formGroup]="form">
+          <div class="px-5 mt-1 d-flex justify-content-between align-items-center ">
+            <div class="left col-md-6">
+              <span class="mt-2 text-start ">
+                {{ "code_506" | translate | titlecase }}:
+                <div class="d-block">
+                  <p>
+                    <p-radioButton
+                      name="type"
+                      [value]="'particulier'"
+                      formControlName="type"
+                      inputId="particulier"
+                    ></p-radioButton>
+                   <span class="infos"   >  {{ "code_504" | translate | titlecase }} </span>
+                  </p>
+                  <p>
+                    <p-radioButton
+                      name="type"
+                      [value]="'professionnelle'"
+                      formControlName="type"
+                      inputId="professionnelle"
+                    ></p-radioButton>
+                    <span class="infos"   >{{ "code_505" | translate | titlecase }}</span>
+                  </p>
+                </div>
+              </span>
+
+            </div>
+            <div class=" orga col-md-6">
+              <p class="mt-2    text-start         ">
+                {{'code_514' | translate | titlecase}} 
+              </p>
+            </div>
+          </div>
+          <div class="cont">
+            <div class="personelle col-md-6">
+              <div class="translations" formGroupName="translations">
+                <div class="fluid mt-4">
+                  <span class="p-float-label">
+                    <input
+                      id="firstname"
+                      class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                      [ngClass]="
+                        form.get('nom')?.hasError('required') &&
+                        (form.get('nom')?.touched || form.get('nom')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      "
+                      type="text"
+                      required
+                      formControlName="nom"
+                      pInputText
+                    />
+                    <label for="firstname">{{
+                      "code_189" | translate | titlecase
+                    }}</label>
+                  </span>
+                  <ng-container
+                    *ngIf="
+                      form.get('translations.nom')?.invalid &&
+                      (form.get('translations.nom')?.touched || form.get('nom')?.dirty)
+                        ? 'text-danger'
+                        : ''
+                    "
+                  >
+                    <span
+                      class="error-span"
+                      *ngIf=" form.get('translations.nom')?.errors?.['required']"
+                    >
+                      {{ "code_404" | translate | titlecase }}
+                      <!--translate-->
+                    </span>
+                  </ng-container>
+                </div>
+                <div class="fluid mt-4">
+                  <span class="p-float-label">
+                    <input
+                      id="lastname"
+                      class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                      [ngClass]="
+                        form.get('prenom')?.hasError('required') &&
+                        (form.get('prenom')?.touched || form.get('prenom')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      "
+                      formControlName="prenom"
+                      type="text"
+                      required
+                      pInputText
+                    />
+                    <label for="lastname">{{
+                      "code_134" | translate | titlecase
+                    }}</label>
+                  </span>
+                  <ng-container
+                    *ngIf="
+                      form.get('translations.prenom')?.invalid &&
+                      (form.get('translations.prenom')?.touched || form.get('prenom')?.dirty)
+                        ? 'text-danger'
+                        : ''
+                    "
+                  >
+                    <span
+                      class="error-span"
+                      *ngIf=" form.get('translations.prenom')?.errors?.['required']"
+                    >
+                      {{ "code_404" | translate | titlecase }}
+                      <!--translate-->
+                    </span>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <input
+                    id="firstname"
+                    class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    [ngClass]="
+                      form.get('emailPersonel')?.hasError('required') &&
+                      (form.get('emailPersonel')?.touched ||
+                        form.get('emailPersonel')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    type="text"
+                    required
+                    formControlName="emailPersonel"
+                    pInputText
+                  />
+                  <label for="firstname"> email Personel </label>
+                  <!-- {{'code_189'|translate | titlecase}} -->
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('emailPersonel')?.invalid &&
+                    (form.get('emailPersonel')?.touched ||
+                      form.get('emailPersonel')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('emailPersonel')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <p-inputMask
+                    mask="(999) 999-999999"
+                    [ngClass]="
+                      form.get('telephonePersonel')?.hasError('required') &&
+                      (form.get('telephonePersonel')?.touched ||
+                        form.get('telephonePersonel')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    formControlName="telephonePersonel"
+                    id="telephonePersonel"
+                  ></p-inputMask>
+                  <label for="ssn_input">telephone Personel</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('telephonePersonel')?.invalid &&
+                    (form.get('telephonePersonel')?.touched ||
+                      form.get('telephonePersonel')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('telephonePersonel')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+            <div class=" ontreprise col-md-6">
+              <div class="fluid mt-4" formGroupName="translations">
+                <span class="p-float-label">
+                  <input
+                    id="firstname"
+                    class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    [ngClass]="
+                      form.get('nomStructure')?.hasError('required') &&
+                      (form.get('nomStructure')?.touched ||
+                        form.get('nomStructure')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    type="text"
+                    formControlName="nomStructure"
+                    pInputText
+                  />
+                  <label for="firstname">{{
+                    "code_189" | translate | titlecase
+                  }}</label>
+                  <label for="firstname">{{
+                    "code_435" | translate | titlecase
+                  }}</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('nomStructure')?.invalid &&
+                    (form.get('nomStructure')?.touched ||
+                      form.get('nomStructure')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('nomStructure')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <input
+                    id="firstname"
+                    class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    [ngClass]="
+                      form.get('emailStructure')?.hasError('required') &&
+                      (form.get('emailStructure')?.touched ||
+                        form.get('emailStructure')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    type="text"
+                    formControlName="emailStructure"
+                    pInputText
+                  />
+                  <label for="firstname">{{
+                    "email structure" | translate | titlecase
+                  }}</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('emailStructure')?.invalid &&
+                    (form.get('emailStructure')?.touched ||
+                      form.get('emailStructure')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('emailStructure')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <p-inputMask
+                    mask="(999) 999-999999"
+                    [ngClass]="
+                      form.get('telephoneStructure')?.hasError('required') &&
+                      (form.get('telephoneStructure')?.touched ||
+                        form.get('telephoneStructure')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    formControlName="telephoneStructure"
+                    id="telephoneStructure"
+                  ></p-inputMask>
+                  <label for="ssn_input">telephone Personel</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('telephoneStructure')?.invalid &&
+                    (form.get('telephoneStructure')?.touched ||
+                      form.get('telephoneStructure')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('telephoneStructure')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="structure"
+                    class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    [ngClass]="
+                      form.get('structure')?.hasError('required') &&
+                      (form.get('structure')?.touched ||
+                        form.get('structure')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    formControlName="structure"
+                    optionValue="value"
+                    optionLabel="name"
+                    [showClear]="true"
+                    placeholder="structure"
+                  ></p-dropdown>
+                  <label for="lastname">{{
+                    "code_508" | translate | titlecase
+                  }}</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('structure')?.invalid &&
+                    (form.get('structure')?.touched ||
+                      form.get('structure')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('structure')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+              <div class="fluid mt-4">
+                <span class="p-float-label">
+                  <p-inputNumber
+                    formControlName="numero"
+                    class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    [ngClass]="
+                      form.get('numero')?.hasError('required') &&
+                      (form.get('numero')?.touched || form.get('numero')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    "
+                    width="100%"
+                    class="p-inputtext-lg w-full"
+                    [showButtons]="true"
+                    placeholder="{{ 'code_300' | translate | titlecase }}"
+                    optionLabel="label"
+                    inputId="float-label"
+                  >
+                  </p-inputNumber>
+                  <label for="age">numero structure </label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('numero')?.invalid &&
+                    (form.get('numero')?.touched || form.get('numero')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('numero')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                    <!--translate-->
+                  </span>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <button
+          class="btn w-4rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        >
+          Next
+        </button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

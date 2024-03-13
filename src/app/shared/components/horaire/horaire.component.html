@@ -1,0 +1,15 @@
+ <div class="day-time justify-content-between col-md-12" style="color: black; width:100%;">
+      <ng-container *ngFor="let day of getDaysArray()">
+        <ul class="days">
+          <li>
+            <span class="day d-flex justify-content-between    ">
+              {{ getDayLabel(day) }} 
+              <span class="heurs d-inline-flex justify-content-end">
+                {{ heurDebut }} - {{ heurFin }}
+              </span>
+            </span>
+        <br *ngIf="day !== ('code_196' | translate | titlecase)" />
+          </li>
+        </ul>
+      </ng-container>
+    </div>

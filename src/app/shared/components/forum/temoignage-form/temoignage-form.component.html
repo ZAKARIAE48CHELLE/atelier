@@ -1,0 +1,281 @@
+<form class="form dynamic-form px-3 py-2" [formGroup]="TemoignageForm">
+  <div class="container row">
+    <div class="body col-md-12 d-flex">
+
+      <div class="leftside col-md-6 order-0 col-sm-12">
+
+        <div class="input-container  col-md-12 mt-4  p-1">
+          <span class="p-float-label" formGroupName="translations">
+            <input style="width: 100%" type="text" [ngClass]="
+                        TemoignageForm.get('translations.nom')?.invalid &&
+                        (TemoignageForm.get('translations.nom')?.touched ||
+                          TemoignageForm.get('translations.nom')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-4300" formControlName="nom" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('translations.nom')?.invalid &&
+                        (TemoignageForm.get('translations.nom')?.touched ||
+                          TemoignageForm.get('translations.nom')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_133' | translate | titlecase}} <!--translate-->
+            </label>
+    
+            <ng-container *ngIf="
+                        TemoignageForm.get('translations.nom')?.invalid &&
+                        (TemoignageForm.get('translations.nom')?.touched ||
+                          TemoignageForm.get('translations.nom')?.dirty)
+                      ">
+              <span class="error-span" *ngIf="TemoignageForm.get('translations.nom')?.errors?.['required'] ">
+                {{'code_404' | translate | titlecase}}
+              </span>
+            </ng-container>
+          </span>
+        </div>
+        <div class="input-container col-md-12 p-1 mt-4">
+          <span class="p-float-label" formGroupName="translations">
+            <input type="text" style="width: 100%" [ngClass]="
+                        TemoignageForm.get('translations.prenom')?.invalid &&
+                        (TemoignageForm.get('translations.prenom')?.touched ||
+                          TemoignageForm.get('translations.prenom')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-8506" formControlName="prenom" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('translations.prenom')?.invalid &&
+                        (TemoignageForm.get('translations.prenom')?.touched ||
+                          TemoignageForm.get('translations.prenom')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_134' | translate | titlecase}} <!--translate-->
+            </label>
+    
+            <ng-container *ngIf="
+                        TemoignageForm.get('translations.prenom')?.invalid &&
+                        (TemoignageForm.get('translations.prenom')?.touched ||
+                          TemoignageForm.get('translations.prenom')?.dirty)
+                      ">
+              <span class="error-span" *ngIf="TemoignageForm.get('translations.prenom')?.errors?.['required'] ">
+                {{'code_404' | translate | titlecase}}
+              </span>
+            </ng-container>
+          </span>
+        </div>
+        <div class="input-container col-md-12 p-1 mt-4">
+          <span class="p-float-label">
+            <input type="email" style="width: 100%" [ngClass]="
+                        TemoignageForm.get('email')?.invalid &&
+                        (TemoignageForm.get('email')?.touched ||
+                          TemoignageForm.get('email')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-8507" formControlName="email" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('email')?.invalid &&
+                        (TemoignageForm.get('email')?.touched ||
+                          TemoignageForm.get('email')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_123' | translate | titlecase}} <!--translate-->
+            </label>
+    
+            <ng-container *ngIf="
+                        TemoignageForm.get('email')?.invalid &&
+                        (TemoignageForm.get('email')?.touched ||
+                          TemoignageForm.get('email')?.dirty)
+                      ">
+              <span class="error-span" *ngIf="TemoignageForm.get('email')?.errors?.['email'] ">
+                {{'code_404' | translate | titlecase}} <!--translate-->
+              </span>
+            </ng-container>
+          </span>
+        </div>
+        <div class="input-container col-md-12 p-1 mt-4 ">
+          <span class="p-float-label">
+            <input type="fonction" style="width: 100%" [ngClass]="
+                        TemoignageForm.get('fonction')?.invalid &&
+                        (TemoignageForm.get('fonction')?.touched ||
+                          TemoignageForm.get('fonction')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-8507" formControlName="fonction" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('fonction')?.invalid &&
+                        (TemoignageForm.get('fonction')?.touched ||
+                          TemoignageForm.get('fonction')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+             {{'code_135' | translate | titlecase}}  <!--translate-->
+            </label>
+    
+            <ng-container *ngIf="
+                        TemoignageForm.get('fonction')?.invalid &&
+                        (TemoignageForm.get('fonction')?.touched ||
+                          TemoignageForm.get('fonction')?.dirty)
+                      ">
+              <span class="error-span" *ngIf="TemoignageForm.get('email')?.errors?.['fonction'] ">
+                {{'code_404' | translate | titlecase}} <!--translate-->
+              </span>
+            </ng-container>
+          </span>
+        </div>
+    <!-- entreprise -->
+        <!-- <div class="input-container col-md-12 p-1 mt-4 ">
+          <span class="p-float-label" formGroupName="translations">
+            <input type="text" style="width: 100%" [ngClass]="
+                        TemoignageForm.get('translations.entreprise')?.invalid &&
+                        (TemoignageForm.get('translations.entreprise')?.touched ||
+                          TemoignageForm.get('translations.entreprise')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-6258" formControlName="entreprise" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('translations.entreprise')?.invalid &&
+                        (TemoignageForm.get('translations.entreprise')?.touched ||
+                          TemoignageForm.get('translations.entreprise')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_137' | translate | titlecase}} 
+            </label>
+          </span>
+        </div> -->
+        <div class="input-container col-md-12 p-1 mt-4 ">
+          <span class="p-float-label">
+            <input type="text" style="width: 100%" [ngClass]="
+                        TemoignageForm.get('lienAssocie')?.invalid &&
+                        (TemoignageForm.get('lienAssocie')?.touched ||
+                          TemoignageForm.get('lienAssocie')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " id="id-5239" formControlName="lienAssocie" pInputText />
+    
+            <label [ngClass]="
+                        TemoignageForm.get('lienAssocie')?.invalid &&
+                        (TemoignageForm.get('lienAssocie')?.touched ||
+                          TemoignageForm.get('lienAssocie')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_138' | translate | titlecase}} <!--translate-->
+            </label>
+          </span>
+        </div>
+        <div class="input-container col-md-12 p-1 mt-4 ">
+          <span class="p-float-label">
+            <p-calendar [style]="{width : '100%'}" class="p-float-label" class="w-100" [ngClass]="
+                      TemoignageForm.get('date')?.invalid &&
+                      (TemoignageForm.get('date')?.touched ||
+                        TemoignageForm.get('date')?.dirty)
+                        ? 'ng-dirty ng-invalid'
+                        : ''
+                    " id="id-5239" formControlName="date">
+            </p-calendar>
+            <label
+              [ngClass]="TemoignageForm.get('date')?.invalid &&(TemoignageForm.get('date')?.touched || TemoignageForm.get('date')?.dirty) ? 'text-danger': ''">
+              {{'code_139' | translate | titlecase}} <!--translate-->
+            </label>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="rightside col-md-6 order-1 col-sm-12">
+        <div class="input-container col-md-12 p-1 mt-4 ">
+          <span class="p-float-label" formGroupName="translations">
+            <textarea style="max-width: 100%; width: 100%" inputId="id-697" [rows]="5" [cols]="30" [ngClass]="
+                        TemoignageForm.get('translations.temoignage')?.invalid &&
+                        (TemoignageForm.get('translations.temoignage')?.touched ||
+                          TemoignageForm.get('translations.temoignage')?.dirty)
+                          ? 'ng-dirty ng-invalid'
+                          : ''
+                      " formControlName="temoignage" pInputTextarea></textarea>
+    
+            <label [ngClass]="
+                        TemoignageForm.get('translations.temoignage')?.invalid &&
+                        (TemoignageForm.get('translations.temoignage')?.touched ||
+                          TemoignageForm.get('translations.temoignage')?.dirty)
+                          ? 'text-danger'
+                          : ''
+                      ">
+              {{'code_136' | translate | titlecase}} <!--translate-->
+            </label>
+    
+            <ng-container *ngIf="
+                        TemoignageForm.get('translations.temoignage')?.invalid &&
+                        (TemoignageForm.get('translations.temoignage')?.touched ||
+                          TemoignageForm.get('translations.temoignage')?.dirty)
+                      ">
+              <span class="error-span" *ngIf="TemoignageForm.get('translations.temoignage')?.errors?.['required'] ">
+              {{'code_404' | translate | titlecase}} <!--translate-->
+              </span>
+            </ng-container>
+          </span>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <!-- Photo de Profile Upload Container -->
+          <div class="upload-container mt-4 ">
+            <label class="dropzone-label">
+              <div class="input-container"></div>
+              {{ "code_141"|translate | titlecase }} <!--translate-->
+            </label>
+            <div class="card-body dropzone-custom p-0 mx-auto">
+              <div class="dropzone dropzone-primary d-flex" [dropzone]="photoDropZoneConfig"
+                (error)="onUploadPhotoError($event)" (success)="onUploadPhotoSuccess($event)"
+                (removedFile)="onDeletePhotoSuccess($event)">
+                <div class="dz-message needsclick m-auto">
+                  <i class="bi bi-cloud-arrow-up-fill"></i>
+                  <h4 class="mb-0 f-w-600">
+                    {{ "code_140" |translate  | titlecase  }} <!--translate-->
+                  </h4> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- logo -->
+        <!-- <div class="col-md-12 col-sm-12">
+          <div class="upload-container mt-4">
+            <label class="dropzone-label">
+              <div class="input-container"></div>
+              {{ "code_142" |translate| titlecase }} 
+            </label>
+            <div class="card-body dropzone-custom p-0 mx-auto">
+              <div class="dropzone dropzone-primary d-flex" [dropzone]="photoDropZoneConfig"
+                (error)="onUploadLogoError($event)" (success)="onUploadLogoSuccess($event)"
+                (removedFile)="onDeleteLogoSuccess($event)">
+                <div class="dz-message needsclick m-auto">
+                  <i class="bi bi-cloud-arrow-up-fill"></i>
+                  <h4 class="mb-0 f-w-600">
+                    {{ "code_140" | translate |titlecase }} 
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    
+      </div>
+    </div>
+    
+  
+
+
+    <div class="m-3 d-flex justify-content-end col-md-12  ">
+      <button type="submit" pButton label="{{'code_143' | translate | titlecase}}" (click)="onSubmit()"
+        class="bg-black-alpha-90 mx-2 border-round-lg border-0" [disabled]="!TemoignageForm.valid"></button>
+      <button type="reset" style="color: black" pButton label="{{'code_144' | translate | titlecase}}"
+        class="bg-white border-black-alpha-90 px-4 border-round-lg" (click)="TemoignageForm.reset()"></button>
+    </div>
+  </div>
+</form>

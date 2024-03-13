@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row d-flex">
+    <div class="col-md-8">
+      <div class="d-flex p-3 justify-content-between">
+        <h3 *ngIf="actrTemoignage.length == 0">{{'code_136' | translate | titlecase}}</h3>
+        <h3 *ngIf="actrTemoignage.length > 0">{{'code_186' | translate | titlecase}}</h3>
+
+
+        <div class="condition" *ngIf="!actrTemoignage">
+          <p-button (click)="show()"  icon="bi bi-chat-right-text" styleClass="bg-black-alpha-90 mx-2 border-round-lg border-0" label="{{'code_145' | translate | titlecase}}"></p-button>
+        </div>
+
+      </div>
+      <div class="card d-flex " *ngFor="let soutien of soutiens.slice(0, 5)">
+        <div class="image  d-flex">
+          <img
+            class="card-image"
+            src="{{ soutien.photo }}"
+          />
+          <div class="card-content ">
+            <h3 class="card-title ">
+              {{ soutien.translations.nom }} {{ soutien.translations.prenom }} ({{ soutien.fonction }})
+            </h3>
+            <p class="card-text">
+             <span class="temoignage">{{ soutien.translations.temoignage }}</span> 
+         
+            </p>
+            <div class="card-date">
+              {{ soutien.date | date : "EEEE, MMMM d, y" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-2">
+      <div *ngIf="actrTemoignage.length == 0" class="surface-200 h-100 font-bold border-round m-2 flex  justify-content-center">
+        <app-ads-card></app-ads-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.card {
+    border: none;
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+}
+
+::ng-deep.owl-theme .owl-nav {
+    opacity: 50%;
+    position: absolute;
+    top: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+    font-size: 1.1rem;
+    color: black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+    .owl-theme .owl-nav [class*=owl-]:hover{
+    font-size: 1.1rem;
+    background-color: #B3E5FC;
+    color: black;
+    position: relative;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image {
+    height: 70px;
+    width: 100px;
+  }
+  .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }

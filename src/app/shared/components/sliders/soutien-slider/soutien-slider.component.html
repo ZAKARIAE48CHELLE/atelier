@@ -1,0 +1,28 @@
+
+<div class="container">
+    <p-carousel [value]="temoignages.slice(0,max)" [numVisible]="numvisible" [numScroll]="numScroll" [circular]="true" >
+        <ng-template let-temoignage pTemplate="item">
+
+        <a href="/det">
+      <div class="card d-flex">
+        <div class="image border d-flex">
+          <img
+            class="card-image"
+            src="{{ temoignage.photo }}"
+          />
+          <div class="card-content">
+            <h3 class="card-title">
+              {{ temoignage.translations.nom }}  {{ temoignage.translations.prenom }} ({{ temoignage.fonction }})
+            </h3>
+            <p class="card-text">{{ temoignage.translations.temoignage }}</p>
+            <div class="card-date">
+              {{ temoignage.date | date : "EEEE, MMMM d, y" }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
+
+        </ng-template>
+    </p-carousel>
+</div>

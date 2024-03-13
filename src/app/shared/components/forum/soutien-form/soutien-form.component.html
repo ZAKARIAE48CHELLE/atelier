@@ -1,0 +1,265 @@
+
+
+<form [formGroup]="SoutienForm" (ngSubmit)="onSubmit()" class="contact-form">
+    <div class="translationForm"  formGroupName="translations">
+
+        <div class="col-md-12 mt-3">
+          <span class="p-float-label">
+            <input
+              pInputText
+              class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              id="name"
+              type="text"
+              [ngClass]="
+                SoutienForm.get('translations.nom')?.hasError('required') &&
+                (SoutienForm.get('translations.nom')?.touched || SoutienForm.get('translations.nom')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              formControlName="nom"
+            />
+            <label
+              [ngClass]="
+                SoutienForm.get('translations.nom')?.hasError('required') &&
+                (SoutienForm.get('translations.nom')?.touched || SoutienForm.get('translations.nom')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              class="form-label"
+              for="nom"
+            >
+              {{ "code_189" | translate | titlecase }}
+              <!--translate-->
+            </label>
+          </span>
+          <ng-container
+            *ngIf="
+              SoutienForm.get('translations.nom')?.invalid &&
+              (SoutienForm.get('translations.nom')?.touched || SoutienForm.get('translations.nom')?.dirty)
+                ? 'text-danger'
+                : ''
+            "
+          >
+            <span
+              class="error-span"
+              *ngIf="SoutienForm.get('translations.nom')?.errors?.['required']"
+            >
+              {{ "code_404" | translate | titlecase }}
+              <!--translate-->
+            </span>
+          </ng-container>
+        </div>
+        <div class="col-md-12 mt-4">
+          <span class="p-float-label">
+            <input
+              pInputText
+              class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              id="prenom"
+              type="text"
+              [ngClass]="
+                SoutienForm.get('translations.prenom')?.hasError('required') &&
+                (SoutienForm.get('translations.prenom')?.touched || SoutienForm.get('translations.prenom')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              formControlName="prenom"
+            />
+            <label
+              [ngClass]="
+                SoutienForm.get('translations.prenom')?.hasError('required') &&
+                (SoutienForm.get('translations.prenom')?.touched || SoutienForm.get('translations.prenom')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              class="form-label"
+              for="prenom"
+            >
+              {{ "Prenom" | translate | titlecase }}
+              <!--translate-->
+            </label>
+          </span>
+          <!-- ... error handling for prenom ... -->
+        </div>
+        <div class="col-md-12 mt-4">
+          <span class="p-float-label">
+            <input
+              pInputText
+              class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              id="fonction"
+              type="text"
+              [ngClass]="
+                SoutienForm.get('translations.fonction')?.hasError('required') &&
+                (SoutienForm.get('translations.fonction')?.touched || SoutienForm.get('translations.fonction')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              formControlName="fonction"
+            />
+            <label
+              [ngClass]="
+                SoutienForm.get('translations.fonction')?.hasError('required') &&
+                (SoutienForm.get('translations.fonction')?.touched || SoutienForm.get('translations.fonction')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              class="form-label"
+              for="fonction"
+            >
+              {{ "code_135" | translate | titlecase }}
+            </label>
+            <ng-container
+              *ngIf="
+                SoutienForm.get('translations.fonction')?.invalid &&
+                (SoutienForm.get('translations.fonction')?.touched || SoutienForm.get('translations.fonction')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span
+                class="error-span"
+                *ngIf="SoutienForm.get('translations.fonction')?.errors?.['required']"
+              >
+                {{ "code_404" | translate | titlecase }}
+                <!--translate-->
+              </span>
+              <!-- Add more error messages if needed -->
+            </ng-container>
+          </span>
+        </div>
+    </div>
+
+  <div class="col-md-12 mt-4">
+    <span class="p-float-label">
+      <input
+        pInputText
+        class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="email"
+        type="text"
+        [ngClass]="
+          SoutienForm.get('email')?.hasError('required') &&
+          (SoutienForm.get('email')?.touched || SoutienForm.get('email')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        formControlName="email"
+      />
+      <label
+        [ngClass]="
+          SoutienForm.get('email')?.hasError('required') &&
+          (SoutienForm.get('email')?.touched || SoutienForm.get('email')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-label"
+        for="email"
+      >
+        {{ "code_123" | translate | titlecase }}
+        <!--translate-->
+      </label>
+      <ng-container
+        *ngIf="
+          SoutienForm.get('email')?.invalid &&
+          (SoutienForm.get('email')?.touched || SoutienForm.get('email')?.dirty)
+            ? 'text-danger'
+            : ''
+        "
+      >
+        <span
+          class="error-span"
+          *ngIf="SoutienForm.get('email')?.errors?.['required']"
+        >
+          {{ "code_404" | translate | titlecase }}
+          <!--translate-->
+        </span>
+        <span
+          class="error-span"
+          *ngIf="SoutienForm.get('email')?.errors?.['email'] && !SoutienForm.get('email')?.errors?.['required']"
+        >
+          {{ "code_405" | translate | titlecase }}
+          <!--translate-->
+        </span>
+      </ng-container>
+    </span>
+  </div>
+  
+     <div class="col-md-12 mt-4">
+    <span class="p-float-label">
+      <input
+        pInputText
+        class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="pays"
+        type="text"
+        [ngClass]="
+          SoutienForm.get('pays')?.hasError('required') &&
+          (SoutienForm.get('pays')?.touched || SoutienForm.get('pays')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        formControlName="pays"
+      />
+      <label
+        [ngClass]="
+          SoutienForm.get('pays')?.hasError('required') &&
+          (SoutienForm.get('pays')?.touched || SoutienForm.get('pays')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-label"
+        for="pays"
+      >
+       {{ 'code_194' | translate | titlecase}}
+        <!--translate-->
+      </label>
+    </span>
+    <!-- ... error handling for pays ... -->
+  </div>
+  <div class="col-md-12 mt-4" *ngIf="typeMessage != 'code_241'">
+    <span class="p-float-label">
+      <textarea
+        [ngClass]="
+          SoutienForm.get('message')?.invalid &&
+          (SoutienForm.get('message')?.touched ||
+            SoutienForm.get('message')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-control"
+        id="message"
+        rows="5"
+        pInputTextarea
+        formControlName="message"
+      ></textarea>
+      <label class="form-label" for="message">{{
+        "code_170" | translate | titlecase
+      }}</label>
+      <!--translate-->
+      <ng-container
+        *ngIf="
+          SoutienForm.get('message')?.invalid &&
+          (SoutienForm.get('message')?.touched ||
+            SoutienForm.get('message')?.dirty)
+            ? 'text-danger'
+            : ''
+        "
+      >
+        <span
+          class="error-span"
+          *ngIf="SoutienForm.get('message')?.errors?.['required']"
+        >
+          {{ "code_404" | translate | titlecase }}
+          <!--translate-->
+        </span>
+      </ng-container>
+    </span>
+  </div>
+
+  <div class="p-4 d-flex justify-content-center col-md-12">
+    <button
+      type="submit"
+      pButton
+      label="{{'code_191' | translate | titlecase}}"
+      class="bg-black-alpha-90 mx-2 border-round-lg border-0"
+      [disabled]="!SoutienForm.valid"
+    ></button>
+  </div>
+</form>

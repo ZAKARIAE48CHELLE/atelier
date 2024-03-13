@@ -1,0 +1,59 @@
+.container{
+    width: 80%;
+}
+
+.image{
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+}
+.image img{
+    
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+li{
+    list-style: none;
+}
+th , td{
+    text-align: center;
+}
+tr{
+    height: 50px;
+}
+.tableimage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableimage img{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.totale {
+    ul{
+        li{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.strong{
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.foot{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    .btn{
+        background-color:#01579B ;
+        color: white;
+    }
+}

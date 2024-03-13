@@ -1,0 +1,128 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class=" d-flex justify-content-center align-items-center h-10rem">
+        <div class="titel mt-1 d-block">
+            <p class="mb-3 display-6 text-primary"><strong>Create your account</strong></p>
+            <p class="mt-2  ">Type of account :
+              <span>
+                <p-radioButton name="Typeaccount" value="Company" [(ngModel)]="type" inputId="ingredient1"></p-radioButton>
+                Company
+              </span>
+              <span>
+                <p-radioButton name="Typeaccount" value="Personnel" [(ngModel)]="type" inputId="ingredient1"></p-radioButton>
+                Personelle
+              </span>
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <div class="grid">
+        <div class="col-5 from ">
+          <div class="m-0 p-0 " > <!-- Set the width to 30% -->
+            <div class="p-inputgroup d-flex justify-content-around align-content-center p-3" *ngIf="type == 'Personnel'"> <!-- Center the inputs horizontally -->
+              <span class="p-float-label" style="width : 45%;" >
+                <input  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" id="fisrtname" type="text" />
+                <label for="username">First Name</label>
+              </span>
+              <span class="p-float-label" style="width : 45%; ">
+                <input  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" id="lastname" type="text" />
+                <label for="username">Last Name</label>
+              </span>
+            </div>
+              <div class="p-inputgroup d-flex justify-content-around align-content-center p-3" *ngIf="type == 'Company'">
+                <span class="p-float-label" style="width : 95%; ">
+                  <input  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" id="CompanyName" type="text" />
+                  <label for="CompanyName">Company Name</label>
+                </span>
+              </div> 
+
+
+            <div class="p-inputgroup d-flex justify-content-center align-content-center p-3">
+              <!-- Center the inputs in a 6-column grid with a 3-column offset -->
+              <span class="p-float-label" style="width : 95% ;">
+                <input class="p-inputtext-lg text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"  type="email" id="email" />
+                <label for="Email">Email</label>
+              </span>
+            </div>
+            <div class="p-inputgroup d-flex justify-content-center  align-content-center p-3">
+              <!-- Center the inputs in a 6-column grid with a 3-column offset -->
+            <span class="p-float-label"  style="width : 95%;">
+              <p-password [feedback]="false" styleClass="w-100" [toggleMask]="true"></p-password>
+              <label for="password">Password</label>
+            </span>
+
+            </div>
+            <div class="d-flex justify-content-around align-content-center p-3 "  >
+              <div class="">
+               <span class="p-float-label" >
+<p-dropdown placeholder="Select a country" styleClass="w-30" inputId="dropdown"[options]="countries" optionLabel="name">
+  <ng-template let-country pTemplate="item">
+    <div>
+      {{ country.name }}
+    </div>
+  </ng-template>
+  <ng-template let-country pTemplate="selectedItem">
+    <div>
+      {{ country.name.length > 15 ? country.name.substring(0, 15) + '...' : country.name }}
+    </div>
+  </ng-template>
+</p-dropdown>
+<label for="country">Select a country</label>
+
+           </span>
+              </div>
+            <div class="">
+            <p-inputMask mask="999-999999"  [(ngModel)]="value" styleClass="w-55"  placeholder="12-3456789"></p-inputMask>
+           </div>
+          </div>
+
+          <div class="p-inputgroup d-flex justify-content-center align-content-center p-3">
+              <p-button label="Sign Up" severity="secondary"  styleClass=" w-19rem h-5 border-round-3xl"></p-button>
+            
+            </div>
+          <div class="p-inputgroup d-flex justify-content-center align-content-center p-3">
+            
+            <a href="#"  routerLink="/log" >Back to Log In?</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 or">
+          <p-divider layout="vertical">
+            <b>OR</b>
+          </p-divider>
+        </div>
+        <div class="col-5 singopt align-items-center justify-content-center">
+        <p class="h6 mx-2 mb-4">You can also register by : </p>
+      <div class="social-login-buttons mt-3">
+        <button  class="bg-transparent" style="width: 60%; height: 50px; border-radius: 20px; border:1px solid gray;" class="google-button">
+          <img src="../../assets/icons/google.svg" width="25px" style="margin-right: 10px;"><span class="singInw">Sign In with Googles</span> 
+        </button>
+        <button  class="bg-transparent" style="width: 60%; height: 50px; border-radius: 20px; border:1px solid gray;" class="google-button">
+          <img src="../../assets/icons/facebook.svg" width="25px" style="margin-right: 10px;"><span class="singInw">Sign In with Google</span> 
+        </button>
+        <button  class="bg-transparent" style="width: 60%; height: 50px; border-radius: 20px; border:1px solid gray;" class="google-button">
+          <img src="../../assets/icons/apple.svg" width="25px" style="margin-right: 10px;"><span class="singInw">Sign In with Google</span> 
+        </button>
+      
+      </div>
+      
+      <p class="mx-2 mt-3" style="color: grey;">
+        Nous vous enverrons régulièrement des e-mails avec des offres concernant nos services.
+        Vous pouvez vous désinscrire de ces e-mails marketing en tout temps, sans frais, via Mon eBay ou en cliquant sur
+        le lien inclus dans les e-mails ou ici.
+        En cliquant sur S'inscrire, vous confirmez avoir lu et accepté les <a href="#">Conditions d'utilisation</a>. <br/>
+        Veuillez vous
+        référer à notre <a href="#">Avis sur les données personnelles</a> 
+        pour toute information concernant le traitement de vos données.
+      </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

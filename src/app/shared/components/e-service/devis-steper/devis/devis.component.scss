@@ -1,0 +1,34 @@
+tr {
+    th{
+        width: 16% !important;
+        text-align: center !important;
+    }
+    td{
+        width: 16%!important;
+        text-align: center!important;
+    }
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+i{
+    color: white;
+}
+.btn{
+    background-color:#01579B ;
+    color: white;
+}
+.input{
+    ::ng-deep.pi{
+        font-size: .7rem;
+    }
+}

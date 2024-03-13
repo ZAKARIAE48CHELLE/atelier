@@ -1,0 +1,16 @@
+<div class="content d-flex">
+    <div class="row col-md-12">
+        <div class="boocle col-md-6" *ngFor="let marque of marquetopresent">
+    
+            <div class="marqueimg">
+                <p-avatar [image]="marque.logo"  styleClass="mr-2" size="xlarge"></p-avatar>
+              </div>
+              <div class="text">
+                <h6>{{marque.entreprise}}</h6>
+                <p>{{marque.commentaire}}</p>
+              </div>
+    
+        </div>
+
+    </div>
+</div>

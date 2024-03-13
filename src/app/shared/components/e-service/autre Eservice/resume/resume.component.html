@@ -1,0 +1,79 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+        <div class="col-md-12 cont ">      
+      <div class="col-md-6 clientInformation mt-4">
+        <h6> {{'code_456' | translate | titlecase}} </h6>
+        <ul class="justify-content-center ">
+          <li class="d-flex align-items-center">
+            <h6 *ngIf="personel.type === 'particulier'">
+              {{ personel.translations.nom.toUpperCase() }}
+              <span *ngIf="personel.translations.prenom">{{ personel.translations.prenom.toUpperCase() }}</span>
+            </h6>
+            <h4 *ngIf="personel.type !== 'particulier'">
+              {{ personel.translations.nomStructure.toUpperCase() }}
+            </h4>
+          </li>
+          <li>
+            <h6> 
+              {{ personel.type === 'particulier' ? personel.emailPersonel : personel.emailStructure }}
+            </h6>
+          </li>
+          <li>
+            <h6>{{ 'code_251' | translate | titlecase }}: 
+              {{ personel.type === 'particulier' ? personel.telephonePersonel : personel.telephoneStructure }}
+            </h6>
+          </li>
+          <li *ngIf="personel.type !== 'particulier'">
+            <h6>{{ 'code_520' | translate | titlecase }}: {{ personel.numero }}</h6>
+          </li>
+          <li>
+          {{'code_454' | translate | titlecase }} :
+          <div class="boocle" *ngFor="let doc of document">
+            <div class="title">
+              {{ doc.translations.titre }}
+            </div>
+          </div>
+          </li>
+        </ul>
+      </div> 
+      <div class="right col-md-6 mt-4">
+          <span>
+             <h6  class=" text-center py-2 "> {{'code_453' | translate | titlecase  }} : {{choice.module.label}} </h6>
+          </span>
+          <span class="py-2 text-center">
+              <p class="py-1"> {{'code_539' | translate | titlecase  }} : {{choice.categorieDeDuffision.label}} </p>
+          </span>
+          <div class="caract">
+            <h6> {{ 'code_529' | translate | titlecase }} </h6>
+         <app-details-caracteristiques
+         [caracteristiques]="caracteristique"
+         [groupe]="groupe"
+         ></app-details-caracteristiques>
+          </div>
+      </div>
+        </div>
+    </div>
+    <div class="grid grid-nogutter justify-content-between">
+      <div class="grid grid-nogutter justify-content-start">
+        <button
+          class="btn w-5rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="prevPage()"
+          icon="pi pi-angle-right"
+          iconPos="right" >
+          {{ "code_102" | translate | titlecase }}
+        </button>
+      </div>
+      <div class="grid grid-nogutter justify-content-end">
+        <button
+          class="btn w-100 h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="submit()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        >
+          {{'code_455' | translate | titlecase}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

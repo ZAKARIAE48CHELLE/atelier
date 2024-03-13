@@ -1,0 +1,34 @@
+.image{
+    height: 200px;
+    width: 200px;
+}
+.image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.nom {
+    font-size: 1.3rem;
+}
+.clientInformation{
+    li{
+        list-style: none;
+        padding: 10px;
+    }
+}
+.caracts{
+    ul{
+        li{
+            list-style: none;
+            padding: 3px;
+        }
+    };
+}
+.btn{
+    background-color:#01579B ;
+    color: white;
+}
+.btn:hover{
+    background-color: #0073ca;
+    color: white;
+}

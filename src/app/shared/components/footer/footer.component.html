@@ -1,0 +1,68 @@
+<footer>
+  <div class="container d-flex flex-column align-items-center justify-content-center">
+    <!-- <div class="row" id="section">
+
+        <div class="logo-media col-md-3 mb-4">
+          <div class="logo">
+            <img src="../../../../assets/images/logo.png" alt="" class="img-fluid">
+          </div>
+
+            <div *ngFor="let media of medias" class="media">
+              <a href="{{media.link}}">
+                <i *ngIf="media.icon" [class]="'pi ' + media.icon + ' pe-2'" id="media"></i>
+                {{media.label}}
+              </a>
+            </div>
+        </div>
+
+        <div class="footitems col-md-9 d-flex flex-md-row">
+          <div class="row p-3" *ngFor="let footerItem of footerItems">
+            <div class="">
+              <h5 class="titre text-uppercase">{{ footerItem.titre }}</h5>
+              <ul class="list-unstyled mb-0">
+                <li *ngFor="let link of footerItem.links">
+                  <a [href]="link.link">{{ link.label }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright row mt-auto">
+        <div class="col text-center p-1">
+          <p>&copy; {{ currentYear }} SoS. All rights reserved.</p>
+        </div>
+      </div> -->
+      <div class="grid">
+        <div class="row d-flex col-12 ml-auto mr-auto">
+          <!--col-12-->
+          <!-- class="col-4 border-top" -->
+          <ul class="border-top ff" [ngClass]="{'col-4':footer.typeAffichage=='card','col-12':footer.typeAffichage=='full'}" *ngFor="let footer of footerItems">
+            <li>
+              <a href="" class="font-bold">{{footer.translations.title}}</a>
+              <!--col-12 d-flex-->
+                <ul [ngClass]="{'col-12 d-flex justify-content-evenly ff':footer.typeAffichage=='full'}" *ngIf="footer.children">
+                  <!-- [ngClass]="{'col-12 d-flex':cat.typeAffichage=='full'}" -->
+                  <li class="cat"  *ngFor="let cat of footer.children">
+                    <a href="#"><i *ngIf="cat.icon!=''" class="{{cat.icon}} p-2"></i>{{
+                      cat.translations.title
+                    }}</a>
+                  </li>
+                </ul>
+                
+                <ng-container *ngIf="footer.taxonomie=='code_628'">
+                  <div class="input-group p-3">
+                    <input type="email" class="input" id="Email" name="Email" placeholder="uiverse@verse.io" autocomplete="off">
+                    <input class="button--submit" value="Subscribe" type="submit">
+                  </div>
+                </ng-container>
+            </li>
+          </ul>
+          <!-- <div class="b row d-flex  col-2">
+            <h3>LOGISTICPOST</h3>
+
+          </div> -->
+        </div>
+      </div>
+  </div>
+</footer>

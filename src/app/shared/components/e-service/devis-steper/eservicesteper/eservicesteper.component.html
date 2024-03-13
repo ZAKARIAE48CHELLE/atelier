@@ -1,0 +1,20 @@
+<div class="">
+    <form [formGroup]="form">
+
+        <p-steps [model]="items" [readonly]="form.invalid" [activeIndex]="activadetIndex" ></p-steps>
+        
+        <ng-container [ngSwitch]="activadetIndex">
+            <div class="condition"  *ngSwitchCase="0">
+                <app-personal (nextStep)="incrementIndex($event)" [acticatedIndex]="activadetIndex" [data]="form.get('personnel')?.value"></app-personal>
+            </div>
+            <div class="condition" *ngSwitchCase="1">
+                <app-devis [products]="products" (nextStep)="incrementIndex($event)" [data]="form.get('devis')?.value"></app-devis>
+                </div>
+                <div class="condition"  *ngSwitchCase="2">
+                    <app-document [acteur]="acteur" [Eservice]="form"  ></app-document>
+                </div>
+        </ng-container>
+
+
+</form>
+</div>

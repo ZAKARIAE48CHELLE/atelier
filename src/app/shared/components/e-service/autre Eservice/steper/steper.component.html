@@ -1,0 +1,22 @@
+<div class="">
+    <form [formGroup]="form">
+        <p-steps [model]="items" [readonly]="!form.valid" (activeIndexChange)="change($event)" [activeIndex]="activadetIndex"></p-steps>
+        <ng-container [ngSwitch]="activadetIndex">
+            <div class="condition"  *ngSwitchCase="0">
+                <app-personal (nextStep)="incrementIndex($event)" [acticatedIndex]="activadetIndex" [data]="form.get('personnel')?.value"></app-personal>
+            </div>
+            <div class="condition" *ngSwitchCase="1">
+                <app-eservice-choice (groupSelected)="handleGroupSelected($event)" (characteristicsSelected)="handleCharacteristicsSelected($event)" (prevStep)="disancrimentIndex($event)" (nextStep)="incrementIndex($event)" [acteur]="acteur" [acticatedIndex]="activadetIndex" [data]="form.get('choice')?.value" ></app-eservice-choice>
+            </div>
+            <div class="condition"  *ngSwitchCase="2">
+                <app-caracteristiques-step [readonly]="false" [useFlex]="true" [groupFlex]="false" [selectedCharacteristics]="selectedCharacteristics" [groupe]="groupe" (prevStep)="disancrimentIndex($event)" (nextStep)="incrementIndex($event)" [data]="form.get('caracteristiques')?.value"></app-caracteristiques-step>
+            </div>
+            <div class="condition"  *ngSwitchCase="3">
+                <app-document-step (prevStep)="disancrimentIndex($event)" (nextStep)="incrementIndex($event)"  [acticatedIndex]="activadetIndex" [data]="form.get('document')?.value"></app-document-step>
+            </div>
+            <div class="condition"  *ngSwitchCase="4">
+                <app-resume (prevStep)="disancrimentIndex($event)" [Choices]="form"></app-resume>
+            </div>
+        </ng-container>
+</form>
+</div>

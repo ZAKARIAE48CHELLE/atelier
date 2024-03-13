@@ -1,0 +1,67 @@
+@import "~primeicons/primeicons.css";
+@import "~primeflex/primeflex.css";
+@import "~primeng/resources/themes/fluent-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~primeicons/primeicons.css";
+@import "~primeflex/primeflex.css";
+@import "~primeng/resources/themes/fluent-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+.container {
+  min-height: 100vh;
+
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-login-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.social-login-buttons button {
+  margin-bottom: 10px;
+  transition: #fff 0.3s; /* Add a smooth transition effect */
+}
+
+.social-login-buttons button:hover {
+  background-color:#FFF;
+}
+
+/* Media query for smaller screens */
+/* Media query for smaller screens */
+@media screen and (max-width: 1000px) {
+  
+.container {
+  min-height: 100vh;
+
+}
+
+  .col-5.from, .col-2.or, .col-5.singopt {
+    width: 100%;
+    max-height: none; /* Reset max-height to allow for content overflow */
+  }
+
+  /* Reorder the columns */
+  .col-5.from {
+    order: 1;
+  }
+
+  .col-5.singopt {
+    order: 2;
+  }
+
+  .col-2.or {
+    order: 3;
+  }
+
+  /* Adjust other styles as needed */
+}
+
+

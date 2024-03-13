@@ -1,0 +1,57 @@
+/* Reset some default styles for better consistency across browsers */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  position: relative;
+  width: 37.5rem;
+  height: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card img {
+  width: 100%;
+  height: 300px; /* Maintain aspect ratio */
+  display: block;
+}
+
+.card .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+    background-color: black;
+    opacity: 60%;
+}
+
+.card h2 {
+  
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal;
+}

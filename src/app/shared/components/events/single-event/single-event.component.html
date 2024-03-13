@@ -1,0 +1,21 @@
+<div class="test">
+    <div class="card test1">
+        <div class="image-container" [style.background-image]="'url(' + largestImage + ')' ">
+        </div>
+        <div class="titre">
+            <h1>{{lastEvent.translations.designation}}</h1>
+        </div>
+        <footer class="buttons  d-flex justify-content-end   ">
+            <div class="content px-2">
+                <button class="button-48 mt-4" role="button" (click)="Details(lastEvent)">
+                    <span class="text" >voir details</span>
+                </button>
+            </div>
+            <div class="content pr-2">
+                <button class="button-48 mt-4" (click)="reserver()" role="button" *ngIf="lastEvent.reservationObligatoire">
+                    <span class="text">Reserver votre ticket</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.list {
+  width: 15rem;
+  height:16rem ;
+  background: white;
+  box-shadow: 0 1px 4px #898c92;
+  border-radius: 0.2rem;
+ }
+ .list:hover {
+  box-shadow: 0 2px 4px #777a83;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.image {
+  img{
+    height: 11.75rem;
+    width: 100%;
+    border-radius: .5rem;
+    transition: .3s ease;
+   }
+   h1{ 
+    font-size: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* You can adjust this value based on the number of lines you want to show */
+    -webkit-box-orient: vertical;
+    line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+    max-height: 6em; /* Adjust max-height to control the total height */
+    white-space: normal;
+  }    
+
+}
+
+ 
+ 
+ 

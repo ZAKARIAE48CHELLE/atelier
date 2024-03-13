@@ -1,0 +1,90 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-between">
+            <div class="col-md-6 d-flex justify-content-center">
+              <div class="cont  ">
+                <div class="image" >
+                    <img src="assets/images/dalilsup.jpeg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <h4 class=" text-center p-3">DALIL PRO</h4>
+                <h6 class="text-center"> {{ 'code_526' | translate | titlecase }} :    dalilPro-support@gmail.com</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 d-flex ">      
+      <div class="col-md-6 clientInformation mt-4">
+        <ul class="justify-content-center ">
+          <li class="d-flex align-items-center">
+            <h4 *ngIf="personel.type === 'particulier'">
+              {{ personel.translations.nom.toUpperCase() }}
+              <span *ngIf="personel.translations.prenom">{{ personel.translations.prenom.toUpperCase() }}</span>
+            </h4>
+            <h4 *ngIf="personel.type !== 'particulier'">
+              {{ personel.translations.nomStructure.toUpperCase() }}
+            </h4>
+          </li>
+          <li>
+            <h6> 
+              {{ personel.type === 'particulier' ? personel.emailPersonel : personel.emailStructure }}
+            </h6>
+          </li>
+          <li>
+            <h6>{{ 'code_251' | translate | titlecase }}: 
+              {{ personel.type === 'particulier' ? personel.telephonePersonel : personel.telephoneStructure }}
+            </h6>
+          </li>
+          <li *ngIf="personel.type !== 'particulier'">
+            <h6>{{ 'code_520' | translate | titlecase }}: {{ personel.numero }}</h6>
+          </li>
+        </ul>
+        <div class="caract mt-3">
+         <h6> {{ 'code_529' | translate | titlecase }} </h6> 
+          <div class="caract mt-3">
+            <span *ngFor="let cara of carasValues; let last = last">
+              <ng-container *ngIf="cara.value !== undefined || cara.valeurNotChar !== undefined || cara.translations?.valeur">
+                {{ cara.valeurNotChar === true ? cara.caracteristique.translations.label : cara.valeurNotChar || (cara.value || cara.translations?.valeur) }}{{ !last ? ', ' : '' }}
+              </ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+            <div class="right col-md-6">
+                <span>
+                   <h5  class=" text-center py-2 "> {{sujetMessage.sujet.label}} </h5>
+                </span>
+                <span class="py-2">
+                    <p class="py-1"> {{'code_527' | translate | titlecase  }} : </p>
+                    <div *ngFor="let sub of sujetMessage.sousSujet">
+                        <ul>
+                            <li>
+                                <span>{{sub.label}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+                <p class="text-justify">
+                    <span> <b> {{ 'code_528' | translate | titlecase }} </b> :  </span>
+                    {{sujetMessage.translations.message}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-nogutter justify-content-end">
+      <div class="grid grid-nogutter justify-content-end">
+        <button
+          class="btn w-100 h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="submit()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        >
+          {{'code_532' | translate | titlecase}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

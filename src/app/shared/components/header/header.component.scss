@@ -1,0 +1,62 @@
+.navbar{
+  width: 85%;
+}
+.navbar-brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 90px;
+    height: 90px;
+  }
+ span{
+  font-size: 20px;
+  font-weight: 600;
+  color: #0F3375;
+ }
+}
+
+.dropdown-toggle::after {
+    display: none;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .dropdown{
+    button{
+      color: white;
+        background-color: #1557C0;
+        border: none;
+    }
+    
+  }
+ .ajouter{
+    a{
+        border-radius: 0.5rem;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: #0F3375;
+        i{
+            font-size: 20px;
+            
+        }
+    }
+   
+ }
+
+ .ajouter :hover{
+    background-color: #1557C0;
+    transition: 0.3s;
+ }
+ .log{
+  a{
+    color: white;
+  }
+  a:hover {
+    text-decoration: underline;
+
+  }
+ }

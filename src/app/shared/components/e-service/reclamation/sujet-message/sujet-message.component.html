@@ -1,0 +1,140 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row d-flex" >
+      <div class="col-md-6">
+        <div class="mt-4 col-md-12">
+          <span class="p-float-label">
+            <p-dropdown [style]="{ width: '100%' }" class="w-full" formControlName="sujet" [showClear]="true"
+              [options]="subjectOptions" optionLabel="label" placeholder="Select a City"
+              (onChange)="onSubjectChange($event)"    ></p-dropdown>
+            <label for="float-label">{{'code_531' | translate | titlecase }}</label>
+          </span>
+          <ng-container
+          *ngIf=" form.get('sujet')?.invalid && (form.get('sujet')?.touched || form.get('sujet')?.dirty)? 'text-danger': ''">
+          <span class="error-span" *ngIf=" form.get('sujet')?.errors?.['required']">
+            {{ "code_404" | translate | titlecase }}
+          </span>
+        </ng-container>
+        </div>
+        <div *ngIf="childrenOption.length && subjectOptions" class="col-md-12">
+          <div class="mt-4">
+            <span class="p-float-label">
+              <p-multiSelect [style]="{ width: '100%' }" class="w-full" formControlName="sousSujet" [showClear]="true"
+                [options]="childrenOption" optionLabel="label" placeholder="Select Child Subjects"
+                (onChange)="getTaxo($event)"></p-multiSelect>
+              <label for="float-label">{{ 'code_527' | translate | titlecase }}</label>
+            </span>
+            <ng-container
+            *ngIf=" form.get('sousSujet')?.invalid && (form.get('sousSujet')?.touched || form.get('sousSujet')?.dirty)? 'text-danger': ''">
+            <span class="error-span" *ngIf=" form.get('sousSujet')?.errors?.['required']">
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+          </div>
+        </div>
+        <div class="mt-4 col-md-12">
+          <p>
+            <a class="underline" (click)="toggleCustomProblemInput()" data-bs-toggle="collapse"
+              href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+              {{"code_522" | translate | titlecase }}</a>
+          </p>
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <span class="p-float-label">
+                  <input [style]="{ width: '100%' }" pInputText type="text" formControlName="sousSujet" />
+                  <label for="float-label">{{
+                    "code_523" | translate | titlecase
+                    }}</label>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div class="mt-4"  *ngIf="!selectedCharacteristics.length"   formGroupName="translations">
+          <span class="p-float-label">
+            <textarea id="float-input" [style]="{ width: '100%' }" formControlName="message" rows="5" cols="50" pInputTextarea></textarea>
+            <label for="float-input">{{ "code_170" | translate | titlecase }}1</label>
+          </span>
+        </div>
+    
+        <div class="col-md-12">
+          <app-caracteristique [groupFlex]="true" [useFlex]="false" [selectedValuesFrom]="newlySelectedCharacteristics" [groupe]="groupe" [selectedCharacteristics]="selectedCharacteristics" (selectedData)="handleSelectedData($event)"></app-caracteristique>
+        </div>
+      </div>
+     
+        <div class="col-md-6">
+          <div class="mt-4" *ngIf="selectedCharacteristics.length" formGroupName="translations">
+            <span class="p-float-label">
+              <textarea id="float-input" [style]="{ width: '100%' }" formControlName="message" rows="5" cols="50" pInputTextarea></textarea>
+              <label for="float-input">{{ "code_170" | translate | titlecase }}2</label>
+            </span>
+            <ng-container *ngIf="form.get('translations.message')?.invalid && (form.get('translations.message')?.touched || form.get('translations.message')?.dirty)">
+              <span class="error-span" *ngIf="form.get('translations.message')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+  
+        <div class="col-md-12 col-sm-12">
+          <div class="upload-container">
+            <label class="dropzone-label">
+              <div class="input-container"></div>
+              {{ "code_525" | translate | titlecase }}
+            </label>
+            <div class="card-body dropzone-custom p-0 mx-auto">
+              <div class="dropzone dropzone-primary d-flex" [dropzone]="PhotoDropZoneConfig"
+                (error)="onUploadPhotoError($event)" (success)="onUploadPhotoSuccess($event)"
+                (removedFile)="onDeletePhotoSuccess($event)">
+                <div class="dz-message needsclick m-auto">
+                  <i class="bi bi-cloud-arrow-up-fill"></i>
+                  <h4 class="mb-0 f-w-600">
+                    {{ "code_140" | translate | titlecase }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-2 col-md-12 col-sm-12">
+          <div class="upload-container">
+            <label class="dropzone-label">
+              <div class="input-container"></div>
+              {{ "code_524" | translate | titlecase }}
+               </label>
+            <div class="card-body dropzone-custom p-0 mx-auto">
+              <div class="dropzone dropzone-primary d-flex" [dropzone]="DocumentDropZoneConfig"
+                (error)="onUploadDocumentError($event)" (success)="onUploadDocumentSuccess($event)"
+                (removedFile)="onDeleteDocumentSuccess($event)">
+                <div class="dz-message needsclick m-auto">
+                  <i class="bi bi-cloud-arrow-up-fill"></i>
+                  <h4 class="mb-0 f-w-600">
+                    {{ "code_299" | translate | titlecase }}
+                  
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+    <div class="grid grid-nogutter justify-content-end">
+      <div class="grid grid-nogutter justify-content-end">
+        <button
+          class="btn w-4rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        >
+          {{'code_104' | translate | titlecase}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

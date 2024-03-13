@@ -1,0 +1,28 @@
+// .container{
+//     max-width: 50%;
+// }
+
+
+
+.personnel{
+    width: 150px;
+    height: 150px;
+    padding: 0 10px ;
+}
+.structure{
+    width: 150px;
+    height: 100px;
+    padding: 10 10px ;
+}
+@media (max-width: 767px) {
+    .container {
+      overflow-x: auto;
+    }
+  }
+  
+  /* Adjust chart size based on the screen width */
+  @media (max-width: 576px) {
+    .p-organizationchart {
+      width: 100%;
+    }
+  }

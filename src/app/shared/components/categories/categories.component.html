@@ -1,0 +1,54 @@
+<div class="container py-2 ">
+  <div class="row">
+    <div class="radio-tile-group col-md-12">
+
+      
+      <div *ngFor="let menu of menu">
+        <div class="input-container">
+          <input class="radio-button" type="radio" name="radio" (change)="selectMenu(menu)" [checked]="menu === selectedMenu">
+          <div class="radio-tile">
+            <div class="icon walk-icon">
+              <i class="{{ menu.icon }}"></i>
+            </div>
+            <label for="collapse" class="radio-tile-label">{{ menu.translations.title }} </label>
+            <!-- ({{ getPetitesAnnonceCount(menu.translations.title) }}) -->
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedMenu" class="col-md-12">
+      <div class="children col-md-12">
+          <div class="d-flex justify-content-center ">
+            <div class="subcat col-md-6">
+              <div *ngFor="let child of selectedMenu.children" class="child col-md-6 p-2">
+                <div (click)="navigateToChildList(selectedMenu.translations.title , child.translations.title)">
+                  <a y> {{ child.translations.title | translate | titlecase }}  </a>
+                  <!-- :  ({{getChildrenPetitesAnnonceCount(child.taxonomy)}}) -->
+                </div>
+              </div>
+            </div>
+            
+              <div class="content col-md-4 d-flex justify-content-start flex-column ">
+                <a href="">{{ 'code_470' | translate | titlecase }}</a>
+                <a href="">{{ 'code_471' | translate | titlecase }}</a>
+                <a href="">{{ 'code_472' | translate | titlecase }}</a>
+                <a href="">{{ 'code_473' | translate | titlecase }}</a>
+                <a href="">{{ 'code_474' | translate | titlecase }}</a>
+              </div>
+              <div class="cl col-md-2 mt-3 d-flex justify-content-end">
+                <i class="bi bi-x-lg" (click)="closeChildrenDiv()" data-toggle="tooltip" title="{{'code_475' | translate | titlecase}}" data-custom-class="my-tooltip"></i>
+              </div>
+          </div>
+            <div class="cards ">
+            </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="voir d-flex justify-content-end mt-2">
+      <a href=""><i class="bi bi-x-diamond-fill"></i>  {{ 'code_121' | translate | titlecase }}</a>
+    </div>
+  </div>
+</div>
+

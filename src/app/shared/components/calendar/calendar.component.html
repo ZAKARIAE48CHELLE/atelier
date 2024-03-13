@@ -1,0 +1,233 @@
+<div class="container mt-2">
+  <div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+      <!-- translate -->
+        {{'code_102' | translate | titlecase}}
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+            <!-- translate -->
+
+        {{'code_103' | translate | titlecase}}
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="closeOpenMonthViewDay()"
+      >
+     <!-- translate -->
+
+{{'code_104' | translate | titlecase}}
+</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Month)"
+        [class.active]="view === CalendarView.Month"
+      >
+            <!-- translate -->
+
+        {{'code_105' | translate | titlecase}}
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Week)"
+        [class.active]="view === CalendarView.Week"
+      >
+            <!-- translate -->
+
+        {{'code_106' | translate | titlecase}}
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="setView(CalendarView.Day)"
+        [class.active]="view === CalendarView.Day"
+      >
+            <!-- translate -->
+
+        {{'code_107' | translate | titlecase}}
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-day-view>
+</div>
+
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+<br /><br /><br />
+      <!-- translate -->
+
+<h3>
+      {{'code_108' | translate | titlecase}}
+  <button class="btn btn-primary float-end" (click)="addEvent()">
+          <!-- translate -->
+
+ {{'code_109' | translate | titlecase}}
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+              <!-- translate -->
+
+        <th>{{'code_110' | translate | titlecase}}</th>
+        <th>{{'code_111' | translate | titlecase}}</th>
+        <th>{{'code_112' | translate | titlecase}}</th>
+        <th>{{'code_113' | translate | titlecase}}</th>
+        <th>{{'code_114' | translate | titlecase}}</th>
+        <th>{{'code_115' | translate | titlecase}}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="event.title"
+            (keyup)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color!.primary"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="event.color!.secondary"
+            (change)="refresh.next()"
+          />
+          <input
+            type="color"
+            [ngModel]="event?.color!.secondaryText ?? '#1e90ff'"
+            (ngModelChange)="event?.color!.secondaryText = $event"
+            (change)="refresh.next()"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.start"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="false"
+            dateFormat="Y-m-d"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            [(ngModel)]="event.end"
+            (ngModelChange)="refresh.next()"
+            [altInput]="true"
+            [convertModelValue]="true"
+            [enableTime]="false"
+            dateFormat="Y-m-d"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">
+                  <!-- translate -->
+
+            {{'code_116' | translate | titlecase}}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+          <!-- translate -->
+
+    <h5 class="modal-title">{{'code_117' | translate | titlecase}}</h5>
+      <button type="button" class="border-0 bg-transparent pi pi-times" (click)="close()">
+      </button>
+  </div>
+  <div class="d-flex justify-content-center align-content-center" *ngIf="modalData?.event">
+        <div class="content">
+        <h2 class="title">{{ (modalData.event)!.title }}</h2>
+        <p class="start-date">Start: {{ (modalData.event)!.start | date }}</p>
+        <p *ngIf="(modalData?.event)!.end" class="end-date">
+          End: {{ (modalData.event)!.end | date }}
+        </p>
+        <p *ngIf="(modalData?.event)!.allDay" class="allday">All Day Event</p>   
+        </div>      
+        </div>
+
+
+  <div class="modal-footer">
+    <button type="button" class="border-0 bg-transparent" (click)="close()">
+        <span class="pi pi-check OK"></span>
+      </button>
+  </div>
+</ng-template>
+</div>

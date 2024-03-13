@@ -1,0 +1,56 @@
+.error-span{
+    color: red;
+}
+.map{
+  height: 250px;
+  width: 100%;
+}
+ul{
+  li{
+    list-style-type: none;
+    padding-top: 5px;
+    padding-left:20px ;
+    a{
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      &:hover {
+        color:#01579B ;
+        text-decoration: underline;
+      }
+
+    }
+  }
+}
+h3{
+text-align: center;
+}
+/* Add a media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0; /* Remove padding to extend the container */
+    margin: 0; /* Remove margin for full-width effect */
+  }
+
+  .row {
+    justify-content: center; /* Center the form within the container */
+  }
+
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form {
+    width: 100%; /* Set the form width to 100% */
+    max-width: 100%; /* Remove max-width restriction */
+  }
+
+  .contact {
+    max-width: 100%; /* Remove max-width restriction for form columns */
+  }
+
+  .p-float-label {
+    width: 100%; /* Make the form elements take full width */
+  }
+}

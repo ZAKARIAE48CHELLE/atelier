@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center align-items-center" style="background-color: #1557C0;"> 
+  <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" href="#">
+      <img src="../../../../assets/images/dalilpro.png" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': navbarOpen}"> 
+      <div class="navbar-nav ml-auto d-flex align-items-center"> 
+        <div class="dropdown px-2">
+          <button class="dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-globe"></i> fr
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Français</a>
+            <a class="dropdown-item" href="#">Español</a>
+            <a class="dropdown-item" href="#">Deutsch</a>
+            <a class="dropdown-item" href="#">中文</a>
+            <a class="dropdown-item" href="#">日本語</a>
+          </div>
+        </div>
+
+        <div class="log px-3 border-end">
+            <a href="log"><i class="far fa-user px-2"></i> {{'code_9'|translate | titlecase}}</a>
+        </div>
+    
+        <div class="ajouter p-3 ">
+          <a href=""  routerLinkActive="router-link-active"  class="p-2"><i class="bi bi-plus-square "></i> {{'code_468' | translate | titlecase}}</a>
+        </div>
+
+      </div>
+      
+    </div>
+</nav>
+</div>

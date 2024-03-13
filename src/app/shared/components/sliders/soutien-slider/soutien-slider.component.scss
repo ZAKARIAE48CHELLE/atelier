@@ -1,0 +1,55 @@
+a{
+  text-decoration: none;
+}
+/* CSS */
+.card {
+  width: auto;
+  margin: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.card .card-image {
+  width: 20%;
+  margin: 10px;
+  height: 20%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px; /* Add margin for space between image and title */
+}
+
+.card-text {
+  font-size: 16px;
+  color: #666;
+  margin-left: 10px; /* Add margin for space between image and text */
+     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    max-height: 6em;
+    white-space: normal;
+}
+
+.card-date {
+  font-size: 14px;
+  color: #999;
+  margin-top: auto; /* Push date to the bottom */
+  align-self: flex-end; /* Align date to the flex-end (bottom right) */
+//   margin-right: 10px; /* Add margin for space between content and date */
+}
+

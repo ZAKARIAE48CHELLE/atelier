@@ -1,0 +1,49 @@
+.error-span{
+    color: red;
+}
+
+.btn{
+    background-color:#01579B ;
+    color: white;
+}
+.btn:hover{
+    background-color: #0073ca;
+    color: white;
+}
+
+.infos{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.cont{
+    display: flex;
+}
+
+@media screen and (max-width: 767.98px) {
+    .col-md-6 {
+      width: 100%; /* Set the width to 100% for small screens */
+      margin-right: 0; /* Remove the right margin */
+      margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+    .cont{
+        display: flex;
+        flex-direction: column;
+    }
+    .orga{
+        display: none;
+    }
+    .fluid {
+      margin-right: 0; /* Remove right margin for fluid containers */
+    }
+  
+    /* Optionally, adjust the label styles for better alignment */
+    .p-float-label {
+      width: 100%;
+    }
+  
+    /* Optionally, adjust the button styles */
+    .btn {
+      width: 100%;
+    }
+  }
+  

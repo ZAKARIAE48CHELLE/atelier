@@ -1,0 +1,80 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  flex-basis: calc(25% - 1rem);
+  margin: 0.5rem;
+  padding: 1.25rem;
+  min-height: 23.125rem;
+  border-radius: 1.25rem;
+  background: #e8e8e8;
+  box-shadow: 0.3215rem 0.3215rem 0.375rem #dadada,
+              -0.3215rem -0.3215rem .375rem #f6f6f6;
+  transition: 0.4s;
+}
+
+/* Add media query for smaller screens if needed */
+@media (max-width: 768px) {
+  .card {
+    flex-basis: calc(50% - 1rem);
+  }
+}
+
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2e54a7;
+  margin: 1.145rem 0 0 0.77rem;
+}
+.card-title a{
+text-decoration:none;
+ overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal; 
+}
+.card-subtitle{
+  font-size: .7rem;
+  font-weight: 600;
+  color: #2e54a7;
+  margin: .3rem 0 0 0.77rem;
+}
+
+.card-image img {
+  object-fit: cover; /* Ensure the image covers the entire container */
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  margin: 0.8125rem 0 0 .625rem;
+  color: rgb(31, 31, 31);
+  font-size: 0.9rem;
+   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+  max-height: 6em; /* Adjust max-height to control the total height */
+  white-space: normal; 
+}
+
+.footer {
+  float: right;
+  margin: 1.75rem 0 0 1.125rem;
+  font-size: 0.8125rem;
+  color: #636363;
+}
+
+.by-name {
+  font-weight: 700;
+}

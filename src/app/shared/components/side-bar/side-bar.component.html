@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <aside id="sidebar" [ngClass]="{ 'collapsed': !isSidebarOpen }" >
+    <div class="h-100">
+      <div class="container-fluid">
+        <i class="pi pi-times" (click)="toggleSidebar()" id="btn" style="color: black;"></i>
+      </div>
+      <ul class="nav flex-column sidebar-nav">
+        <li class="nav-item" *ngFor="let item of sidebarItems">
+          <a *ngIf="!item.ismega" [href]="item.link" class="nav-link">
+            <i *ngIf="item.icon" [class]="'pi ' + item.icon + ' pe-2'" id="icon" style="font-size: 1.2rem;"></i>
+            {{ item.label }}
+          </a>
+          <a *ngIf="item.ismega" href="#" class="nav-link collapsed" data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#' + item.label.toLowerCase()" [attr.aria-controls]="item.label.toLowerCase()">
+            {{ item.label }}
+            <i class="pi pi-chevron-down" style=" font-size: 0.6rem;"></i>
+          </a>
+          <ul *ngIf="item.ismega" [id]="item.label.toLowerCase()" class="sidebar-dropdown collapse"
+            data-bs-parent="#sidebar">
+            <li class="nav-item" *ngFor="let subItem of item.listItems">
+              <a [href]="subItem.link" class="nav-link">{{ subItem.label }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</div>

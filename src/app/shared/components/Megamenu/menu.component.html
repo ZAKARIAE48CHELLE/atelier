@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg ">
+        <ul class="navbar-nav mr-auto  ">
+          <li *ngFor="let menu of menuData" class="nav-item mega-menu" (mouseenter)="openMegaMenu(menu)" (mouseleave)="closeMegaMenu()">
+            <a class="nav-link"(click)="toggleMegaMenu(menu)">
+              {{ menu.label }}
+              <span class="arrow-indicator"><i class="bi bi-caret-down-fill" style="font-size: 12px;"></i></span>
+            </a>
+            <div *ngIf="selectedMenu === menu" class="mega-menu-content ">
+              <div class="row ">
+                <div class="drop-down col-md-3 m-2 " *ngFor="let subMenu of menu.megaMenu">
+                  <h5>{{ subMenu.label }}</h5>
+                  <ul class="list-unstyled">
+                    <li *ngFor="let subSubMenu of subMenu.megaMenu">
+                      <a href="{{subSubMenu.link}}">{{ subSubMenu.label }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </nav>
+</div>
+  

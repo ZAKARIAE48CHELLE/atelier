@@ -1,0 +1,79 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 0 calc(25% - 16px); 
+  
+  margin: 0 8px 16px;
+  height: 250px;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth scaling */
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.card-content {
+  padding: 16px;
+  transition: padding 0.3s ease-in-out; /* Add transition for smooth padding adjustment */
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* You can adjust this value based on the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  line-height: 1; /* Adjust line-height to control the spacing between lines */
+  max-height: 4em; /* Adjust max-height to control the total height */
+  white-space: normal; 
+}
+
+h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 a:hover {
+  color: rgb(105, 104, 104);
+}
+
+p {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.auteur {
+  font-size: .7rem;
+  position: absolute;
+  right: 10%;
+  bottom: 0%;
+}
+
+/* Media query for medium screens */
+@media screen and (max-width: 1200px) {
+  .card {
+    flex: 1 0 calc(50% - 16px);
+  }
+}
+
+/* Media query for phone screens */
+@media screen and (max-width: 600px) {
+  .card {
+    flex: 1 0 calc(100% - 16px);
+  }
+}

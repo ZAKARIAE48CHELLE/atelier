@@ -1,0 +1,16 @@
+<!-- card-collection.component.html -->
+<div class="">
+  <div class="cards" *ngFor="let post of posts.slice(0, max)">
+    <div class="cardCollection">
+      <div class="cardCollectionimg">
+        <img src="{{post.image}}" alt="">
+      </div>
+      <div class="cardCollectiontextBox">
+        <div class="cardCollectiontextContent">
+          <p class="cardCollectionh1"><a href="">{{post.titre}}</a></p>
+          <span class="cardCollectionDate px-2">{{post.date.toLocaleDateString() }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

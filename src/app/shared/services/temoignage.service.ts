@@ -1,0 +1,148 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Temoignage } from '../models/temoignae.model';
+@Injectable({
+  providedIn: 'root',
+})
+export class TemoignageService {
+  getTemoignage(): Temoignage[] {
+    return [
+      {
+        id: '1',
+        translations: {
+          language: 'fr',
+          nom: 'Dupont',
+          prenom: 'Jean',
+          temoignage:
+            'Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...Ceci est un témoignage très positif sur...',
+          entreprise: 'ABC Corporation',
+        },
+        fonction: 'dev',
+        email: 'jean.dupont@email.com',
+        date: new Date(),
+        photo: '../../../assets/pictures/pic11.jpg',
+        logo: 'path/to/logo.jpg',
+        lienAssocie: 'https://www.example.com',
+        typeObjetConcerne: "Type d'objet",
+        objetAssocie: ['Objet 1', 'Objet 2'],
+        etatobjet: 'Bon état',
+      },
+
+      {
+        id: '2',
+        translations: {
+          language: 'en',
+          nom: 'Smith',
+          prenom: 'Alice',
+          temoignage: 'This is a very positive testimonial about...',
+          entreprise: 'XYZ Corporation',
+        },
+        fonction: 'dev',
+        email: 'alice.smith@email.com',
+        date: new Date('2023-01-15'),
+        photo: '../../../assets/pictures/pic22.jpg',
+        logo: 'path/to/logo2.jpg',
+        lienAssocie: 'https://www.example2.com',
+        typeObjetConcerne: 'Another Type of Object',
+        objetAssocie: ['Objet A', 'Objet B', 'Objet C'],
+        etatobjet: 'Excellent condition',
+      },
+      {
+        id: '3',
+        translations: {
+          language: 'es',
+          nom: 'García',
+          prenom: 'Carlos',
+          temoignage: 'Este es un testimonio muy positivo sobre...',
+          entreprise: 'García y Asociados',
+        },
+        fonction: 'dev',
+        email: 'carlos.garcia@email.com',
+        date: new Date('2023-02-20'),
+        photo: '../../../assets/pictures/pic3.jpg',
+        logo: 'path/to/logo3.jpg',
+        lienAssocie: 'https://www.example3.com',
+        typeObjetConcerne: 'Tipo de Objeto',
+        objetAssocie: ['Objeto X', 'Objeto Y'],
+        etatobjet: 'Estado óptimo',
+      },
+      {
+        id: '4',
+        translations: {
+          language: 'de',
+          nom: 'Schmidt',
+          prenom: 'Anna',
+          temoignage: 'Dies ist ein sehr positives Zeugnis über...',
+          entreprise: 'ABC GmbH',
+        },
+        fonction: 'dev',
+        email: 'anna.schmidt@email.com',
+        date: new Date('2023-03-10'),
+        photo: '../../../assets/pictures/pic4.jpg',
+        logo: 'path/to/logo4.jpg',
+        lienAssocie: 'https://www.example4.com',
+        typeObjetConcerne: 'Art des Objekts',
+        objetAssocie: ['Objekt A', 'Objekt B', 'Objekt C'],
+        etatobjet: 'Sehr guter Zustand',
+      },
+      {
+        id: '5',
+        translations: {
+          language: 'de',
+          nom: 'Schmidt',
+          prenom: 'Anna',
+          temoignage: 'Dies ist ein sehr positives Zeugnis über...',
+          entreprise: 'ABC GmbH',
+        },
+        fonction: 'dev',
+        email: 'anna.schmidt@email.com',
+        date: new Date('2023-03-10'),
+        photo: '../../../assets/pictures/pic4.jpg',
+        logo: 'path/to/logo4.jpg',
+        lienAssocie: 'https://www.example4.com',
+        typeObjetConcerne: 'Art des Objekts',
+        objetAssocie: ['Objekt A', 'Objekt B', 'Objekt C'],
+        etatobjet: 'Sehr guter Zustand',
+      },
+      {
+        id: '6',
+        translations: {
+          language: 'de',
+          nom: 'Schmidt',
+          prenom: 'Anna',
+          temoignage: 'Dies ist ein sehr positives Zeugnis über...',
+          entreprise: 'ABC GmbH',
+        },
+        fonction: 'dev',
+        email: 'anna.schmidt@email.com',
+        date: new Date('2023-03-10'),
+        photo: '../../../assets/pictures/pic4.jpg',
+        logo: 'path/to/logo4.jpg',
+        lienAssocie: 'https://www.example4.com',
+        typeObjetConcerne: 'Art des Objekts',
+        objetAssocie: ['Objekt A', 'Objekt B', 'Objekt C'],
+        etatobjet: 'Sehr guter Zustand',
+      },
+      {
+        id: '7',
+        translations: {
+          language: 'de',
+          nom: 'Schmidt',
+          prenom: 'Anna',
+          temoignage: 'Dies ist ein sehr positives Zeugnis über...',
+          entreprise: 'ABC GmbH',
+        },
+        fonction: 'dev',
+        email: 'anna.schmidt@email.com',
+        date: new Date('2023-03-10'),
+        photo: '../../../assets/pictures/pic4.jpg',
+        logo: 'path/to/logo4.jpg',
+        lienAssocie: 'https://www.example4.com',
+        typeObjetConcerne: 'Art des Objekts',
+        objetAssocie: ['Objekt A', 'Objekt B', 'Objekt C'],
+        etatobjet: 'Sehr guter Zustand',
+      },
+    ];
+  }
+}

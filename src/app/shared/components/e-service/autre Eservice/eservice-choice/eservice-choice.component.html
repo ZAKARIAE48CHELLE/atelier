@@ -1,0 +1,123 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12 d-flex">
+            <div class="left col-md-6">
+              <div class="mt-4 col-md-12">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [style]="{ width: '100%' }"
+                    class="w-full"
+                    formControlName="module"
+                    [showClear]="true"
+                    [options]="eserviceObjects"
+                    optionLabel="label"
+                    placeholder="Select a City"
+                    (onChange)="onSubjectChange($event)"
+                  >
+                  </p-dropdown>
+                  <label for="float-label">{{
+                    "code_531" | translate | titlecase
+                  }}</label>
+                </span>
+                <ng-container
+                  *ngIf="
+                    form.get('module')?.invalid &&
+                    (form.get('module')?.touched ||
+                      form.get('module')?.dirty)
+                      ? 'text-danger'
+                      : ''
+                  "
+                >
+                  <span
+                    class="error-span"
+                    *ngIf=" form.get('module')?.errors?.['required']"
+                  >
+                    {{ "code_404" | translate | titlecase }}
+                  </span>
+                </ng-container>
+              </div>
+              <div class="col-md-12">
+                <div class="mt-4">
+                  <span class="p-float-label">
+                    <p-dropdown
+                      [style]="{ width: '100%' }"
+                      class="w-full"
+                      formControlName="categorieDeDuffision"
+                      [showClear]="true"
+                      [options]="categorieDeDuffision"
+                      optionLabel="label"
+                      placeholder="categorie de duffision"
+                    ></p-dropdown>
+                    <label for="float-label">{{
+                      "code_539" | translate | titlecase
+                    }}</label>
+                  </span>
+                  <ng-container
+                    *ngIf="
+                      form.get('categorieDeDuffision')?.invalid &&
+                      (form.get('categorieDeDuffision')?.touched ||
+                        form.get('categorieDeDuffision')?.dirty)
+                        ? 'text-danger'
+                        : ''
+                    "
+                  >
+                    <span
+                      class="error-span"
+                      *ngIf="form.get('categorieDeDuffision')?.errors?.['required']"
+                      >{{ "code_404" | translate | titlecase }}</span
+                    >
+                  </ng-container>
+                </div>
+              </div>
+        
+              <div class="conditions mt-4" *ngIf="selectedTaxo?.conditions">
+                <h6 class="p-2">
+                  {{ "condition Particulier" | translate | titlecase }}
+                </h6>
+                <div class="loop" *ngFor="let condition of selectedTaxo.conditions">
+                  <app-slider-carateristique [carateristique]="condition.conditions"></app-slider-carateristique>
+                </div>
+              </div>
+            </div>
+            <div class="right col-md-6">
+              <div class="col-md-12 justify-content-center p-3" *ngIf="selectedTaxo" >
+                <img src="{{ selectedTaxo.imageRepresentative }}" alt="" class="imageflottante rounded-image2 img7 m-2"/>
+                <h6>{{ selectedTaxo.translations.designationEService }}</h6>
+                <p>{{ selectedTaxo.translations.descriptif }}</p>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="right col-md-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="grid grid-nogutter justify-content-between ">
+        <div class="grid grid-nogutter justify-content-start">
+          <button
+            class="btn w-5rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+            (click)="prevPage()"
+            icon="pi pi-angle-right"
+            iconPos="right" >
+            {{ "code_102" | translate | titlecase }}
+          </button>
+        </div>
+        <div class="grid grid-nogutter justify-content-end">
+          <button
+            class="btn w-4rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+            (click)="nextPage()"
+            icon="pi pi-angle-right"
+            iconPos="right">
+            {{ "code_104" | translate | titlecase }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

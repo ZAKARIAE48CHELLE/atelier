@@ -1,0 +1,64 @@
+<div class="document p-3">
+  <div class="btns d-flex ">
+    <div class="">
+      <p-button
+        styleClass="border-round-md px-2 py-2 bg-gray-900 border-0 "
+        type="button"
+        label="{{ 'code_452' | translate | titlecase }}"
+        (click)="showDialogLienOrContenu('Document')"
+      ></p-button>
+    </div>
+    <div class=" px-2">
+      <p-button
+      styleClass="border-round-md px-2 py-2 bg-gray-900 border-0 "
+      type="button"
+      label="{{ 'code_457' | translate | titlecase }}"
+      (click)="showDialogLienOrContenu('reference')"
+    ></p-button>
+    </div>
+  </div>
+    <div class="table">
+      <p-table [value]="referenceForm?.value" WIDTH="100%">
+        <ng-template pTemplate="header">
+          <tr>
+            <th WIDTH="85%">
+              {{ "code_110" | translate | titlecase }}
+            </th>
+            <th>{{ "code_8816" | translate | titlecase }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-person let-index="rowIndex">
+          <tr>
+            <td>{{ person.translations.titre }}</td>
+            <td>
+              <span (click)="ediLien(person, 'reference')">
+                <i class="bi bi-pencil px-2"></i>
+              </span>
+              <span (click)="deleteRefCont(index, 'reference')">
+                <i class="bi bi-trash3 ps-2"></i></span>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="grid grid-nogutter justify-content-between ">
+    <div class="grid grid-nogutter justify-content-start">
+      <button
+        class="btn w-5rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+        (click)="prevPage()"
+        icon="pi pi-angle-right"
+        iconPos="right" >
+        {{ "code_102" | translate | titlecase }}
+      </button>
+    </div>
+    <div class="grid grid-nogutter justify-content-end">
+      <button
+        class="btn w-4rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+        (click)="nextPage()"
+        icon="pi pi-angle-right"
+        iconPos="right" >
+        {{ "code_104" | translate | titlecase }}
+      </button>
+    </div>
+  </div>

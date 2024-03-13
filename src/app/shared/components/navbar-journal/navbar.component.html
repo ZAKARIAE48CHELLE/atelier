@@ -1,0 +1,52 @@
+
+<nav class=" navbar p-1 m-0 ps-0 navbar-expand-lg" [ngClass]="{ 'scrolled' : isHeaderScrolled }">
+  <div class="container ps-0">
+      <i class="pi pi-bars " (click)="toggleSidebar()" id="btn" style="color: black;"></i>
+      
+      <button class="navbar-toggler  shadow-none border-0" type="button" 
+          data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <i class="pi pi-user" ></i>
+      </button>
+        
+      <div class="sidebar offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <!--Sidebar Body-->
+          <div class="nav-bar-items">
+            <div class="offcanvas-header ">
+              <i type="button" class="pi pi-times btn-close"  style="color: black;" data-bs-dismiss="offcanvas" aria-label="Close" id="closeNav-btn"></i>
+              </div>
+              <div class="offcanvas-body p-0 flex-lg-row gap-4 " id="nav1">
+
+
+                        <!-- Centered space for language items -->
+
+                        <div class="lang1 justify-content-center align-items-center flex-lg-grow-1 fs-6">
+                          <div *ngIf="navData$ | async as navData" class="d-flex align-items-center justify-content-center">
+                            <div class="lang" *ngFor="let lang of navData.lang"  >
+                                <a [href]="navData.link" *ngIf="navData.link" style="margin-right: 10px; font-size: 12px;">{{ lang }}</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Login and Sign Up on the far right -->
+                        <div class="log d-flex justify-content-end align-items-center gap-3 fs-6" style="font-size: 12px; font-family: bold;">
+                          <a href="#login" class="sub text-decoration-none">Subscribe</a>
+                          <a class="logup text-decoration-none">Sign Up</a>
+                        </div>
+                      </div>
+                              <!-- logo + time navbar -->
+               <div class="nav2 offcanvas-body p-0 flex-lg-row gap-4 ">
+                        <div *ngIf="navData$ | async as navData" class="navbar-nav justify-content-start align-items-center flex-lg-grow-1 fs-6">
+                            <div class="date" style="font-size: 12px; font-weight: bold;">{{ navData.todaysDate }}</div>
+                        </div>
+                        <div class=" justify-content-center align-items-center flex-lg-grow-1 fs-6">
+                            <div *ngIf="navData$ | async as navData" class="d-flex align-items-center justify-content-center">
+                                <img src="{{ navData.logo }}" alt="" *ngIf="navData.logo" class="logo" />
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end align-items-center gap-3 fs-6">
+                          </div>
+                </div>
+          </div>
+      </div>
+  </div>
+</nav>

@@ -1,0 +1,11 @@
+<div class="">
+  <p-galleria #galleria [value]="posts" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }"  [autoPlay]="true" [transitionInterval]="5000">
+    <ng-template pTemplate="item" let-item>
+      <div class="image-container">
+       <a href="/home"><img [src]="item.image" /></a> 
+       
+        <a href="/home"> <h2 class="titre">{{item.titre}}</h2></a>
+      </div>
+    </ng-template>
+  </p-galleria>
+</div>

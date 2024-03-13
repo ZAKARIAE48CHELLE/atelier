@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-between">
+      <div class="col-md-4 d-flex justify-content-start p-0 m-0">
+        <!-- Timeline -->
+        <div class="">
+          <p-timeline [value]="events">
+            <ng-template pTemplate="content" let-event>
+              <div class="py-2 content">
+                <p class="title">{{ event.status }}</p>
+                <p class="desc">{{ event.descriptif }}</p>
+                <button class="text button-48" [class.clicked]="event._id === clickedButtonId" (click)="showDetails(event)">
+                  <span>{{ 'code_412' | translate | titlecase }}</span>
+                </button>
+              </div>
+            </ng-template>
+            <ng-template pTemplate="opposite" let-event>
+              <small class="p-text-secondary">{{ event.date | date : "dd-MM-YYYY H:mm" }}</small>
+            </ng-template>
+          </p-timeline>
+        </div>  
+      </div>
+
+      <div class="col-md-8">
+        <div class="details-container col-md-12" >
+          <div class="backbtn p-2">
+            <button *ngIf="selectedEvent && selectedEvent.parent" class="text" (click)="showDetails(selectedEvent.parent)" class="button-48 back" role="button">
+              <svg width="15" height="15" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linejoin="round" stroke-linecap="round"></path>
+              </svg>  
+              <span class="px-2">
+                {{ 'code_444' | translate | titlecase }}
+              </span>
+            </button>
+          </div>
+
+          <!-- Details -->
+          <div *ngIf="selectedEvent" class="col-md-12 d-flex">
+            <div *ngIf="selectedEvent.children.length" class="timeline">
+              <p-timeline [value]="selectedEvent.children">
+                <ng-template pTemplate="content" let-event>
+                  <div class="content py-2">
+                    <p class="title">{{ event.status }}</p>
+                    <p class="desc">{{ event.descriptif }}</p>
+                    <button class="text button-48" (click)="showDetails(event)">
+                      <span>{{ 'code_412' | translate | titlecase }}</span>
+                    </button>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="opposite" let-event>
+                  <small class="p-text-secondary">{{ event.date | date : "dd-MM-YYYY H:mm" }}</small>
+                </ng-template>
+              </p-timeline>
+            </div>
+
+            <div *ngIf="selectedEvent" class="presentation">
+              <div class="btn d-flex justify-content-end p-3">
+                <button *ngIf="selectedEvent || selectedEvent.children" class="text" (click)="cleardetails()" class="button-48 x" role="button">
+                  <span class="px-2">
+                    <i class="bi bi-x-lg"></i>
+                  </span>
+                </button>
+              </div>
+              <h5>{{ selectedEvent.status }}</h5>
+              <p>{{ selectedEvent.descriptif }}</p>
+              <p>Date: {{ selectedEvent.date | date : "dd-MM-YYYY H:mm" }}</p>
+              <div class="boocle" *ngIf="selectedEvent && selectedEvent.lieuConcerne.length">
+                <h6>{{ 'les lieuConcerne' | translate | titlecase }}</h6>
+                <ul *ngFor="let lieu of selectedEvent.lieuConcerne">
+                  <li *ngIf="lieu.EtatEtulisation">
+                    <span>{{ 'personne a contacte' | translate | titlecase }} : {{ lieu.personneAContacte }}</span>
+                    <br />
+                    <span>
+                      <p>{{ 'telephone' | translate | titlecase }} : {{ lieu.telPersonne }}</p>
+                      <p>{{ 'email' | translate | titlecase }} : {{ lieu.emailPersonne }}</p>
+                    </span>
+                    <span>
+                      <p>{{ 'adresse' | translate | titlecase }} : {{ lieu.cordonne.adress }} {{ lieu.cordonne.commune }}</p>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="boocle" *ngIf="selectedEvent && selectedEvent.protagoniste.length">
+                <h6>{{ 'protagoniste' | translate | titlecase }}</h6>
+                <ul style="list-style: circle" *ngFor="let prot of selectedEvent.protagoniste">
+                  <li class="d-flex align-items-center">
+                    <span><p-avatar image="{{ prot.photo }}" styleClass="mr-2" size="normal" shape="circle"></p-avatar></span><span class="text-center">{{ prot.translations.label }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p class="text-center" *ngIf="!selectedEvent"> {{'code_451' | translate | titlecase}}   </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

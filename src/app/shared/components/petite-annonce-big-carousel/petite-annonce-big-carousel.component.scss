@@ -1,0 +1,144 @@
+
+a
+{
+    text-decoration: none;
+}
+.product-card {
+    width: 280px;
+    height: 320px;
+    position: relative;
+    box-shadow: 0 2px 7px #bebebe;
+    background: #fafafa;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    box-shadow: 0 2px 7px #7e7d7d;
+  }
+  
+  .badge {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: crimson;
+    color: #fff;
+    padding: 3px 10px;
+}
+
+
+
+.product-tumb {
+    display: flex;
+    justify-content: center;
+    // background: #f0f0f0;
+    height: 50%;
+   
+   
+}
+
+.product-tumb img {
+    width: 98%;
+    border-radius: 0.5rem;
+    object-fit: contain;
+   
+}
+
+
+
+.product-catagory {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-inline-start: 0.5rem;
+    color: #727272;
+}
+.product-date{
+   
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-inline-start: 0.5rem;
+    color: #727272;
+   
+}
+
+.product-details {
+ 
+  width: 95%;
+  h4{
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    color: #363636;
+    text-decoration: none;
+    margin-inline-start: 0.5rem;
+    transition: 0.3s;
+  }
+
+}
+
+
+.product-details h4 a:hover {
+    color: #1557C0;
+}
+
+.product-details p {
+    width: 90%;
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-inline-start: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* You can adjust this value based on the number of lines you want to show */
+    -webkit-box-orient: vertical;
+    line-height: 1.5; /* Adjust line-height to control the spacing between lines */
+    max-height: 6em; /* Adjust max-height to control the total height */
+    white-space: normal;
+}
+
+
+
+
+.product-links {
+    text-align: right;
+}
+
+.product-links i {
+    display: inline-block;
+    margin-left: 5px;
+    color: crimson;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+// .product-links a:hover {
+//     color: #1557C0;
+// }
+
+.footer {
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+    width: 100%;
+    .prix-non-indique{
+      h1{
+        font-size: 16px;
+        color: #1557C0;
+        font-weight: 600;
+      }
+    }
+    .prix-indique h1{ 
+        font-size: 16px;
+        color: #1557C0;
+        font-weight: 600;
+      }
+      i{
+        color: crimson;
+        font-size: 18px;
+        padding-right: 4px;
+        cursor: pointer;
+      }
+    }

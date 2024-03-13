@@ -1,0 +1,124 @@
+nav{
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+// buttons
+.sub{
+  padding: 0.1rem 2rem 0.1rem 2rem;
+  background-color: #427488;
+  color: #ffffff;
+  box-shadow: 1px 1px 1px 1px rgba(49, 57, 66, 0.5);
+  border-radius: 2px;
+  }
+  .sub:hover{
+    background-color: #00415a;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+.logup{
+  padding: 0.1rem 1rem 0.1rem 1rem;
+  background-color: #427488;
+  color: #ffffff;
+  box-shadow: 1px 1px 1px 1px rgba(49, 57, 66, 0.5);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.logup:hover{
+  background-color: #00415a;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+#btn {
+  cursor: pointer;
+  margin-top: -3rem;
+  margin-right: -6rem;
+  position: absolute;
+}
+  
+  // fixed navbar
+  .fixed {
+    z-index: 2;
+    width: 100%;
+  }
+  .logo{
+    width: 300px;
+    margin-left: -36rem;
+  }
+  .lang1{
+    margin-left: 18rem ;
+    right: 50%;
+  }
+  
+  .lang a{
+    color: black;
+   text-decoration: none;
+  }
+  
+  // navbar
+  
+  // sidebar to take all width
+  .sidebar {
+    width: 100%;
+  }
+  
+  // for the logo
+  .image {
+    max-height: 40px;
+  }
+  
+  // from MegaMenu
+  
+  @media screen and (max-width: 991px) {
+    .sidebar {
+      background-color: #ffffff;
+      backdrop-filter: blur(20px);
+      height: 100vh;
+    }
+
+    .log{
+      flex-direction: column;
+      padding-top: 3rem;
+    }
+    .lang1{
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav2{
+      flex-direction: column;
+      padding-top: 10rem;
+      height: 100%;
+      .logo{
+        margin: 0;
+        padding-top: 2rem;
+      }
+      .date{
+        padding: 0;
+      }
+    }
+   
+    .navbar-nav {
+      width: 100%;
+      align-items: center !important;
+      margin-top: 20px;
+    
+    }
+    .logup{
+      padding: 0.1rem 2.3rem 0.1rem 2.3rem;
+    }
+    .logup:hover{
+      cursor: pointer;
+    }
+
+    #btn {
+      cursor: pointer;
+      margin-top: 0;
+      margin-left: 2rem;
+      position: static;
+    }
+  }
+
+    

@@ -1,0 +1,15 @@
+.marqueimg img{
+    width: 400px;
+    height: 200px;
+    object-fit: contain;
+  }
+  .boocle{
+    display: flex ; 
+  }
+
+  @media screen and (max-width: 786px) {
+    .boocle{
+      display: flex ; 
+      flex-direction: column;
+    }
+  }

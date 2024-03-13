@@ -1,0 +1,62 @@
+/* mega-menu.component.css */
+.navbar {
+    width: 80%;
+  }
+  
+  .nav-item {
+    font-size: 18px;
+  }
+  
+  .nav-link {
+    cursor: pointer;
+  }
+  .drop-down{
+    width: auto;
+  }
+  
+  .mega-menu-content {
+    display: none;
+    position: absolute;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-item:hover .mega-menu-content {
+    display: block;
+  }
+  
+
+  /* Styling for the mega menu items */
+  .mega-menu-content h5 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #1163ff;
+    font-weight: 600;
+  }
+  
+  .mega-menu-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mega-menu-content ul li {
+    margin-bottom: 10px;
+  }
+  
+  .mega-menu-content ul li a {
+    text-decoration: none;
+    color: #8b8282;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .mega-menu-content ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 992px){
+    .navbar{
+        display: none;
+    }
+  }

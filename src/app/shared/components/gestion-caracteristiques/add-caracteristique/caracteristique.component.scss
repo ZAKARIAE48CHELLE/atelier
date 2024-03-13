@@ -1,0 +1,12 @@
+ul{
+    li{
+        list-style: none;
+    }
+}
+.row {
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+  }
+  .conditions {
+    width: calc(100% / 3); /* Adjust width to display three items per row */
+    padding: 0 10px; /* Adjust padding as needed */
+  }

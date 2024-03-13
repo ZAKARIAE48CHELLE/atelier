@@ -1,0 +1,116 @@
+<div class="container" *ngIf="acteur">
+  <div class="row">
+    <div class="col-md-12 allContent d-flex">
+      <div class="left-side col-md-4">
+        <div class="card order-0">
+          <div class="image d-flex justify-content-center align-content-center border-end">
+            <img src="{{ acteur.Logo }}" />
+          </div>
+          <div class="contentsections">
+            <div class="title d-flex justify-content-center align-content-center">
+              <p>{{ acteur.NomStructure }}</p>
+            </div>
+            <div class="infos p-2">
+              <div class="rating d-flex justify-content-center align-content-lg-center">
+                <span class="notation">
+                  <p-rating [(ngModel)]="acteur.Notation" [cancel]="false" [disabled]="true"></p-rating>
+                  <b>({{ acteur.Notation }})</b>
+                </span>
+              </div>
+              <div class="adress text-center">
+                <div class="py-2" *ngFor="let adress of acteur.CordonneeGeographique">
+                  <i class="bi bi-geo-alt"></i>: {{ adress.adress }} ,
+                  {{ acteur.Pays_Origine }}
+                </div>
+                <div *ngFor="let cordonne of acteur.CordonneeGeographique">
+                  <div *ngFor="let h of cordonne.Horaire" style="color: black">
+                    <i class="bi bi-clock"></i> : {{ h.heurDebut }} -
+                    {{ h.heurFin }}
+                  </div>
+                </div>
+                <div class="statusSection d-flex justify-content-center align-content-center py-2">
+                  <div *ngIf="acteur.StatutStructure == 'Active'" class="">
+                    <span class="active px-5 py-1 border-2 border-green-600 border-round-lg bg-green-200 status">{{
+                      acteur.StatutStructure }}</span>
+                  </div>
+                  <div *ngIf="acteur.StatutStructure == 'Inactive'">
+                    <span class="inactive px-5 py-1 border-2 border-red-600 border-round-lg bg-red-200">{{
+                      acteur.StatutStructure }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dialog d-flex justify-content-end align-items-center p-2">
+                <span class="dropdown p-2">
+                  <span class="btn btn-secondary dropdown-toggle py-2" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="true">
+                    {{ "code_171" | translate | titlecase }}
+                  </span>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <span><a class="dropdown-item" href="#"><i class="bi bi-telephone-forward"></i> :
+                          {{ acteur.telephone }}</a></span>
+                    </li>
+                    <hr />
+                    <li>
+                      <span><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> : {{ acteur.fax
+                          }}</a></span>
+                    </li>
+                    <hr />
+                    <li>
+                      <span><a class="dropdown-item" href="#"><i class="bi bi-envelope-open"></i> : {{ acteur.email }}</a></span>
+                    </li>
+                  </ul>
+                </span>
+                <button style="color: black" pButton label="{{ 'code_4' | translate | titlecase }}"
+                  class="bg-white border-black-alpha-90 py-2 px-2 border-round-lg" (click)="DiaOpen()"></button>
+                <a href="{{ acteur.SiteWeb }}" class="link border-1" style="color: black; margin: 5px">
+                  <span class="icon">
+                    <p class="pi pi-globe"></p>
+                    {{ "code_172" | translate | titlecase }}
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 order-1 right-section">
+        
+        <div class="main-content">
+          <div class="head-section">
+            <div class="header d-flex justify-content-start px-5 align-content-center">
+              <h1>Service</h1>
+            </div>
+            <div class="discription px-5">
+              <p [innerHTML]="acteur.translations.Descriptif"></p>
+            </div>
+            <div class="horaire-travail col-md-12">
+              <h1 class="horair-head">
+                Heures d'ouverture Asphaltage et Etanchéité 
+              </h1>
+              <div class="map col-md-12 d-flex py-2 px-2">
+                <div class="col-md-5" *ngFor="let address of acteur.CordonneeGeographique">
+                  <div *ngFor="let h of address.Horaire">
+                    <div class="day-time justify-content-between col-md-12" style="color: black">
+          <app-horaire [DayDebut]="h.DayDebut" [Dayfin]="h.Dayfin" [heurDebut]="h.heurDebut" [heurFin]="h.heurFin"></app-horaire>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 map-cont " *ngFor="let adress of acteur.CordonneeGeographique">
+                  <span class="fullscreen" (click)="Map()"> <i class="bi bi-arrows-fullscreen">Show fullscreen</i>  </span>
+                  <app-map  [latitude]="adress.latitude" [longitude]="adress.longitude" [id]="acteur._id"></app-map>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="comments p-3">
+          <h1 class="px-4">Ajouter un Avis</h1>
+          <app-forum-reviews></app-forum-reviews>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <app-caracteristique [readonly]="readonly" [selectedValuesFrom]="selectedValuesFrom" [useFlex]="useFlex" [groupFlex]="groupFlex" [selectedCharacteristics]="selectedCharacteristics" [groupe]="groupe" (selectedData)="handleSelectedData($event)"  ></app-caracteristique>
+
+  <div class="grid grid-nogutter justify-content-between ">
+      <div class="grid grid-nogutter justify-content-start">
+        <button
+          class="btn w-5rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="prevPage()"
+          icon="pi pi-angle-right"
+          iconPos="right" >
+          {{ "code_102" | translate | titlecase }}
+        </button>
+      </div>
+      <div class="grid grid-nogutter justify-content-end">
+        <button
+          class="btn w-4rem h-3rem border-round m-2 font-bold flex align-items-center justify-content-center"
+          (click)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right" >
+          {{ "code_104" | translate | titlecase }}
+        </button>
+      </div>
+    </div>
+</div>
+
+

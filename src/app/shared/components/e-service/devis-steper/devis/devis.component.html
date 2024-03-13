@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="button d-flex justify-content-end   ">
+    <button type="button" class=" btn  border-round  m-2 font-bold flex align-items-center justify-content-center"  (click)="showProductDialog()" pButton > add a product</button>
+  </div>
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="">
+        <p-table [value]="cart" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>  
+              <th WIDTH="16%">{{'code_485' | translate | titlecase}}</th>
+              <th WIDTH="16%">{{'code_221' | translate | titlecase }}</th>
+              <th WIDTH="16%">{{'code_501' | translate | titlecase }}</th>
+              <th WIDTH="16%">{{'code_502' | translate | titlecase}}</th>
+              <th WIDTH="16%">{{'code_503' | translate | titlecase }}</th>
+              <th WIDTH="16%">{{'code_8816'| translate | titlecase }}</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+            <tr>
+              <td class="image justify-content-center">
+                <img src="{{ product.refProduit.imageProduit }}" alt="" />
+              </td>
+              <td WIDTH="16%">{{ product.refProduit.translations.designationProduit }}</td>
+              <td WIDTH="16%">{{ product.refProduit.tarifUHTpardefaut }} {{product.refProduit.monnaiePays}} </td>
+              <td style="width: 100px;"> 
+                <div class="input">
+            
+                  <p-inputNumber
+                  decrementButtonClass="text-base w-2rem"
+                  incrementButtonClass="text-base w-2rem"
+                  class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                  [inputStyle]="{width : '50%' , border :'none'}"
+                  [(ngModel)]="product.quantite"
+                  (ngModelChange)="updateTotal(product.refProduit, $event)"
+                  class="p-inputtext-lg text-base text-color surface-50 surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                  [inputStyle]="{width : '100%' , border :'none'}"
+                  [min]="product.refProduit.qteMinParCommande"
+                  [max]="product.refProduit.qteMaxParCommande"
+                  width="100%"
+                  class="p-inputtext-lg w-8rem"
+                  [showButtons]="true"
+                  placeholder="{{ 'code_502' | translate | titlecase }}"
+                  optionLabel="label"
+                  inputId="float-label"
+                ></p-inputNumber>
+                
+                </div>
+              
+              </td>
+              <td WIDTH="16%">
+                {{product.total}}   {{product.refProduit.monnaiePays}}
+              </td>
+            <td>
+              <div class="action">
+                <button class=" border-none w-3rem h-3rem border-round bg-red-500 " (click)="removeProductFromCart(product.refProduit.id)" > <i class="pi pi-trash"></i> </button>
+              </div>
+
+            </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-5 p-2" *ngIf="cart.length" >
+    <button type="button" class=" btn border-round font-bold"  (click)="submit()" pButton >submit</button>
+  </div>
+
+</div>
+
+
+<!-- devis.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+
+        <p-dialog header="Product List" [(visible)]="displayProductDialog" [modal]="true" [draggable]="false" [responsive]="true" [style]="{width: '50%'}">
+          <div class="condition" *ngIf="availableProducts.length">
+            <p-table [value]="availableProducts" [tableStyle]="{ 'width': 'auto' }" [paginator]="true"
+            [rows]="5" [rowsPerPageOptions]="[5,10,15,20]"> 
+              <ng-template pTemplate="header">
+                <tr>
+                  <th WIDTH="16%">{{'code_485' | translate | titlecase}}</th>
+                  <th WIDTH="16%">{{'code_221' | translate | titlecase }}</th>
+                  <th WIDTH="16%">{{'code_501' | translate | titlecase }}</th>
+                  <th WIDTH="16%">{{'code_8816'| translate | titlecase }}</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+                <tr>
+                  <td class="image">
+                    <img src="{{ product.imageProduit }}" alt="" />
+                  </td>
+                  <td WIDTH="16%">{{ product.translations.designationProduit }}</td>
+                  <td WIDTH="16%">{{ product.tarifUHTpardefaut }} {{product.monnaiePays}} </td>
+              
+                  <td WIDTH="16%">
+                    <button class=" btn  border-round  m-2 font-bold flex align-items-center justify-content-center" (click)="addToCart(product)">{{'code_509' | translate | titlecase}}</button>
+                </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+            <div class="condition" *ngIf="!availableProducts.length">
+              <div class="no-results   ">
+                <h2 class="text-center">{{'code_510' | translate | titlecase}}</h2>
+                <p class="text-center">Sorry, we couldn't find any results for your search.</p>
+              </div>
+          </div>
+        </p-dialog>
+      </div>
+    </div>
+  </div>
+</div>

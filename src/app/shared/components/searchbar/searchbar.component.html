@@ -1,0 +1,33 @@
+<form  class="flex-form" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <label for="from">
+      <i class="ion-location"></i>
+    </label>
+    <div class=" d-flex">
+        <div class="search">
+            <div class="group">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+                  <g>
+                    <path
+                      d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                    ></path>
+                  </g>
+                </svg>
+                <input class="input" type="search" formControlName="secteurActivite" placeholder="secteur d'activite" />
+              </div>
+              
+        </div>
+            <div class="search px-3">
+                <div class="group">
+                    <svg  width="27" height="27" fill="currentColor" class="bi bi-geo-alt icon" viewBox="0 0 16 16" id="IconChangeColor">
+                        <g>
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" id="mainIconPathAttribute"></path>
+                             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" id="mainIconPathAttribute"></path> 
+                        </g>
+                    </svg> 
+                    <input class="input" type="search" formControlName="localisation" placeholder="localisation" />
+                  </div>
+                  
+            </div>
+            <button  type="submit" value="">{{'code_530' | translate | titlecase}}</button>
+      </div>
+    </form>

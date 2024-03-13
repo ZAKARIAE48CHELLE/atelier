@@ -1,0 +1,134 @@
+
+.clear:hover{
+    cursor: pointer;
+    color: gray;
+}
+::ng-deep .p-timeline-left {
+    width: 400px ;
+}
+::ng-deep .p-timeline-left.p-timeline-event-content{
+    width: 500px;
+}
+::ng-deep.p-timeline-left .p-timeline-event-opposite{
+    
+    text-align: start;
+}
+.title{
+    text-align: justify;
+    font-size: .9rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+.desc{
+    text-align: justify;
+    font-size: .9rem !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.button-48 {
+    border: 2px solid white;
+    appearance: none;
+    position: relative;
+    background-color: #c7c7c7;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: .7;
+    outline: 0;
+    padding: .8em 1em;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1), background-color 100ms cubic-bezier(.694, 0, 0.335, 1), color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+
+  .button-48:before {
+    animation: opacityFallbackOut .5s step-end forwards;
+    backface-visibility: hidden;
+    background-color: #666666;          
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    content: "";
+    height: 100%;    
+
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+    width: 100%;
+  
+  }
+
+  .button-48:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+
+  }
+
+  .button-48:after {
+    background-color: #666666;
+    span{
+      color: white;
+
+    }
+  }
+
+  .button-48 span {
+    z-index: 999;
+    position: relative;
+  }
+  .button-48:hover{
+    color: white;
+  }
+
+  .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+  
+  .back > svg {
+    margin-left: 5px;
+    transition: all 0.4s ease-in;
+  }
+  
+  .back:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(6px);
+  }
+  .x{
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 5px 5px;
+  }
+
+  .button-48.clicked {
+    background-color: black;
+    color: white;
+  }

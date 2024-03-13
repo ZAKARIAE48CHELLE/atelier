@@ -1,0 +1,19 @@
+
+<div class="container">
+    <p-carousel [value]="posts.slice(0,max)" [numVisible]="numvisible" [numScroll]="numScroll" [circular]="true" [responsiveOptions]="responsiveOptions">
+        <ng-template let-post pTemplate="item">
+
+    <div class="cardCollection">
+      <div class="cardCollectionimg">
+        <img src="{{post.image}}" alt="">
+      </div>
+      <div class="cardCollectiontextBox">
+        <div class="cardCollectiontextContent">
+          <p class="cardCollectionh1"><a href="">{{post.titre}}</a></p>
+          <span class="cardCollectionDate">{{post.date.toLocaleDateString() }}</span>
+        </div>
+      </div>
+    </div>
+        </ng-template>
+    </p-carousel>
+</div>

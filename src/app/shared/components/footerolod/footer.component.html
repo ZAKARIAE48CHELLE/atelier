@@ -1,0 +1,37 @@
+<footer>
+  <div class="container-fluid d-flex flex-column align-items-center">
+    <div class="row" id="section">
+
+        <div class="logo-media col-md-3 mb-4">
+          <div class="logo">
+            <img src="../../../../assets/images/logo.png" alt="" class="img-fluid">
+          </div>
+      
+            <div *ngFor="let media of medias" class="media">
+              <a href="{{media.link}}">
+                <i *ngIf="media.icon" [class]="'pi ' + media.icon + ' pe-2'" id="media"></i>
+                {{media.label}}
+              </a>
+            </div>
+          </div>
+  
+        <div class="footitems col-md-9 d-flex flex-md-row">
+          <div class="row p-3" *ngFor="let footerItem of footerItems">
+            <div class="">
+              <h5 class="titre text-uppercase">{{ footerItem.titre }}</h5>
+              <ul class="list-unstyled mb-0">
+                <li *ngFor="let link of footerItem.links">
+                  <a [href]="link.link">{{ link.label }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright row mt-auto">
+        <div class="col text-center p-1">
+          <p>&copy; {{ currentYear }} SoS. All rights reserved.</p>
+        </div>
+      </div>
+  </div>
+</footer>

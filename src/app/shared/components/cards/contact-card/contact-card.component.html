@@ -1,0 +1,10 @@
+<div class="body">
+  <div class="card-content">
+    <h1>{{"code_4" | translate | titlecase}}</h1> <!--translate-->
+    <p>If you have any questions or need help, please feel free to contact us. We are here to help you in any way we can.</p>
+<p-button (click)="showDialog()" icon="pi pi-info-circle" class="dialog" styleClass="border-round-md px-5 py-2 bg-gray-900 border-0 " label="Contact Us"></p-button>
+<p-dialog header="make your Question" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'  }" [draggable]="false" [resizable]="false">
+<app-faq-form></app-faq-form>
+</p-dialog>
+  </div>
+</div>

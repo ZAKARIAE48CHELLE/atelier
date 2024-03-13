@@ -1,0 +1,115 @@
+
+.socialmedia {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+/* Remove the margin-right from .socialContainer */
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+  transition-duration: .3s;
+}
+
+  .card {
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(44, 44, 44) ;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+  }
+  .socialSvg path {
+    fill: black;
+  }
+  
+  .socialSvg {
+    width: 20px;
+  }
+  .content {
+    background-color: #fff;
+
+  }
+  
+  /* for all social containers*/
+  .socialContainer {
+    width: 40px;
+    height: 40px;
+    margin-right: 0; /* Adjusted margin to remove spacing between icons */
+    background-color: #fff;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: .3s;
+      &:hover{
+        .socialSvg path {
+          fill: rgb(238, 238, 238);
+        }
+      }
+  }
+  /* instagram*/
+  .containerOne:hover {
+    background-color: #e65596;
+    transition-duration: .3s;
+  }
+  /* twitter*/
+  .containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: .3s;
+  }
+  /* linkdin*/
+  .containerThree:hover {
+    background-color: #0072b1;
+    transition-duration: .3s;
+  }
+  /* Whatsapp*/
+  .containerFour:hover {
+    background-color: #128C7E;
+    transition-duration: .3s;
+  }
+  .facebook:hover{
+    background-color: #3069B6;
+    transition-duration:.3s;
+  }
+  .github:hover{
+    background-color: black;
+    transition-duration:.3s;
+  }
+  .youtube:hover{
+    background-color: #FF0000;
+    transition-duration:.3s;
+  }
+  
+  .socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+  }
+  .linkedIn:hover{
+    background-color: #0A66C2;
+    transition-duration:.3s;
+  }
+  
+ 
+  
+  .socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+  }
+  
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  

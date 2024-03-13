@@ -1,0 +1,82 @@
+<div class="container">
+  <header>
+    <span class="d-flex justify-content-start align-items-center"
+      ><span> </span>
+      <span class="" style="font-size: 1.1rem">
+        {{ event.translations.slogan }}
+      </span>
+    </span>
+  </header>
+  <div class="container">
+    <app-carousele [images]="event.images" [type]="'image'" [component]="'event'"></app-carousele>
+  </div>
+</div>
+<div class="container">
+    <p-tabView>
+      <p-tabPanel header="{{ 'code_215' | translate | titlecase }}">
+        <div class="row">
+          <div class="content">
+            <div class="col-md-12 d-flex">
+              <div class="left col-md-6 p-3">
+                <p class="text-justify">
+                  {{ event.translations.description }}
+                </p>
+                <ul>
+                  <li>
+                    <i class="bi bi-calendar-range px-2"></i>
+                    <span>
+                      {{ event.dateDebut | date : "dd/MM/yyyy" }} -
+                      {{ event.dateFin | date : "dd/MM/yyyy" }}
+                    </span>
+                  </li>
+                  <li *ngIf="event.multiSessions">
+                    <i class="fa-solid fa-people-group px-2"></i>
+                    <span> {{'code_446' | translate | titlecase}}  </span>
+                  </li>
+                  <li *ngIf="event.multisites">
+                    <i class="bi bi-geo-alt px-2"> </i> <span> {{'code_445' | translate | titlecase}} </span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-receipt px-2"> </i>
+                    <span> {{ event.accessibilite }} </span>
+                  </li>
+                  <li *ngIf="event.avecDistribution == true">
+                    <i class="fa-solid fa-check-to-slot px-2"></i>
+                    <span> {{'code_447' | translate | titlecase}}</span>
+                  </li>
+                  <li *ngIf="event.avecDistribution == false">
+                    <i class="fa-solid fa-check-to-slot px-2"></i>
+                    <span> {{'code_448' | translate | titlecase}} </span>
+                  </li>
+                  <li *ngIf="event.RecompensesPrix">
+                    <i class="fa-solid fa-medal px-2"></i>
+                    <span> {{'code_449' | translate | titlecase }} </span>
+                  </li>
+                  <li *ngIf="event.reservationObligatoire">
+                    <i class="fa-solid fa-user-check px-2"></i>
+                    <span> {{'code_450' | translate | titlecase}} </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="right col-md-6 p-3">
+                <div class="map">
+                  <app-localisations
+                    [locations]="event.instanceElementAssocie"
+                  ></app-localisations>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel *ngIf="event.programmeEvent.length" header="{{ 'code_443' | translate | titlecase }}">
+        <div class="">
+          <h1>{{ "code_443" | translate | titlecase }}</h1>
+          <div class="p-4 mt-3">
+            <app-timeline [event]="event" [eventsData]="event.programmeEvent"></app-timeline>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+</div>
+

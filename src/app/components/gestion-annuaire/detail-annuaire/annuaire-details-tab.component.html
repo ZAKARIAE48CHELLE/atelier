@@ -1,0 +1,316 @@
+<div class="cover" *ngIf="acteur">
+  <app-carousele [images]="acteur.contennuMMedia"></app-carousele>
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-12 allContent d-flex">
+        <div class="left-side col-md-4 mt-2">
+          <div class="card-show card order-0 p-2">
+            <div class="image d-flex justify-content-center align-content-center">
+              <img src="{{ acteur.Logo }}" />
+            </div>
+            <div class="contentsections">
+              <div class="title d-flex justify-content-center align-content-center">
+                <p>{{ acteur.translations.nomStructure }}</p>
+              </div>
+              <div class="infos p-2">
+                <div class="rating d-flex justify-content-center align-content-lg-center">
+                  <span class="notation">
+                    <p-rating [(ngModel)]="acteur.Notation" [cancel]="false" [disabled]="true"></p-rating>
+                    <b>({{ acteur.Notation }})</b>
+                  </span>
+                </div>
+                <div class="adress text-center">
+                  <div class="py-2" *ngFor="let adress of acteur.CordonneeGeographique">
+                    <i class="bi bi-geo-alt"></i>: {{ adress.adress }} ,
+                    {{ acteur.Pays_Origine }}
+                  </div>
+                  <div class="nationalite" *ngFor="let nationalite of acteur.nationaliteEtLongue">
+                    <div class="avatar">
+                      <p-avatar [image]="nationalite.imageDrapeaau" styleClass="p-1" shape="circle"></p-avatar>
+                    </div>
+                    <div class="nation px-2">
+                      {{ nationalite.nationalite }}
+                    </div>
+                  </div>
+                </div>
+                <div class="dialog d-flex justify-content-center align-items-center p-2">
+                  <button style="color: black" pButton label="{{ 'code_4' | translate | titlecase }}"
+                    class="bg-white border-black-alpha-90 py-2 px-2 border-round-lg" (click)="DiaOpen()"></button>
+                  <a href="{{ acteur.SiteWeb }}" class="link border-1" style="color: black; margin: 5px">
+                    <span class="icon">
+                      <p class="pi pi-globe"></p>
+                      {{ "code_172" | translate | titlecase }}
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="social-media">
+              <app-social-media [socialMedia]="acteur.socialMedia"></app-social-media>
+            </div>
+          </div>
+
+          <div class="card-show card  p-2">
+            <div class="boocle" >
+              <ul *ngFor="let enregistrement  of acteur.enregistrementLegale">
+                <li> {{enregistrement.labelEnregistrement}} : {{enregistrement.taconomieEnregistrementLegal}}(<span class="payEnr">{{enregistrement.paysEnregistrement}}</span>) {{enregistrement.numeroEnregistrement}}   </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 order-1 right-section">
+          <div class="desd p-3">
+            <div class="discription">
+              <p [innerHTML]="acteur.translations.Descriptif"></p>
+            </div>
+  
+            <h1 style="font-size: 2rem;"> Heures d'ouverture Asphaltage et Etanchéité </h1>
+            <div class="map col-md-12 p-1 m-0 d-flex">
+              <div class="col-md-5 justify-content-start" *ngFor="let address of acteur.CordonneeGeographique">
+                <div *ngFor="let h of acteur.Horaire">
+                  <div class="day-time" style="color: black">
+                    <app-horaire [DayDebut]="h.DayDebut" [Dayfin]="h.Dayfin" [heurDebut]="h.heurDebut"
+                      [heurFin]="h.heurFin"></app-horaire>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 map-cont justify-content-end align-items-center"
+                *ngFor="let adress of acteur.CordonneeGeographique">
+                <app-map [latitude]="adress.latitude" [longitude]="adress.longitude" [id]="acteur._id"></app-map>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab p-3">
+        <p-tabView>
+          <p-tabPanel header="{{ 'code_487' | translate | titlecase }}">
+            <p-tabView class="secondtab" [scrollable]="true">
+              <p-tabPanel *ngIf="acteur?.distinction?.length" header="{{ 'code_475' | translate | titlecase }}">
+                <div class="content-dis ">
+                  <div class="boocle distincs" *ngFor="let distinc of acteur?.distinction">
+                    <div class="trophies">
+                      <div>
+                        <p-avatar [image]="distinc.image" styleClass="" size="xlarge" shape="circle"></p-avatar>
+                      </div>
+                      <div class="designation">
+                        {{ distinc.translations.designation }} ({{
+                        distinc.dateDistinction
+                        }})
+                        <p style="font-size: 0.8rem; color: rgb(32, 36, 37)">
+                          By: {{ distinc.institutionResponsable }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.histoire?.length" header="{{ 'code_476' | translate | titlecase }}">
+                <div class="history content p-3" *ngFor="let histoire of acteur?.histoire">
+                  <ul>
+                    <li>
+                      <span>
+                        <strong>{{ histoire.translation.titre }}</strong> :
+                        {{ histoire.translation.commenteire }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.relationInterActeur?.length" header="{{ 'code_477' | translate | titlecase }}">
+                <div class="p-3 card" *ngFor="let relation of acteur?.relationInterActeur">
+                  <h6>{{ relation.typeRelation }}</h6>
+                  <div class="acteur" *ngFor="let actasso of relation.acteurAccocie">
+                    <ul>
+                      <li>
+                        <div class="d-flex align-items-center">
+                          <a class="linkAct" href="{{ actasso.SiteWeb }}">
+                            <p-avatar [image]="actasso.Logo" styleClass="p-1" shape="circle"></p-avatar>
+                            <span>
+                              <strong>{{
+                                actasso.translations.nomStructure
+                                }}</strong>
+                              : {{ actasso.translations.Descriptif }}</span>
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.organigramePersonnel?.length" header="{{ 'code_478' | translate | titlecase }}">
+                <div class="boocle orga">
+                  <app-organisationtree [type]="'personnel'" [acteur]="acteur"></app-organisationtree>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.OrganigrameStructure?.length" header="{{ 'code_479' | translate | titlecase }}">
+                <div class="comments orga " id="avisSection">
+                  <app-organisationtree [type]="'structure'" [acteur]="acteur"
+                    (structureClick)="handleStructureClick($event)"></app-organisationtree>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.actionnaire?.length" header="{{ 'code_480' | translate | titlecase }}">
+                <div class="actionnaire p-3">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr class="actionnaire-trhead">
+                          <th>{{ "code_485" | translate | titlecase }}</th>
+                          <th>{{ "code_481" | translate | titlecase }}</th>
+                          <th>{{ "code_482" | translate | titlecase }}</th>
+                          <th>{{ "code_483" | translate | titlecase }}</th>
+                          <th>{{ "code_484" | translate | titlecase }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="actionnaire-trbody" *ngFor="let actionnaire of acteur?.actionnaire">
+                          <td>
+                            <p-avatar [image]="actionnaire.image" styleClass="p-1" shape="circle"></p-avatar>
+                          </td>
+                          <td>
+                            <a class="lien-actionnaire" href="{{ actionnaire.lien }}">{{ actionnaire.typeActionnaire }}</a>
+                          </td>
+                          <td>{{ actionnaire.nombreActionPossede }}</td>
+                          <td>{{ actionnaire.nbrSiegeConseilAdministration }}</td>
+                          <td [ngClass]="{
+                              'text-success':
+                                actionnaire.pourcentageParticipation > 0,
+                              'text-danger':
+                                actionnaire.pourcentageParticipation < 0
+                            }">
+                            {{ actionnaire.pourcentageParticipation }}%
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur?.conseilAdministration?.length" header="{{ 'code_486' | translate | titlecase }}">
+                <div class="row conseil d-flex">
+                  <div class="boocle col-md-3" *ngFor="let conseil of acteur?.conseilAdministration">
+                    <div class="card">
+                      <div class="profileImage">
+                        <img src="{{ conseil.photo }}" alt="" />
+                      </div>
+                      <div class="textContainer">
+                        <p class="name">
+                          {{ conseil.translations.nom }}
+                          {{ conseil.translations.prenom }}
+                        </p>
+                        <p class="name">{{ conseil.translations.fonction }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="{{ 'code_491' |translate | titlecase }}">
+                <div class="marques p-3">
+                  <div class="condition p-2" *ngIf="acteur.representaionDunMarque?.length">
+                    <app-marque-representation
+                      [marquetopresent]="acteur.representaionDunMarque"></app-marque-representation>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="{{ 'code_176' | translate | titlecase }}">
+                <div class="comments p-3" id="avisSection">
+                  <h1 class="px-4">Ajouter un Avis</h1>
+                  <app-forum-reviews></app-forum-reviews>
+                </div>
+              </p-tabPanel>
+            </p-tabView>
+          </p-tabPanel>
+          <p-tabPanel header="{{ 'code_488' | translate | titlecase }}">
+            <p-tabView class="secondtab" [scrollable]="true">
+              <p-tabPanel *ngIf="acteur.parrainePar?.length" header="{{ 'code_490' | translate | titlecase }}">
+                <div class="accordion p-3" id="accordionExample">
+                  <div *ngFor="let parraine of acteur.parrainePar; let i = index" class="accordion-item">
+                    <h2 class="accordion-header" id="{{ 'heading' + i }}">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapse' + i" aria-expanded="true"
+                        [attr.aria-controls]="'collapse' + i">
+                        {{ parraine.nom }}
+                      </button>
+                    </h2>
+                    <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <div class="content d-flex">
+                          <div class="parraineimg">
+                            <img [src]="parraine.image" alt="" />
+                          </div>
+                          <div class="comment">
+                            <span>
+                              {{ parraine.commentaire }}
+                            </span>
+                          </div>
+                        </div>
+                        <div class="marques p-3">
+                          <div class="condition p-2" *ngIf="parraine.representaionDuneMarque.length">
+                            <h6 class="px-4">
+                              {{ "code_491" | translate | titlecase }}
+                            </h6>
+                            <app-marque-representation
+                              [marquetopresent]="parraine.representaionDuneMarque"></app-marque-representation>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur.temoignage" header="{{ 'code_489' | translate | titlecase }}">
+                <app-temoignage [actrTemoignage]="acteur.temoignage"></app-temoignage>
+              </p-tabPanel>
+            </p-tabView>
+          </p-tabPanel>
+          <p-tabPanel *ngIf="acteur.faq.length" header="{{'code_222' | translate | titlecase}}">
+            <div class="content p-3">
+              <app-question-reponse [questionReponce]="acteur.faq" ></app-question-reponse>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel *ngIf="acteur.actionSocialeetSOlidaire.length" header="{{'code_492' | translate | titlecase}}">
+            <div class="content actionSolidaire">
+                <div class=" md:col-6 lg:col-3 m-0" *ngFor="let action of acteur.actionSocialeetSOlidaire">
+                    <div class="gallery">
+                        <img src="{{action.photo}}" alt="Cinque Terre" width="600" height="400">
+                      <div class="desc">
+                        <h4 class="pt-2">{{action.typeBeneficiere}}</h4>
+                        <p >{{ action.commentaire }}</p>
+                        <a href="{{action.lienAssocie}}"><span>{{'code_121' | translate | titlecase}}  <i class="pi pi-arrow-right" style="font-size: .8rem"></i></span></a>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </p-tabPanel>
+          <p-tabPanel  header="{{ 'code_221' | translate | titlecase }}">
+            <p-tabView class="secondtab">
+              <p-tabPanel  header="{{ 'code_493' | translate | titlecase }}">
+                <div class="boocle catalogue   " *ngFor="let catalogue of acteur.catalogue">
+                  <span class="cataloguename">{{catalogue.translations.titreCatalogue}}</span>
+                  <div class="carousel p-2" >
+                    <app-petite-annonce-big-carousel [petitesAnnonces]="catalogue.produiService"></app-petite-annonce-big-carousel>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel *ngIf="acteur.produiteEtService" header="{{ 'code_494' | translate | titlecase }}">
+                <div class="content p-3">
+                  <app-petite-annonce-big-carousel [petitesAnnonces]="acteur.produiteEtService"></app-petite-annonce-big-carousel>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="{{ 'code_495' | translate | titlecase }}">
+                <app-catalogue></app-catalogue>
+
+
+
+
+              </p-tabPanel>
+            </p-tabView>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,469 @@
+<form [formGroup]="form" class="form-form">
+    <div class="dropDowns col-md-12 ">
+        <div class="col-md-4 mt-4">
+          <span class="p-float-label">
+            <p-dropdown
+              [ngClass]="form.get('class')?.hasError('required') &&(form.get('class')?.touched || form.get('class')?.dirty)? 'ng-dirty ng-invalid': ''"
+              [options]="classOptions"
+              width="100%"
+              placeholder="{{ 'code_244' | translate | titlecase }}"
+              optionLabel="label"
+              inputId="float-label"
+              formControlName="class"
+            ></p-dropdown>
+            <label for="float-label">{{ "code_261" | translate | titlecase }}</label>
+          </span>
+          <ng-container
+            *ngIf="form.get('class')?.invalid && (form.get('class')?.touched || form.get('class')?.dirty)? 'text-danger': ''">
+            <span class="error-span" *ngIf=" form.get('class')?.errors?.['required']">
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+        <!-- categorie -->
+        <div class="col-md-4 mt-4">
+          <span class="p-float-label">
+            <p-dropdown
+              [ngClass]="
+                form.get('Categorie')?.hasError('required') &&
+                (form.get('Categorie')?.touched || form.get('Categorie')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              [options]="categorieOptions"
+              width="100%"
+              placeholder="{{ 'code_244' | translate | titlecase }}"
+              optionLabel="label"
+              inputId="float-label"
+              formControlName="Categorie"
+            ></p-dropdown>
+      
+            <label for="float-label">{{ "code_262" | translate | titlecase }}</label>
+            
+          </span>
+          <ng-container
+            *ngIf="
+              form.get('Categorie')?.invalid &&
+              (form.get('Categorie')?.touched || form.get('Categorie')?.dirty)
+                ? 'text-danger'
+                : ''
+            "
+          >
+            <span
+              class="error-span"
+              *ngIf=" form.get('Categorie')?.errors?.['required']"
+            >
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+      
+        <!-- type -->
+        <div class="col-md-4 mt-4">
+          <span class="p-float-label">
+            <p-dropdown
+              [options]="typeOptions"
+              [ngClass]="
+                form.get('type')?.hasError('required') &&
+                (form.get('type')?.touched || form.get('type')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              width="100%"
+              placeholder="{{ 'code_244' | translate | titlecase }}"
+              optionLabel="label"
+              inputId="float-label"
+              formControlName="type"
+            ></p-dropdown>
+            <!-- <p-dropdown [options]="PorteurOptions" [(ngModel)]="selectedPorteur" placeholder="{{'code_244' | translate}}" [editable]="false" optionLabel="label" formControlName="porteurDepetition"></p-dropdown> -->
+      
+            <label for="float-label">{{ "code_263" | translate | titlecase }}</label>
+          </span>
+          <ng-container
+            *ngIf="
+              form.get('type')?.invalid &&
+              (form.get('type')?.touched || form.get('type')?.dirty)
+                ? 'text-danger'
+                : ''
+            "
+          >
+            <span
+              class="error-span"
+              *ngIf=" form.get('type')?.errors?.['required']"
+            >
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+    </div>
+<div class="row">
+  <div class="col-md-12 d-flex">
+    <div class="uploadsec col-md-6">
+      <div class="col-md-12 col-sm-12">
+        <!-- Photo de Profile Upload Container -->
+        <div class="upload-container">
+          <label class="dropzone-label">
+            <div class="input-container"></div>
+            {{ "code_282" | translate | titlecase }}
+            <!--translate-->
+          </label>
+          <div class="card-body dropzone-custom p-0 mx-auto">
+            <div
+              class="dropzone dropzone-primary d-flex"
+              [dropzone]="DocumentDropZoneConfig"
+           
+              (error)="onUploadDocumentError($event)"
+              (success)="onUploadDocumentSuccess($event)"
+              (removedFile)="onDeleteDocumentSuccess($event)"
+            >
+              <div class="dz-message needsclick m-auto">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                <h4 class="mb-0 f-w-600">
+                  {{ "code_140" | translate | titlecase }}
+                  <!--translate-->
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12" *ngIf="type !== 'reference'">
+        <!-- Photo de Profile Upload Container -->
+        <div class="upload-container">
+          <label class="dropzone-label">
+            <div class="input-container"></div>
+            {{ "code_299" | translate | titlecase }}
+            <!--translate-->
+          </label>
+          <div class="card-body dropzone-custom p-0 mx-auto">
+            <div
+              class="dropzone dropzone-primary d-flex"
+              [dropzone]="PhotoDropZoneConfig"
+           
+              (error)="onUploadPhotoError($event)"
+              (success)="onUploadPhotoSuccess($event)"
+              (removedFile)="onDeletePhotoSuccess($event)"
+            >
+              <div class="dz-message needsclick m-auto">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                <h4 class="mb-0 f-w-600">
+                  {{ "code_299" | translate | titlecase }}
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content  col-md-6">
+      <div formGroupName="translations" class="col-md-12">
+        <div class="col-md-12 mt-4">
+          <span class="p-float-label">
+            <input
+              pInputText
+              class=" p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              id="titre"
+              type="text"
+              [ngClass]="
+                form.get('translations.titre')?.hasError('required') &&
+                (form.get('translations.titre')?.touched ||
+                  form.get('translations.titre')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''"
+              formControlName="titre"
+            />
+            <label
+              [ngClass]="
+                form.get('translations.titre')?.hasError('required') &&
+                (form.get('translations.titre')?.touched ||
+                  form.get('translations.titre')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              class="form-label"
+              for="titre"
+            >
+              {{ "code_110" | translate | titlecase }} 
+              <!--translate-->
+            </label>
+          </span>
+          <ng-container
+            *ngIf="
+              form.get('translations.titre')?.invalid &&
+              (form.get('translations.titre')?.touched ||
+                form.get('translations.titre')?.dirty)
+                ? 'text-danger'
+                : ''
+            "
+          >
+            <span
+              class="error-span"
+              *ngIf=" form.get('translations.titre')?.errors?.['required']"
+            >
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+       
+      
+        <!-- Commentairerelatif -->
+        <div class="col-md-12 mt-4" *ngIf="type == 'reference'">
+          <span class="p-float-label">
+            <textarea
+              pInputTextarea
+              rows="4"
+              class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              id="Commentairerelatif"
+              [ngClass]="
+                form
+                  .get('translations.Commentairerelatif')
+                  ?.hasError('required') &&
+                (form.get('translations.Commentairerelatif')?.touched ||
+                  form.get('translations.Commentairerelatif')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              formControlName="Commentairerelatif"
+            >
+            </textarea>
+            <label
+              [ngClass]="
+                form
+                  .get('translations.Commentairerelatif')
+                  ?.hasError('required') &&
+                (form.get('translations.Commentairerelatif')?.touched ||
+                  form.get('translations.Commentairerelatif')?.dirty)
+                  ? 'ng-dirty ng-invalid'
+                  : ''
+              "
+              class="form-label"
+              for="Commentairerelatif"
+            >
+              {{ "code_265" | translate | titlecase }} 
+            </label>
+          </span>
+          <ng-container
+            *ngIf="
+              form.get('translations.Commentairerelatif')?.invalid &&
+              (form.get('translations.Commentairerelatif')?.touched ||
+                form.get('translations.Commentairerelatif')?.dirty)
+                ? 'text-danger'
+                : ''
+            "
+          >
+            <span
+              class="error-span"
+              *ngIf=" form.get('translations.Commentairerelatif')?.errors?.['required']"
+            >
+              {{ "code_404" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+        <!-- <div class=" col-md-12 mt-4">
+                <span class="p-float-label">
+                    <input id="Commentairerelatif" width="100%" type="text" pInputText formControlName="Commentairerelatif" />
+                    <label for="Commentairerelatif">Commentairerelatif</label>
+                </span>
+            </div> -->
+          </div>
+          <div class="col-md-12 mt-4" *ngIf="type == 'reference'">
+            <span class="p-float-label">
+              <textarea
+                pInputTextarea
+                rows="4"
+                class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                id="Commentairerelatif"
+                [ngClass]="
+                  form.get('lienAccess')
+                    ?.hasError('required') &&
+                  (form.get('lienAccess')?.touched ||
+                    form.get('lienAccess')?.dirty)
+                    ? 'ng-dirty ng-invalid'
+                    : ''
+                "
+                formControlName="lienAccess"
+              >
+              </textarea>
+              <label
+                [ngClass]="
+                  form.get('lienAccess')
+                    ?.hasError('required') &&
+                  (form.get('lienAccess')?.touched ||
+                    form.get('lienAccess')?.dirty)
+                    ? 'ng-dirty ng-invalid'
+                    : ''
+                "
+                class="form-label"
+                for="Commentairerelatif"
+              >
+                {{ "code_264" | translate | titlecase }} 
+              </label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('lienAccess')?.invalid &&
+                (form.get('lienAccess')?.touched ||
+                  form.get('lienAccess')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span
+                class="error-span"
+                *ngIf=" form.get('lienAccess')?.errors?.['required']"
+              >
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+          <!-- <div class="col-md-12 mt-4">
+            <span class="p-float-label">
+              <p-dropdown
+                [ngClass]="form.get('format')?.hasError('required') &&(form.get('format')?.touched || form.get('format')?.dirty)? 'ng-dirty ng-invalid': ''"
+                [options]="formatOptions"
+                width="100%"
+                placeholder="{{ 'code_298' | translate | titlecase }}"
+                optionLabel="label"
+                inputId="float-label"
+                formControlName="format"
+              ></p-dropdown>
+              <label for="float-label">{{ "code_298" | translate | titlecase }}</label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('format')?.invalid &&
+                (form.get('format')?.touched || form.get('format')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span class="error-span" *ngIf=" form.get('format')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+          <div class="col-md-12 mt-4">
+            <span class="p-float-label">
+              <p-inputNumber
+              inputId="integeronly"
+              [ngClass]="form.get('taille')?.hasError('required') &&(form.get('taille')?.touched || form.get('taille')?.dirty)? 'ng-dirty ng-invalid': ''"
+                 width="100%"
+                 class="p-inputtext-lg w-full"
+                 [showButtons]="true"
+                 placeholder="{{ 'code_300' | translate | titlecase }}"
+                 optionLabel="label"
+                 inputId="float-label"
+                 formControlName="taille"
+              > </p-inputNumber>
+              <label for="number-input">{{'code_300' | translate | titlecase }}</label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('taille')?.invalid &&
+                (form.get('taille')?.touched || form.get('taille')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span class="error-span" *ngIf=" form.get('taille')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+          <div class="col-md-12 mt-4">
+            <span class="p-float-label">
+              <p-dropdown
+                [ngClass]="form.get('unite')?.hasError('required') &&(form.get('unite')?.touched || form.get('unite')?.dirty)? 'ng-dirty ng-invalid': ''"
+                [options]="uniteOptions"
+                width="100%"
+                placeholder="{{ 'code_301' | translate | titlecase }}"
+                optionLabel="label"
+                inputId="float-label"
+                formControlName="unite"
+              ></p-dropdown>
+              <label for="float-label">{{ "code_301" | translate | titlecase }}</label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('unite')?.invalid &&
+                (form.get('unite')?.touched || form.get('unite')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span class="error-span" *ngIf=" form.get('unite')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+          <div class="col-md-12 mt-4">
+            <span class="p-float-label">
+              <p-inputNumber
+              inputId="integeronly"
+              [ngClass]="form.get('nbrPage')?.hasError('required') &&(form.get('nbrPage')?.touched || form.get('nbrPage')?.dirty)? 'ng-dirty ng-invalid': ''"
+                 width="100%"
+                 class="p-inputtext-lg w-full"
+                 [showButtons]="true"
+                 placeholder="{{ 'code_300' | translate | titlecase }}"
+                 optionLabel="label"
+                 inputId="float-label"
+                 formControlName="nbrPage"
+              > </p-inputNumber>
+              <label for="number-input">{{'code_300' | translate | titlecase }}</label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('nbrPage')?.invalid &&
+                (form.get('nbrPage')?.touched || form.get('nbrPage')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span class="error-span" *ngIf=" form.get('nbrPage')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+          <div class="col-md-12 mt-4">
+            <span class="p-float-label">
+              <p-inputNumber
+              inputId="integeronly"
+              [ngClass]="form.get('dureeLectureEnMin')?.hasError('required') &&(form.get('dureeLectureEnMin')?.touched || form.get('dureeLectureEnMin')?.dirty)? 'ng-dirty ng-invalid': ''"
+                 width="100%"
+                 class="p-inputtext-lg w-full"
+                 [showButtons]="true"
+                 placeholder="{{ 'code_302' | translate | titlecase }}"
+                 optionLabel="label"
+                 inputId="float-label"
+                 formControlName="dureeLectureEnMin"
+              > </p-inputNumber>
+              <label for="number-input">{{'code_302' | translate | titlecase }}</label>
+            </span>
+            <ng-container
+              *ngIf="
+                form.get('dureeLectureEnMin')?.invalid &&
+                (form.get('dureeLectureEnMin')?.touched || form.get('dureeLectureEnMin')?.dirty)
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <span class="error-span" *ngIf=" form.get('dureeLectureEnMin')?.errors?.['required']">
+                {{ "code_404" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div> -->
+    </div>
+
+
+  </div>
+</div>
+  <!-- Translations Group -->
+  <div class="button d-flex justify-content-end p-3">
+    <p-button
+      (click)="LienOrContenu()"
+      styleClass="border-round-md px-5 py-2 bg-gray-900 border-0 "
+      label="{{ 'code_143' | translate | titlecase }}"
+    ></p-button>
+
+  </div>
+</form>

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+  
+      <div class="col-md-6 col-sm-12 full-cards" *ngFor="let post of posts.slice(0,max)">
+
+  <div class="card">
+    <img src="{{post.image}}" >
+    <div class="card__content">
+      <p class="card__title">{{post.titre}}</p>
+      <p class="card__subtitle">{{post.soustitre}}</p>
+
+      <p class="card__description">{{post.description}}
+        <div class="post_date mt-1">
+          <p>{{post.date.toLocaleDateString() }}</p>
+        </div>
+        <div class="bottom-sec">
+          <!--translate-->
+          <span class="auteur">{{'code_120' | translate | titlecase}} : {{post.auteur}}</span>  <a href="{{post.link}}" class="link">{{'code_121' | translate | titlecase}}<i class="pi pi-arrow-right px-1" style="font-size: .7rem"></i></a>
+  </div>
+  </div>
+  </div>
+
+</div>
+    </div>
+
+</div>
+

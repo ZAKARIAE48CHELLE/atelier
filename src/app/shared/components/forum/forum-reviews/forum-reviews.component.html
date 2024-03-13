@@ -1,0 +1,55 @@
+<div class="container mt-1 d-flex  justify-content-between ">
+  <div class="col-md-6">
+    <h5>{{ "code_125" | translate | titlecase }}</h5>
+    <div class="comment">
+      <div *ngFor="let comment of comments.slice(0,4)" class="comment-card card mt-2">
+        <div class="comment-header">
+          <p class="comment-author px-3">{{ comment.name }} 
+            <span class="px-3" *ngIf="comment.Notation !==  0 || comment.Notation !== null ">
+              <p-rating [disabled]="true" [cancel]="false" [(ngModel)]="comment.Notation"></p-rating>  
+              <sub>({{comment.Notation}})</sub>
+            </span>
+          </p>
+          <span (click)="editComment(comment.id)" class="pi pi-pencil px-2"></span>
+          <span (click)="deleteComment(comment.id)">
+            <i class="delete pi pi-trash px-2"></i>
+          </span>
+        </div>
+        <div class="comment-content-actions">
+          <p class="comment-content">{{ comment.message }}</p>
+        </div>
+      </div>
+      <a *ngIf="comments.length > 4" class="no-underline  	" (click)="toggleCollapse()" role="button" aria-expanded="false" aria-controls="collapseExample">
+       <p class="text-center p-2">  {{ isCollapsed ? ('code_121' | translate | titlecase) : ('code_442' | translate | titlecase) }}  <i class="pi" [ngClass]="isCollapsed ? 'pi-angle-down' : 'pi-angle-up'"></i> </p> 
+       
+      </a>
+    </div>
+
+<div class="collapsee">
+  <div class="collapse" id="collapseExample" [class.show]="!isCollapsed">
+    <div *ngFor="let comment of comments.slice(4)" class="comment-card mt-2">
+      <div class="comment-header">
+        <p class="comment-author px-3">{{ comment.name }} 
+          <span class="px-3" *ngIf="comment.Notation !==  0 || comment.Notation !== null ">
+            <p-rating [disabled]="true" [cancel]="false" [(ngModel)]="comment.Notation"></p-rating>  
+            <sub>({{comment.Notation}})</sub>
+          </span>
+        </p>
+        <span (click)="editComment(comment.id)" class="pi pi-pencil px-2"></span>
+        <span (click)="deleteComment(comment.id)">
+          <i class="delete pi pi-trash px-2"></i>
+        </span>
+      </div>
+      <div class="comment-content-actions">
+        <p class="comment-content">{{ comment.message }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div class="row col-md-6">
+    <h5>{{ "code_499" | translate | titlecase }}</h5>
+    <app-reviews-form (onAdd)="OnAddComment($event)"></app-reviews-form>
+  </div>
+</div>

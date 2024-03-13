@@ -1,0 +1,56 @@
+<div class="container mt-1">
+  <div class="row">
+    <app-comments-form (onAdd)="OnAddComment($event)"></app-comments-form>
+  </div>
+
+  <div class="col-md-10">
+    <h2>{{ "code_125" | translate | titlecase }}</h2>
+    <!--translate-->
+    <div class="comment">
+      <div *ngFor="let comment of comments" class="card mt-2">
+        <div class="comment-header">
+          <p class="comment-author">{{ comment.name }}</p>
+          <span
+            (click)="editComment(comment.id)"
+            class="pi pi-pencil px-2"
+          ></span>
+          <span (click)="addReply(comment.id)"
+            ><i class="reply bi bi-reply"></i
+          ></span>
+          <span (click)="deleteComment(comment.id)"
+            ><i class="delete pi pi-trash px-2"></i
+          ></span>
+        </div>
+        <!-- <ng-container *ngTemplateOutlet="commentContentTemplate; context: { $implicit: comment }"></ng-container> -->
+        <div class="comment-content-actions">
+          <p class="comment-content">{{ comment.message }}</p>
+        </div>
+        <div class="border border-1"></div>
+        <!-- Display replies -->
+        <div
+          class="mb-2 mx-1"
+          *ngIf="comment.replies && comment.replies.length > 0"
+        >
+          <div *ngFor="let reply of comment.replies" class="card mt-2 ml-4">
+            <div class="comment-header">
+              <p class="comment-author">{{ reply.name }}</p>
+              <span
+                (click)="editComment(reply.id)"
+                class="pi pi-pencil px-2 edit-comment"
+              ></span>
+
+              <span (click)="deleteComment(reply.id)"
+                ><i class="delete pi pi-trash px-2"></i
+              ></span>
+            </div>
+            <div class="comment-content-actions">
+              <p class="comment-content">{{ reply.message }}</p>
+            </div>
+            <div class="border border-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>

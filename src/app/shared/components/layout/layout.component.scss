@@ -1,0 +1,34 @@
+.app-wrapper { 
+width: 100%;
+.content-wrapper {
+width: 100%;
+height: 100%;
+display: flex; 
+.content-container {
+flex-grow: 1;
+display: flex;
+width: 100%;
+flex-direction: column;
+ .main {
+background-color:white;
+flex-grow: 1;
+padding-bottom: 5rem;
+}
+}
+}
+}
+@media (max-width : 768px) {
+    .app-wrapper{
+        padding: 0;
+    .content-container{
+        max-width: 100%;
+        padding: 0;
+
+        .main{
+            padding-top: 0rem;
+            border: border red solid;
+            max-width: 100%;
+            }
+        }
+    }
+}

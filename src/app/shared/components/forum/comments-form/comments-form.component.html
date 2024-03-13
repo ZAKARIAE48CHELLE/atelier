@@ -1,0 +1,157 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+  <div class="col-md-12 mt-3">
+    <span class="p-float-label">
+      <input
+        pInputText
+        class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="name"
+        type="text"
+        [ngClass]="
+          contactForm.get('name')?.hasError('required') &&
+          (contactForm.get('name')?.touched || contactForm.get('name')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        formControlName="name"
+      />
+      <label
+        [ngClass]="
+          contactForm.get('name')?.hasError('required') &&
+          (contactForm.get('name')?.touched || contactForm.get('name')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-label"
+        for="name"
+      >
+        {{ "code_122" | translate | titlecase }}
+        <!--translate-->
+      </label>
+    </span>
+    <ng-container
+      *ngIf="
+        contactForm.get('name')?.invalid &&
+        (contactForm.get('name')?.touched || contactForm.get('name')?.dirty)
+          ? 'text-danger'
+          : ''
+      "
+    >
+      <span
+        class="error-span"
+        *ngIf="contactForm.get('name')?.errors?.['required']"
+      >
+        {{ "code_404" | translate | titlecase }}
+        <!--translate-->
+      </span>
+    </ng-container>
+  </div>
+  <div class="col-md-12 mt-4">
+    <span class="p-float-label">
+      <input
+        pInputText
+        class="form-control p-inputtext-lg text-base text-color surface-50 border-2 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="email"
+        type="text"
+        [ngClass]="
+          contactForm.get('email')?.hasError('required') &&
+          (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        formControlName="email"
+      />
+      <label
+        [ngClass]="
+          contactForm.get('email')?.hasError('required') &&
+          (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-label"
+        for="email"
+      >
+        {{ "code_123" | translate | titlecase }}
+        <!--translate-->
+      </label>
+      <ng-container
+        *ngIf="
+          contactForm.get('email')?.invalid &&
+          (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)
+            ? 'text-danger'
+            : ''
+        "
+      >
+        <span
+          class="error-span"
+          *ngIf="contactForm.get('email')?.errors?.['required']"
+        >
+          {{ "code_404" | translate | titlecase }}
+          <!--translate-->
+        </span>
+        <span
+          class="error-span"
+          *ngIf="contactForm.get('email')?.errors?.['email'] && !contactForm.get('email')?.errors?.['required']"
+        >
+          {{ "code_405" | translate | titlecase }}
+          <!--translate-->
+        </span>
+      </ng-container>
+    </span>
+  </div>
+  <div class="col-md-12 mt-4">
+    <span class="p-float-label">
+      <textarea
+        [ngClass]="
+          contactForm.get('message')?.invalid &&
+          (contactForm.get('message')?.touched ||
+            contactForm.get('message')?.dirty)
+            ? 'ng-dirty ng-invalid'
+            : ''
+        "
+        class="form-control"
+        id="message"
+        rows="5"
+        pInputTextarea
+        formControlName="message"
+      ></textarea>
+      <label class="form-label" for="message">{{
+        "code_126" | translate | titlecase
+      }}</label>
+      <!--translate-->
+      <ng-container
+        *ngIf="
+          contactForm.get('message')?.invalid &&
+          (contactForm.get('message')?.touched ||
+            contactForm.get('message')?.dirty)
+            ? 'text-danger'
+            : ''
+        "
+      >
+        <span
+          class="error-span"
+          *ngIf="contactForm.get('message')?.errors?.['required']"
+        >
+          {{ "code_404" | translate | titlecase }}
+          <!--translate-->
+        </span>
+      </ng-container>
+    </span>
+  </div>
+  <div class="m-3 d-flex justify-content-end col-md-12">
+    <button
+      type="submit"
+      pButton
+      label="Submit"
+      class="bg-black-alpha-90 mx-2 border-round-lg border-0"
+      [disabled]="!contactForm.valid"
+    ></button>
+    <button
+      type="reset"
+      style="color: black"
+      pButton
+      label="Reset"
+      class="bg-white border-black-alpha-90 px-4 border-round-lg"
+      (click)="contactForm.reset()"
+    ></button>
+  </div>
+</form>

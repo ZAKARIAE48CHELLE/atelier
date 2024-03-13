@@ -1,0 +1,752 @@
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { petiteAnnonce } from '../models/petiteAnnonce.model';
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class petiteAnnonceService {
+
+  classeAnnonce: any = [
+     "code_8806", 
+     "code_8807", 
+     "code_8808", 
+     "code_8809", 
+     "code_8810", 
+     "code_8811", 
+     "code_8812", 
+     "code_8813", 
+     "code_8814", 
+  ];
+
+  naturePrix: any = [
+    "code_400",
+    "code_401",
+    "code_402",
+    "code_403",
+  ]
+
+  
+  // getAnnonce(): petiteAnnonce[]{
+  //   return [
+  //     {
+  //       id: '1',
+  //       refMember:{
+  //         id: '1',
+  //         translations: {
+  //           nom: 'Anass',
+  //           prenom: 'chahid',
+  //           adresse: '123 Main St',
+  //           aPropos: 'About John',
+  //           language: 'en'
+  //         },
+  //         reference: 'REF123',
+  //         typeMembre: 'Type1',
+  //         salutation: 'Mr.',
+  //         statut: 'Active',
+  //         dateNaissanceOuCreation: new Date(),
+  //         fonctionOuSecteurActivite: 'Software Developer',
+  //         photo0uLogo: 'photo.jpg',
+  //         pays: 'USA',
+  //         region: 'North America',
+  //         prouvince: 'California',
+  //         ville: 'Los Angeles',
+  //         codePostal: '90001',
+  //         email: 'john.doe@example.com',
+  //         note: 5,
+  //         active: true,
+  //         commentaire: 'No comment',
+  //         memberParent: '3',
+  //         sousMembres: { relationType: 'Type1', membres: [] },
+  //         objetAssoccie: [],
+  //         compteUser: [],
+  //         etatDePublication: 'Published'
+  //       },
+  //       typeAnnonce:'code_502',
+  //       photos: [
+  //         'assets/images/1.jpeg',
+  //         'assets/images/2.jpeg',
+  //         'assets/images/3.jpeg',
+  //         'assets/images/4.jpeg',
+          
+  //       ],
+  
+  //       translations: {
+  //         titre: 'Gorgeous Apartment Building',
+  //         description:
+  //           'This is a new product that we just launched. It is designed to be easy to use and highly effective. Try it out today!',
+  //       },
+  //       classAnnonce:'code_8806',
+  //       taxoAnnonce: 'code_477',
+  //       naturePrix: 'code_401',
+  //       motscles: ['tag 1', 'tag 2', 'tag 3'],
+  //       prix: 20,
+  //       monnaie: 'MAD',
+  //       phone: 212699281250,
+  //       dateDebutPublication: new Date('2024-01-12T16:00:00'),
+  //       afficheCoordBien: true,
+  //       instanceCaracteristique : [
+  //                                 {
+  //                                     labelCaracteristique: "sqft",
+  //                                     Operateur: ">",
+  //                                     valeurs: '100',
+  //                                     uniteDeValeur: "m²",
+  //                                     Icone: "bi bi-arrows-fullscreen"
+  //                                 },
+  //                                 {
+  //                                     labelCaracteristique: "beds",
+  //                                     Operateur: ">=",
+  //                                     valeurs: '2',
+  //                                     uniteDeValeur: "",
+  //                                     Icone: "fa-solid fa-bed"
+  //                                 },
+  //                                 {
+  //                                     labelCaracteristique: "baths",
+  //                                     Operateur: ">=",
+  //                                     valeurs: '1',
+  //                                     uniteDeValeur: "",
+  //                                     Icone: "fa-solid fa-shower"
+  //                                 },
+  //                                 {
+  //                                     labelCaracteristique: "Distance de la plage",
+  //                                     Operateur: "<=",
+  //                                     valeurs: '500',
+  //                                     uniteDeValeur: "m",
+  //                                     Icone: ""
+  //                                 },
+  //                                 {
+  //                                     labelCaracteristique: "Étage",
+  //                                     Operateur: ">=",
+  //                                     valeurs: '2',
+  //                                     uniteDeValeur: "",
+  //                                     Icone: '',
+  //                                 },
+  //                                 {
+  //                                     labelCaracteristique: "Année de construction",
+  //                                     Operateur: ">=",
+  //                                     valeurs: '2000',
+  //                                     uniteDeValeur: "",
+  //                                     Icone: ""
+  //                                 },
+  //                                 ],
+  //       coordBien : {
+  //           Adresse : 'string',
+  //           CodePostal : 'string',
+  //           Ville: 'Tanger',
+  //           Région : 'string',
+  //           Pays :'string',
+  //           latitude : 35.792869, 
+  //           Longitud : -5.826270,
+  //       },
+  //     },
+  //     // {
+  //     //   id: '2',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'code_495',
+  //     //   photos: [
+  //     //     'assets/images/7.jpeg',
+  //     //     'assets/images/6.jpeg',
+  //     //     'assets/images/7.jpeg',
+  //     //     'assets/images/8.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'new product',
+  //     //     description:
+  //     //       'This is a new product that we just launched. It is designed to be easy to use and highly effective. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8806',
+  //     //   taxoAnnonce: 'code_477',
+  //     //   naturePrix: 'code_402',
+  //     //   motscles: ['tag 4', 'tag 5', 'tag 6'],
+  //     //   prix: 30,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281251,
+  //     //   dateDebutPublication: new Date('2024-01-22T16:00:00'),
+  //     //   afficheCoordBien: false,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'string',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               latitude : 35.792869, 
+  //     //               Longitud : -5.826270,
+  //     //   },
+  //     // },
+  //     // {
+  //     //   id: '3',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'code_501',
+  //     //   photos: [
+  //     //     'assets/images/13.png',
+  //     //     'assets/images/2.jpeg',
+  //     //     'assets/images/4.jpeg',
+  //     //     'assets/images/3.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'best product',
+  //     //     description:
+  //     //       'This is our best-selling product. It has been tried and tested by thousands of satisfied customers. Order now and see for yourself!',
+  //     //   },
+  //     //   classAnnonce: 'code_8808',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_401',
+  //     //   motscles: ['tag 7', 'tag 8', 'tag 9'],
+  //     //   prix: 40,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281252,
+  //     //   dateDebutPublication: new Date('2024-01-14T16:00:00'),
+  //     //   afficheCoordBien: true,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'Tanger',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :878,
+  //     //               latitude : 14,} ,
+  //     // },
+  //     // {
+  //     //   id: '4',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/9.jpeg',
+  //     //     'assets/images/8.jpeg',
+  //     //     'assets/images/7.jpeg',
+  //     //     'assets/images/6.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'new product 2',
+  //     //     description:
+  //     //       'This is another new product that we just launched. It is designed to be even easier to use and even more effective. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8808',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_403',
+  //     //   motscles: ['tag 10', 'tag 11', 'tag 12'],
+  //     //   prix: 50,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281253,
+  //     //   dateDebutPublication: new Date('2024-01-15T16:00:00'),
+  //     //   afficheCoordBien: true,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'Tanger',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :15,
+  //     //               latitude : 47,
+  //     //   } ,
+  //     // },
+  //     // {
+  //     //   id: '5',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/8.jpeg',
+  //     //     'assets/images/4.jpeg',
+  //     //     'assets/images/1.jpeg',
+  //     //     'assets/images/3.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'best product 2',
+  //     //     description:
+  //     //       'This is our second best-selling product. It has been tried and tested by thousands of satisfied customers. Order now and see for yourself!',
+  //     //   },
+  //     //   classAnnonce: 'code_8806',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_401',
+  //     //   motscles: ['tag 13', 'tag 14', 'tag 15'],
+  //     //   prix: 60,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281254,
+  //     //   dateDebutPublication: new Date('2024-01-16T16:00:00'),
+  //     //   afficheCoordBien: false,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'Tanger',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :14,
+  //     //               latitude : 36,
+  //     //   },
+  //     // },
+  //     // {
+  //     //   id: '6',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/12.png',
+  //     //     'assets/images/5.jpeg',
+  //     //     'assets/images/2.jpeg',
+  //     //     'assets/images/4.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'just test 2',
+  //     //     description:
+  //     //       'This is another test product. We are testing out some new features and would love your feedback. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8808',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_401',
+  //     //   motscles: ['tag 16', 'tag 17', 'tag 18'],
+  //     //   prix: 70,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281255,
+  //     //   dateDebutPublication: new Date('2024-01-17T16:00:00'),
+  //     //   afficheCoordBien: true,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'string',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :42,
+  //     //               latitude : 21,
+  //     //   }
+  //     // },
+  //     // {
+  //     //   id: '7',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/7.jpeg',
+  //     //     'assets/images/6.jpeg',
+  //     //     'assets/images/7.jpeg',
+  //     //     'assets/images/8.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'new product 3',
+  //     //     description:
+  //     //       'This is yet another new product that we just launched. It is designed to be the easiest to use and the most effective. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8806',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_401',
+  //     //   motscles: ['tag 19', 'tag 20', 'tag 21'],
+  //     //   prix: 80,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281256,
+  //     //   dateDebutPublication: new Date('2024-01-18T16:00:00'),
+  //     //   afficheCoordBien: false,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'string',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :16,
+  //     //               latitude : 1,
+  //     //   },
+  //     // },
+  //     // {
+  //     //   id: '9',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/11.png',
+  //     //     'assets/images/3.jpeg',
+  //     //     'assets/images/1.jpeg',
+  //     //     'assets/images/2.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'just test 3',
+  //     //     description:
+  //     //       'This is another test product. We are testing out some new features and would love your feedback. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8808',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_401',
+  //     //   motscles: ['tag 22', 'tag 23', 'tag 24'],
+  //     //   prix: 90,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281257,
+  //     //   dateDebutPublication: new Date('2024-01-19T16:00:00'),
+  //     //   afficheCoordBien: true,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'string',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               Longitud :21,
+  //     //               latitude : 23,
+  //     //   } ,
+  //     // },
+  //     // {
+  //     //   id: '10',
+  //     //   refMember:{
+  //     //     id: '1',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/1.jpeg',
+  //     //     'assets/images/8.jpeg',
+  //     //     'assets/images/8.jpeg',
+  //     //     'assets/images/6.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'new product 4',
+  //     //     description:
+  //     //       'This is yet another new product that we just launched. It is designed to be the easiest to use and the most effective. Try it out today!',
+  //     //   },
+  //     //   classAnnonce: 'code_8806',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_402',
+  //     //   motscles: ['tag 25', 'tag 26', 'tag 27'],
+  //     //   prix: 100,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281258,
+  //     //   dateDebutPublication: new Date('2024-01-20T16:00:00'),
+  //     //   afficheCoordBien: false,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //             Adresse : 'string',
+  //     //             CodePostal : 'string',
+  //     //             Ville: 'string',
+  //     //             Région : 'string',
+  //     //             Pays :'string',
+  //     //             Longitud :12,
+  //     //             latitude :12,
+  //     //   },
+  //     // },
+  //     // {
+  //     //   id: '11',
+  //     //   refMember:{
+  //     //     id: '2',
+  //     //     translations: {
+  //     //       nom: 'Doe',
+  //     //       prenom: 'John',
+  //     //       adresse: '123 Main St',
+  //     //       aPropos: 'About John',
+  //     //       language: 'en'
+  //     //     },
+  //     //     reference: 'REF123',
+  //     //     typeMembre: 'Type1',
+  //     //     salutation: 'Mr.',
+  //     //     statut: 'Active',
+  //     //     dateNaissanceOuCreation: new Date(),
+  //     //     fonctionOuSecteurActivite: 'Software Developer',
+  //     //     photo0uLogo: 'photo.jpg',
+  //     //     pays: 'USA',
+  //     //     region: 'North America',
+  //     //     prouvince: 'California',
+  //     //     ville: 'Los Angeles',
+  //     //     codePostal: '90001',
+  //     //     email: 'john.doe@example.com',
+  //     //     note: 5,
+  //     //     active: true,
+  //     //     commentaire: 'No comment',
+  //     //     memberParent: null,
+  //     //     sousMembres: { relationType: 'Type1', membres: [] },
+  //     //     objetAssoccie: [],
+  //     //     compteUser: [],
+  //     //     etatDePublication: 'Published'
+  //     //   },
+  //     //   typeAnnonce:'',
+  //     //   photos: [
+  //     //     'assets/images/10.png',
+  //     //     'assets/images/8.jpeg',
+  //     //     'assets/images/9.jpeg',
+  //     //     'assets/images/4.jpeg',
+  //     //   ],
+  //     //   translations: {
+  //     //     titre: 'best product 3',
+  //     //     description:
+  //     //       'This is our third best-selling product. It has been tried and tested by thousands of satisfied customers. Order now and see for yourself!',
+  //     //   },
+  //     //   classAnnonce: 'code_8808',
+  //     //   taxoAnnonce: '',
+  //     //   naturePrix: 'code_400',
+  //     //   motscles: ['tag 28', 'tag 29', 'tag 30'],
+  //     //   prix: 110,
+  //     //   monnaie: 'MAD',
+  //     //   phone: 212699281259,
+  //     //   dateDebutPublication: new Date('2024-01-21T16:00:00'),
+  //     //   afficheCoordBien: true,
+  //     //   instanceCaracteristique : [],
+  //     //   coordBien : {
+  //     //               Adresse : 'string',
+  //     //               CodePostal : 'string',
+  //     //               Ville: 'string',
+  //     //               Région : 'string',
+  //     //               Pays :'string',
+  //     //               latitude : 35.792869, 
+  //     //               Longitud : -5.826270,
+  //     //   } ,
+  //     // },
+  //   ]
+  // }
+
+
+
+
+  // getPetiteAnnonceById(id: string): Observable<petiteAnnonce | undefined> {
+  //   console.log('Fetching petiteAnnonce by ID:', id);
+  //   const selectedAnnonce = this.getAnnonce().find(
+  //     (annonce) => annonce.id === id
+  //   );
+  //   console.log('Selected petiteAnnonce:', selectedAnnonce);
+  //   return of(selectedAnnonce);
+  // }
+
+  // public filteredData: any; 
+
+
+  // setFilteredData(data: any) {
+  //   this.filteredData = data;
+  // }
+
+  // getFilteredData() {
+  //   return this.filteredData;
+  // }
+}
